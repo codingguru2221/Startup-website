@@ -1,0 +1,22 @@
+packages:
+  "framer-motion": "For fluid, physics-based UI animations, page transitions, and complex interactive states"
+  "clsx": "Utility for constructing className strings conditionally"
+  "tailwind-merge": "Utility to safely merge Tailwind CSS classes without style conflicts"
+  "react-hook-form": "For complex multi-step form state management and validation"
+  "@hookform/resolvers": "Zod resolver for form validation"
+
+images:
+  - path: "artifacts/thecodex/public/images/hero-bg.png"
+    description: "Abstract futuristic 3D geometric grid with deep neon blue and purple light leaks, cinematic, volumetric lighting, dark mode"
+    aspect_ratio: "16:9"
+  - path: "artifacts/thecodex/public/images/logo.png"
+    description: "Minimalist futuristic geometric tech logo mark, glowing neon blue outline, dark background"
+    aspect_ratio: "1:1"
+  - path: "artifacts/thecodex/public/images/about-bg.png"
+    description: "Abstract glassmorphism floating spheres and glowing circuit board lines, deep purple and black, ultra high end 3d render"
+    aspect_ratio: "16:9"
+
+notes:
+  - Frontend-only application, API calls mocked or omitted since no backend schemas were provided
+  - All routing handled by wouter
+  - Uses Framer Motion for scroll reveals and layout transitions

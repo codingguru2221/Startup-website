@@ -1,0 +1,137 @@
+Create a modern, high-end, fully responsive, multi-page 3D website for a startup named "TheCodex Software Solutions".
+
+The website should feel premium, futuristic, and skill-focused, with heavy use of smooth animations, 3D elements, glassmorphism, gradients, and micro-interactions. Use advanced UI/UX principles inspired by top SaaS and tech companies.
+
+-----------------------------------
+🌐 OVERALL DESIGN STYLE
+-----------------------------------
+- Theme: Dark + Neon accents (blue/purple gradient)
+- UI Style: Glassmorphism + 3D + minimal + futuristic
+- Animations: Smooth scrolling, parallax effects, hover animations, scroll-triggered transitions
+- Include loading animation (modern preloader with logo animation)
+- Cursor effects (optional: custom cursor or glow effect)
+- Fully responsive (mobile + tablet + desktop)
+- Performance optimized
+
+-----------------------------------
+📄 PAGES STRUCTURE
+-----------------------------------
+
+1️⃣ HOME / LANDING PAGE
+- Hero section with 3D interactive element (floating objects or animated grid)
+- Headline: Bold startup vision (focus on skills & innovation)
+- Subheadline: Brief about services and value
+- CTA buttons: "Get Started" / "Buy a Service"
+
+Sections:
+- Skills-focused showcase (cards or animated bars)
+- Featured Projects (interactive cards with hover effects)
+- Services preview (icons + short descriptions)
+- Why Choose Us (advantages, performance, support)
+- Testimonials (optional)
+- Call to action section
+
+-----------------------------------
+
+2️⃣ SERVICES PAGE
+Display all services in structured, modern cards with icons and hover animations.
+
+Services:
+- Web Development
+- App Development
+- Web App Maintenance
+- Website & App Redesign (modern UI/UX)
+- AI Business Models (sales & management improvement)
+- Server Control Systems
+- Network Development (Lab setups & connections)
+- NAS Setup
+- LAN / WAN / MAN Development with AI integration
+- Ad Management
+- Social Media Management & Marketing
+- Marketing Advice
+- Investment Management (stocks & brokerage guidance)
+
+Add:
+- Each service card should have:
+  title + short description + icon + hover animation
+- Section: "Post-Development Support"
+
+-----------------------------------
+
+3️⃣ ABOUT PAGE
+- Startup story (mission, vision, goal: building high-value company in 100 days)
+- Modern timeline or animated story section
+- Team Section:
+  - Cards for each team member
+  - Include: Name, Role, Specialization, Image placeholder
+  - Hover animation + glow effect
+
+-----------------------------------
+
+4️⃣ CONTACT PAGE
+- Modern contact form:
+  - Name
+  - Email
+  - Phone
+  - Service Interested In (dropdown)
+  - Message
+- UI: Glassmorphism form with focus animations
+- Add map (optional placeholder)
+- Add contact details (email, phone, address)
+
+-----------------------------------
+
+5️⃣ BUY A SERVICE PAGE
+- Full form-based page:
+  - Name
+  - Age
+  - Contact details
+  - Select service
+  - Project description
+  - Budget range
+- Add progress indicator (multi-step form if possible)
+- Smooth transitions between steps
+
+-----------------------------------
+
+🧭 NAVIGATION BAR
+- Sticky navbar
+- Logo on left
+- Links: Home | Services | About | Contact
+- "Buy a Service" button on top-right (highlighted CTA)
+
+-----------------------------------
+
+📌 FOOTER
+- Modern multi-column footer
+- Social media icons (LinkedIn, Instagram, Twitter, etc.)
+- Quick links
+- Copyright
+- Subtle animation on hover
+
+-----------------------------------
+
+✨ ADVANCED FEATURES
+-----------------------------------
+- Scroll-based animations (GSAP or similar feel)
+- Smooth page transitions
+- Lazy loading images
+- SEO-friendly structure
+- Clean code structure
+
+-----------------------------------
+
+⚙️ TECH (if applicable)
+-----------------------------------
+- Use React / Next.js OR pure HTML/CSS/JS (based on platform)
+- Tailwind CSS for styling
+- Three.js or similar for 3D elements
+- Framer Motion for animations
+
+-----------------------------------
+
+🎯 GOAL
+-----------------------------------
+Create a visually stunning, conversion-focused, high-performance startup website that highlights skills, services, and innovation in a futuristic way.
+
+Make it look like a premium tech company website.

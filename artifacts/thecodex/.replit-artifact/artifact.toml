@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "TheCodex Software Solutions"
+version = "1.0.0"
+id = "artifacts/thecodex"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25161
+
+[services.development]
+run = "pnpm --filter @workspace/thecodex run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/thecodex", "run", "build" ]
+publicDir = "artifacts/thecodex/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25161"
+BASE_PATH = "/"
