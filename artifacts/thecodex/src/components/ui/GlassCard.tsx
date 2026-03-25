@@ -1,8 +1,8 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, type HTMLMotionProps } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-interface GlassCardProps extends React.HTMLAttributes<HTMLDivElement> {
+interface GlassCardProps extends Omit<HTMLMotionProps<"div">, "children"> {
   children: React.ReactNode;
   hoverEffect?: boolean;
   delay?: number;
