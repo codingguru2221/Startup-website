@@ -14,6 +14,20 @@ const SERVICES_LIST = [
   "Marketing Advice", "Investment Management"
 ];
 
+function getApiBaseUrl() {
+  const configuredBaseUrl = import.meta.env.VITE_API_BASE_URL?.trim();
+
+  if (configuredBaseUrl) {
+    return configuredBaseUrl.replace(/\/$/, "");
+  }
+
+  if (window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost") {
+    return `${window.location.protocol}//${window.location.hostname}:3001`;
+  }
+
+  return "";
+}
+
 export default function Buy() {
   const { toast } = useToast();
   const [, setLocation] = useLocation();
@@ -24,7 +38,7 @@ export default function Buy() {
   const [formData, setFormData] = useState({
     name: "", age: "", email: "", phone: "",
     service: "", description: "",
-    budget: "$5,000 - $10,000"
+    budget: "₹10,000 - ₹50,000"
   });
 
   const updateForm = (key: string, value: string) => {
@@ -45,14 +59,43 @@ export default function Buy() {
 
   const prevStep = () => setStep(s => Math.max(1, s - 1));
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Mock API Submit
-    setTimeout(() => {
+
+    try {
+      const response = await fetch(`${getApiBaseUrl()}/api/service-requests`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.ok) {
+        throw new Error(result.message || "Unable to submit request.");
+      }
+
+      setStep(4);
+
+      if (Array.isArray(result.warnings) && result.warnings.length > 0) {
+        toast({
+          title: "Request stored with warning",
+          description: result.warnings[0],
+        });
+      }
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Unable to submit request.";
+      toast({
+        title: "Submission failed",
+        description: message,
+        variant: "destructive",
+      });
+    } finally {
       setIsSubmitting(false);
-      setStep(4); // Success step
-    }, 2000);
+    }
   };
 
   return (
@@ -117,7 +160,7 @@ export default function Buy() {
                       </div>
                       <div className="space-y-2">
                         <label className="text-sm font-medium text-foreground">Phone Number</label>
-                        <input value={formData.phone} onChange={e => updateForm('phone', e.target.value)} type="tel" className="w-full bg-input border border-white/10 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary outline-none transition-all" placeholder="+1 (555) 000-0000" />
+                        <input value={formData.phone} onChange={e => updateForm('phone', e.target.value)} type="tel" className="w-full bg-input border border-white/10 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary outline-none transition-all" placeholder="+91 98765 43210" />
                       </div>
                     </div>
                   </div>
@@ -179,11 +222,11 @@ export default function Buy() {
                   className="p-8 md:p-10 h-full flex flex-col justify-between"
                 >
                   <div className="space-y-6">
-                    <h2 className="text-2xl font-bold text-foreground">Resource Allocation</h2>
+                    <h2 className="text-2xl font-bold text-foreground">Budget Planning</h2>
                     <div className="space-y-4">
                       <label className="text-sm font-medium text-foreground">Estimated Budget Range</label>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        {["< $5,000", "$5,000 - $10,000", "$10,000 - $25,000", "$25,000+"].map(range => (
+                        {["₹10,000 - ₹50,000", "₹50,000 - ₹1,50,000", "₹1,50,000 - ₹3,00,000", "₹3,00,000 - ₹5,00,000"].map(range => (
                           <div 
                             key={range}
                             onClick={() => updateForm('budget', range)}
@@ -223,7 +266,7 @@ export default function Buy() {
                   </div>
                   <h2 className="text-3xl font-display font-bold text-foreground">Transmission Complete</h2>
                   <p className="text-muted-foreground max-w-md">
-                    Your project details have been securely logged. A Codex representative will contact you within 24 hours to begin architecture planning.
+                    Your project details have been securely logged. A TheCOdex representative will contact you within 24 hours to begin architecture planning.
                   </p>
                   <div className="pt-6">
                     <NeonButton onClick={() => setLocation('/')} variant="outline">

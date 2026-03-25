@@ -3,6 +3,27 @@ import { Layout } from "@/components/layout/Layout";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Target, Flag, Rocket } from "lucide-react";
 
+const TEAM = [
+  {
+    name: "Core Founder",
+    role: "CEO",
+    spec: "Vision, Strategy, and Growth",
+    image: "images/ceo.jpg",
+  },
+  {
+    name: "Creative Lead",
+    role: "Designer",
+    spec: "Brand, UI, and Visual Systems",
+    image: "images/designer.png",
+  },
+  {
+    name: "Build Lead",
+    role: "Developer",
+    spec: "Frontend, Backend, and Delivery",
+    image: "images/devloper.jpeg",
+  },
+];
+
 export default function About() {
   return (
     <Layout>
@@ -40,7 +61,7 @@ export default function About() {
             transition={{ delay: 0.1 }}
             className="text-xl text-muted-foreground leading-relaxed"
           >
-            TheCodex Software Solutions isn't just an agency. It's a high-velocity startup with a singular objective: engineering immense technological value within 100 days.
+            TheCOdex Software Solutions isn't just an agency. It's a high-velocity startup with a singular objective: engineering immense technological value within 100 days.
           </motion.p>
         </div>
       </section>
@@ -82,18 +103,13 @@ export default function About() {
         </div>
       </section>
 
-      {/* TEAM SECTION (using abstract icons as avatars per design request) */}
+      {/* TEAM SECTION */}
       <section className="py-24 relative border-t border-white/5 bg-black/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-5xl font-display font-bold mb-16">The <span className="text-primary text-glow">Architects</span></h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { role: "Founder & CEO", spec: "System Architecture" },
-              { role: "CTO", spec: "AI & Machine Learning" },
-              { role: "Lead Engineer", spec: "Full-Stack Development" },
-              { role: "Head of Infrastructure", spec: "Networks & Security" }
-            ].map((member, i) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {TEAM.map((member, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
@@ -104,10 +120,14 @@ export default function About() {
               >
                 <div className="absolute inset-0 bg-gradient-to-b from-primary/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
                 <div className="relative glass-card rounded-2xl p-6 border border-white/5 group-hover:border-primary/50 transition-colors duration-300">
-                  <div className="w-24 h-24 mx-auto rounded-full bg-background border-2 border-primary/30 flex items-center justify-center mb-6 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] transition-shadow">
-                    <span className="font-display font-black text-3xl text-primary/50 group-hover:text-primary transition-colors">0{i+1}</span>
+                  <div className="w-28 h-28 mx-auto rounded-full overflow-hidden bg-background border-2 border-primary/30 mb-6 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] transition-shadow">
+                    <img
+                      src={`${import.meta.env.BASE_URL}${member.image}`}
+                      alt={`${member.role} at TheCOdex`}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                  <h4 className="text-lg font-bold text-foreground mb-1">Architect_{i+1}</h4>
+                  <h4 className="text-lg font-bold text-foreground mb-1">{member.name}</h4>
                   <p className="text-primary text-sm font-medium mb-2">{member.role}</p>
                   <p className="text-muted-foreground text-xs">{member.spec}</p>
                 </div>

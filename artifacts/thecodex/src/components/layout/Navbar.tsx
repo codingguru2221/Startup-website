@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Hexagon } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { NeonButton } from "@/components/ui/NeonButton";
 
@@ -36,11 +36,15 @@ export function Navbar() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group cursor-pointer">
-            <div className="relative flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 border border-primary/30 group-hover:border-primary group-hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] transition-all duration-300">
-              <Hexagon className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
+            <div className="relative flex items-center justify-center w-10 h-10 rounded-lg overflow-hidden border border-primary/30 group-hover:border-primary group-hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] transition-all duration-300 bg-black/20">
+              <img
+                src={`${import.meta.env.BASE_URL}codex.jpg`}
+                alt="TheCOdex logo"
+                className="w-full h-full object-cover"
+              />
             </div>
             <span className="font-display font-bold text-xl tracking-wider text-foreground">
-              The<span className="text-primary">Codex</span>
+              The<span className="text-primary">COdex</span>
             </span>
           </Link>
 

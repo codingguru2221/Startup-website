@@ -149,7 +149,7 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">The <span className="text-primary text-glow">Codex</span> Advantage</h2>
+              <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">The <span className="text-primary text-glow">COdex</span> Advantage</h2>
               <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
                 We don't just write code; we build digital empires. Our holistic approach ensures that your technological infrastructure aligns perfectly with your business goals.
               </p>
@@ -216,7 +216,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary/10" />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <h2 className="text-4xl md:text-6xl font-display font-black mb-6">Ready to scale?</h2>
-          <p className="text-xl text-muted-foreground mb-10">Stop waiting. Start building. Let TheCodex architect your digital future today.</p>
+          <p className="text-xl text-muted-foreground mb-10">Stop waiting. Start building. Let TheCOdex architect your digital future today.</p>
           <Link href="/buy">
             <NeonButton size="lg" className="px-12 py-5 text-lg">
               Initialize Your Project

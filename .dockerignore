@@ -1,0 +1,11 @@
+.git
+.agents
+.local
+node_modules
+artifacts/*/node_modules
+lib/*/node_modules
+artifacts/*/dist
+lib/*/dist
+attached_assets
+**/.env
+**/.data

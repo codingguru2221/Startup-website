@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { 
   Code, Smartphone, Wrench, RefreshCw, Brain, Server, 
-  Network, HardDrive, Wifi, BarChart, Share2, Lightbulb, TrendingUp, ShieldCheck
+  Network, HardDrive, Wifi, BarChart, Share2, Lightbulb, TrendingUp, ShieldCheck, ChevronRight
 } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { GlassCard } from "@/components/ui/GlassCard";

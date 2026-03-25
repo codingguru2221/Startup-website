@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Hexagon, Twitter, Github, Linkedin, Instagram, ArrowRight } from "lucide-react";
+import { Twitter, Github, Linkedin, Instagram, ArrowRight } from "lucide-react";
 import { NeonButton } from "@/components/ui/NeonButton";
 
 export function Footer() {
@@ -15,11 +15,15 @@ export function Footer() {
           {/* Brand Col */}
           <div className="lg:col-span-4 flex flex-col gap-6">
             <Link href="/" className="flex items-center gap-2 group cursor-pointer inline-flex">
-              <div className="relative flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 border border-primary/30">
-                <Hexagon className="w-6 h-6 text-primary" />
+              <div className="relative flex items-center justify-center w-10 h-10 rounded-lg overflow-hidden border border-primary/30 bg-black/20">
+                <img
+                  src={`${import.meta.env.BASE_URL}codex.jpg`}
+                  alt="TheCOdex logo"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <span className="font-display font-bold text-xl tracking-wider text-foreground">
-                The<span className="text-primary">Codex</span>
+                The<span className="text-primary">COdex</span>
               </span>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-sm">
@@ -77,7 +81,7 @@ export function Footer() {
 
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} TheCodex Software Solutions. All rights reserved.
+            Copyright {new Date().getFullYear()} TheCOdex Software Solutions. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-muted-foreground">
             <a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a>
