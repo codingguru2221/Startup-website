@@ -2,25 +2,96 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { NeonButton } from "@/components/ui/NeonButton";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Github, Instagram, Linkedin, Mail, MapPin, Phone, Twitter } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+
+const LAMBDA_URL = "https://r2wuqhpjovygficsf43loa32sa0mxdze.lambda-url.us-east-1.on.aws/";
+
+const contactDetails = [
+  {
+    icon: Mail,
+    title: "Email",
+    value: "thecodexofficial001@gmail.com",
+    href: "mailto:thecodexofficial001@gmail.com",
+  },
+  {
+    icon: Phone,
+    title: "Mobile Number",
+    value: "+91 8305223353",
+    href: "tel:+918305223353",
+  },
+  {
+    icon: MapPin,
+    title: "Location",
+    value: "Bhopal, Madhya Pradesh, India",
+    href: "https://www.google.com/maps/search/?api=1&query=Bhopal%2C+Madhya+Pradesh%2C+India",
+  },
+];
+
+const socialLinks = [
+  {
+    icon: Instagram,
+    label: "Instagram",
+    href: "https://www.instagram.com/the_codex_official_?igsh=MXR6Ymxwc3J3NG43ZA==",
+  },
+  {
+    icon: Github,
+    label: "GitHub Community",
+    href: "https://github.com/The-Codex-Official",
+  },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/veerendra-vishwakarma-041584393/",
+  },
+  {
+    icon: Twitter,
+    label: "X / Twitter",
+    href: "https://x.com/TheCodexOnBOrd",
+  },
+];
 
 export default function Contact() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Mock API call
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const response = await fetch(LAMBDA_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, message, type: "contact" }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Request failed with status ${response.status}`);
+      }
+
+      alert("Submitted successfully");
       toast({
         title: "Transmission Received",
         description: "We'll be in contact shortly.",
       });
-      (e.target as HTMLFormElement).reset();
-    }, 1500);
+      setName("");
+      setEmail("");
+      setMessage("");
+    } catch (error) {
+      alert("Something went wrong");
+      toast({
+        title: "Submission Failed",
+        description: error instanceof Error ? error.message : "Unexpected error",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -41,7 +112,7 @@ export default function Contact() {
               transition={{ delay: 0.1 }}
               className="text-lg text-muted-foreground max-w-2xl mx-auto"
             >
-              Reach out for enterprise partnerships, general inquiries, or to discuss complex architectural challenges.
+              Reach out directly by phone, Gmail, or social platforms for collaborations, project discussions, and general inquiries.
             </motion.p>
           </div>
 
@@ -53,21 +124,42 @@ export default function Contact() {
               transition={{ delay: 0.2 }}
               className="space-y-6"
             >
-              {[
-                { icon: Mail, title: "Email", value: "init@thecodex.dev" },
-                { icon: Phone, title: "Encrypted Line", value: "+1 (555) 010-CDEX" },
-                { icon: MapPin, title: "HQ", value: "Silicon Valley, CA (Virtual First)" }
-              ].map((item, i) => (
+              {contactDetails.map((item, i) => (
                 <div key={i} className="glass-card rounded-2xl p-6 flex items-start gap-4">
                   <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 border border-primary/20">
                     <item.icon className="w-5 h-5 text-primary" />
                   </div>
                   <div>
                     <h4 className="text-foreground font-semibold mb-1">{item.title}</h4>
-                    <p className="text-muted-foreground">{item.value}</p>
+                    <a
+                      href={item.href}
+                      target={item.title === "Location" ? "_blank" : undefined}
+                      rel={item.title === "Location" ? "noreferrer" : undefined}
+                      className="text-muted-foreground hover:text-primary transition-colors break-words"
+                    >
+                      {item.value}
+                    </a>
                   </div>
                 </div>
               ))}
+
+              <div className="glass-card rounded-2xl p-6">
+                <h4 className="text-foreground font-semibold mb-4">Social Contacts</h4>
+                <div className="space-y-3">
+                  {socialLinks.map((item) => (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 text-muted-foreground transition-all hover:border-primary/40 hover:text-primary"
+                    >
+                      <item.icon className="w-4 h-4 flex-shrink-0" />
+                      <span className="text-sm break-all">{item.label}</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
             </motion.div>
 
             {/* Form */}
@@ -87,6 +179,8 @@ export default function Contact() {
                       <input 
                         required 
                         type="text" 
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
                         className="w-full bg-input border border-white/10 rounded-xl px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                         placeholder="John Doe"
                       />
@@ -96,6 +190,8 @@ export default function Contact() {
                       <input 
                         required 
                         type="email" 
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         className="w-full bg-input border border-white/10 rounded-xl px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                         placeholder="john@company.com"
                       />
@@ -117,6 +213,8 @@ export default function Contact() {
                     <textarea 
                       required 
                       rows={5}
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
                       className="w-full bg-input border border-white/10 rounded-xl px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"
                       placeholder="Detail your requirements..."
                     ></textarea>

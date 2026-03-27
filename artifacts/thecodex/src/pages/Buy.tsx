@@ -6,6 +6,8 @@ import { CheckCircle2, ChevronRight, ArrowLeft } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useLocation } from "wouter";
 
+const LAMBDA_URL = "https://r2wuqhpjovygficsf43loa32sa0mxdze.lambda-url.us-east-1.on.aws/";
+
 const SERVICES_LIST = [
   "Web Development", "App Development", "Web App Maintenance", 
   "Website & App Redesign", "AI Business Models", "Server Control Systems", 
@@ -13,20 +15,6 @@ const SERVICES_LIST = [
   "Ad Management", "Social Media Management & Marketing", 
   "Marketing Advice", "Investment Management"
 ];
-
-function getApiBaseUrl() {
-  const configuredBaseUrl = import.meta.env.VITE_API_BASE_URL?.trim();
-
-  if (configuredBaseUrl) {
-    return configuredBaseUrl.replace(/\/$/, "");
-  }
-
-  if (window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost") {
-    return `${window.location.protocol}//${window.location.hostname}:3001`;
-  }
-
-  return "";
-}
 
 export default function Buy() {
   const { toast } = useToast();
@@ -64,29 +52,29 @@ export default function Buy() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch(`${getApiBaseUrl()}/api/service-requests`, {
+      const response = await fetch(LAMBDA_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.description,
+          service: formData.service,
+          budget: formData.budget,
+          type: "buy",
+        }),
       });
 
-      const result = await response.json();
-
-      if (!response.ok || !result.ok) {
-        throw new Error(result.message || "Unable to submit request.");
+      if (!response.ok) {
+        throw new Error(`Request failed with status ${response.status}`);
       }
 
+      alert("Submitted successfully");
       setStep(4);
-
-      if (Array.isArray(result.warnings) && result.warnings.length > 0) {
-        toast({
-          title: "Request stored with warning",
-          description: result.warnings[0],
-        });
-      }
     } catch (error) {
+      alert("Something went wrong");
       const message = error instanceof Error ? error.message : "Unable to submit request.";
       toast({
         title: "Submission failed",

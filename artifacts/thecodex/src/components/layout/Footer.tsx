@@ -2,6 +2,13 @@ import { Link } from "wouter";
 import { Twitter, Github, Linkedin, Instagram, ArrowRight } from "lucide-react";
 import { NeonButton } from "@/components/ui/NeonButton";
 
+const socialLinks = [
+  { icon: Twitter, href: "https://x.com/TheCodexOnBOrd", label: "X" },
+  { icon: Github, href: "https://github.com/The-Codex-Official", label: "GitHub" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/veerendra-vishwakarma-041584393/", label: "LinkedIn" },
+  { icon: Instagram, href: "https://www.instagram.com/the_codex_official_?igsh=MXR6Ymxwc3J3NG43ZA==", label: "Instagram" },
+];
+
 export function Footer() {
   return (
     <footer className="relative bg-background pt-24 pb-12 border-t border-white/5 overflow-hidden">
@@ -30,9 +37,16 @@ export function Footer() {
               Building the future, one solution at a time. We are a premium tech startup dedicated to engineering high-value software ecosystems, AI implementations, and robust infrastructure.
             </p>
             <div className="flex items-center gap-4 mt-2">
-              {[Twitter, Github, Linkedin, Instagram].map((Icon, i) => (
-                <a key={i} href="#" className="w-10 h-10 rounded-full glass flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-all duration-300 hover:shadow-[0_0_15px_rgba(59,130,246,0.3)]">
-                  <Icon className="w-4 h-4" />
+              {socialLinks.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={item.label}
+                  className="w-10 h-10 rounded-full glass flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-all duration-300 hover:shadow-[0_0_15px_rgba(59,130,246,0.3)]"
+                >
+                  <item.icon className="w-4 h-4" />
                 </a>
               ))}
             </div>
