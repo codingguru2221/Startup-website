@@ -17,7 +17,7 @@ export const NeonButton = React.forwardRef<HTMLButtonElement, NeonButtonProps>(
     const variants = {
       primary: "bg-primary text-primary-foreground hover:bg-primary/95 shadow-[0_16px_36px_rgba(14,116,204,0.22)] hover:shadow-[0_20px_42px_rgba(14,116,204,0.28)]",
       secondary: "bg-accent text-accent-foreground hover:bg-accent/95 shadow-[0_16px_36px_rgba(14,116,144,0.18)] hover:shadow-[0_20px_42px_rgba(14,116,144,0.22)]",
-      outline: "bg-white border border-border text-foreground hover:border-primary/40 hover:bg-primary/5 hover:text-primary shadow-[0_10px_24px_rgba(15,23,42,0.05)]",
+      outline: "bg-card border border-border text-foreground hover:border-primary/40 hover:bg-primary/8 hover:text-primary shadow-[0_10px_24px_rgba(15,23,42,0.05)]",
     };
 
     const sizes = {

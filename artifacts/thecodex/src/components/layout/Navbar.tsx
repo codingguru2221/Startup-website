@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { NeonButton } from "@/components/ui/NeonButton";
+import ThemeSwitch from "@/components/ui/ThemeSwitch";
 
 const NAV_LINKS = [
   { name: "Home", href: "/" },
@@ -16,6 +17,7 @@ export function Navbar() {
   const [location] = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,18 +27,33 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const storedTheme = window.localStorage.getItem("theme");
+    const initialDark = storedTheme
+      ? storedTheme === "dark"
+      : window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    setIsDark(initialDark);
+    document.documentElement.dataset.theme = initialDark ? "dark" : "light";
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = isDark ? "dark" : "light";
+    window.localStorage.setItem("theme", isDark ? "dark" : "light");
+  }, [isDark]);
+
   return (
     <header
       className={cn(
         "fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent",
-        isScrolled ? "bg-white/88 backdrop-blur-xl border-border shadow-[0_18px_40px_rgba(15,23,42,0.06)]" : "bg-transparent"
+        isScrolled ? "bg-background/85 backdrop-blur-xl border-border shadow-[0_18px_40px_rgba(15,23,42,0.06)]" : "bg-transparent"
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group cursor-pointer">
-            <div className="relative flex items-center justify-center w-10 h-10 rounded-lg overflow-hidden border border-primary/20 group-hover:border-primary/50 transition-all duration-300 bg-white shadow-[0_10px_22px_rgba(15,23,42,0.08)]">
+            <div className="relative flex items-center justify-center w-10 h-10 rounded-lg overflow-hidden border border-primary/20 group-hover:border-primary/50 transition-all duration-300 bg-card shadow-[0_10px_22px_rgba(15,23,42,0.08)]">
               <img
                 src={`${import.meta.env.BASE_URL}codex.jpg`}
                 alt="TheCOdex logo"
@@ -49,7 +66,7 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-5 self-center">
             <ul className="flex gap-6">
               {NAV_LINKS.map((link) => {
                 const isActive = location === link.href;
@@ -76,10 +93,15 @@ export function Navbar() {
                 );
               })}
             </ul>
-            <div className="w-px h-6 bg-border" />
-            <Link href="/buy">
-              <NeonButton size="sm">Buy a Service</NeonButton>
-            </Link>
+            <div className="w-px h-6 bg-border self-center" />
+            <div className="flex items-center self-center gap-3 h-10">
+              <Link href="/buy" className="flex items-center h-10">
+                <NeonButton size="sm" className="h-10">Buy a Service</NeonButton>
+              </Link>
+              <div className="flex items-center justify-center h-10 translate-y-[3px]">
+                <ThemeSwitch checked={isDark} onChange={setIsDark} />
+              </div>
+            </div>
           </nav>
 
           {/* Mobile Menu Toggle */}
@@ -116,6 +138,9 @@ export function Navbar() {
                 </Link>
               ))}
               <div className="pt-4 border-t border-border">
+                <div className="mb-4 flex justify-center">
+                  <ThemeSwitch checked={isDark} onChange={setIsDark} />
+                </div>
                 <Link href="/buy" onClick={() => setIsMobileMenuOpen(false)}>
                   <NeonButton fullWidth size="md">Buy a Service</NeonButton>
                 </Link>

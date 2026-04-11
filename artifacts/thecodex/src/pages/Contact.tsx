@@ -76,7 +76,7 @@ export default function Contact() {
 
       alert("Submitted successfully");
       toast({
-        title: "Transmission Received",
+        title: "Message received",
         description: "We'll be in contact shortly.",
       });
       setName("");
@@ -99,26 +99,25 @@ export default function Contact() {
       <section className="pt-32 pb-24 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <motion.h1 
+            <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               className="text-4xl md:text-6xl font-display font-black mb-6"
             >
-              Establish <span className="text-primary text-glow">Connection</span>
+              Let&apos;s <span className="text-primary text-glow">Connect</span>
             </motion.h1>
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
               className="text-lg text-muted-foreground max-w-2xl mx-auto"
             >
-              Reach out directly by phone, Gmail, or social platforms for collaborations, project discussions, and general inquiries.
+              Reach out directly by phone, email, or social platforms for collaborations, project discussions, and general inquiries.
             </motion.p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-8">
-            {/* Contact Info */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
@@ -152,7 +151,7 @@ export default function Contact() {
                       href={item.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 text-muted-foreground transition-all hover:border-primary/40 hover:text-primary"
+                      className="flex items-center gap-3 rounded-xl border border-border bg-muted/30 px-4 py-3 text-muted-foreground transition-all hover:border-primary/30 hover:text-primary"
                     >
                       <item.icon className="w-4 h-4 flex-shrink-0" />
                       <span className="text-sm break-all">{item.label}</span>
@@ -162,37 +161,36 @@ export default function Contact() {
               </div>
             </motion.div>
 
-            {/* Form */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
               className="lg:col-span-2"
             >
-              <div className="glass border border-white/10 rounded-3xl p-8 shadow-2xl relative overflow-hidden">
+              <div className="glass rounded-3xl p-8 shadow-2xl relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] pointer-events-none" />
-                
+
                 <form onSubmit={handleSubmit} className="relative z-10 space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-foreground">Name / Designation</label>
-                      <input 
-                        required 
-                        type="text" 
+                      <input
+                        required
+                        type="text"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        className="w-full bg-input border border-white/10 rounded-xl px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                        className="w-full bg-input border border-border rounded-xl px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                         placeholder="John Doe"
                       />
                     </div>
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-foreground">Email</label>
-                      <input 
-                        required 
-                        type="email" 
+                      <input
+                        required
+                        type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="w-full bg-input border border-white/10 rounded-xl px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                        className="w-full bg-input border border-border rounded-xl px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                         placeholder="john@company.com"
                       />
                     </div>
@@ -200,7 +198,7 @@ export default function Contact() {
 
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-foreground">Subject</label>
-                    <select className="w-full bg-input border border-white/10 rounded-xl px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all appearance-none cursor-pointer">
+                    <select className="w-full bg-input border border-border rounded-xl px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all appearance-none cursor-pointer">
                       <option>General Inquiry</option>
                       <option>Partnership</option>
                       <option>Technical Consultation</option>
@@ -210,22 +208,22 @@ export default function Contact() {
 
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-foreground">Message</label>
-                    <textarea 
-                      required 
+                    <textarea
+                      required
                       rows={5}
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
-                      className="w-full bg-input border border-white/10 rounded-xl px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"
+                      className="w-full bg-input border border-border rounded-xl px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"
                       placeholder="Detail your requirements..."
                     ></textarea>
                   </div>
 
-                  <NeonButton 
-                    type="submit" 
-                    fullWidth 
+                  <NeonButton
+                    type="submit"
+                    fullWidth
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? "Transmitting..." : "Send Message"}
+                    {isSubmitting ? "Sending..." : "Send Message"}
                   </NeonButton>
                 </form>
               </div>
