@@ -15,9 +15,9 @@ export const NeonButton = React.forwardRef<HTMLButtonElement, NeonButtonProps>(
     const baseStyles = "relative inline-flex items-center justify-center font-display font-semibold transition-all duration-300 rounded-xl overflow-hidden group focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background disabled:opacity-50 disabled:cursor-not-allowed";
     
     const variants = {
-      primary: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_20px_rgba(59,130,246,0.4)] hover:shadow-[0_0_30px_rgba(59,130,246,0.6)]",
-      secondary: "bg-accent text-accent-foreground hover:bg-accent/90 shadow-[0_0_20px_rgba(147,51,234,0.4)] hover:shadow-[0_0_30px_rgba(147,51,234,0.6)]",
-      outline: "bg-transparent border-2 border-primary/50 text-foreground hover:border-primary hover:bg-primary/10 hover:shadow-[0_0_20px_rgba(59,130,246,0.3)]",
+      primary: "bg-primary text-primary-foreground hover:bg-primary/95 shadow-[0_16px_36px_rgba(14,116,204,0.22)] hover:shadow-[0_20px_42px_rgba(14,116,204,0.28)]",
+      secondary: "bg-accent text-accent-foreground hover:bg-accent/95 shadow-[0_16px_36px_rgba(14,116,144,0.18)] hover:shadow-[0_20px_42px_rgba(14,116,144,0.22)]",
+      outline: "bg-white border border-border text-foreground hover:border-primary/40 hover:bg-primary/5 hover:text-primary shadow-[0_10px_24px_rgba(15,23,42,0.05)]",
     };
 
     const sizes = {
@@ -44,7 +44,6 @@ export const NeonButton = React.forwardRef<HTMLButtonElement, NeonButtonProps>(
           {children}
           {icon && <span className="ml-1 group-hover:translate-x-1 transition-transform">{icon}</span>}
         </span>
-        {/* Shine effect overlay */}
         <div className="absolute inset-0 z-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
       </motion.button>
     );

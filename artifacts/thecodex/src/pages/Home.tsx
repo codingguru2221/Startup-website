@@ -70,7 +70,7 @@ export default function Home() {
             </Link>
             <Link href="/buy">
               <NeonButton variant="outline" size="lg" icon={<ArrowRight className="w-5 h-5" />} className="w-full sm:w-auto min-w-[200px]">
-                Start Project
+                Ask Us What You Want
               </NeonButton>
             </Link>
           </motion.div>
@@ -127,7 +127,7 @@ export default function Home() {
                     <p className="text-muted-foreground text-sm">Full-stack implementation from frontend interfaces to complex backend infrastructure.</p>
                   </div>
                   
-                  <Link href="/buy" className="relative z-10 self-start">
+                  <Link href="/services" className="relative z-10 self-start">
                     <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-primary group-hover:border-primary group-hover:text-white transition-all duration-300">
                       <ArrowRight className="w-5 h-5" />
                     </div>

@@ -24,14 +24,12 @@ export const GlassCard = React.forwardRef<HTMLDivElement, GlassCardProps>(
         )}
         {...props}
       >
-        {/* Hover Gradient Background */}
         {hoverEffect && (
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/6 via-transparent to-accent/6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
         )}
         
-        {/* Border Glow */}
         {hoverEffect && (
-          <div className="absolute inset-0 border border-white/5 rounded-2xl group-hover:border-primary/30 transition-colors duration-500 pointer-events-none" />
+          <div className="absolute inset-0 border border-border rounded-2xl group-hover:border-primary/25 transition-colors duration-500 pointer-events-none" />
         )}
         
         <div className="relative z-10">

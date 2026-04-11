@@ -31,30 +31,38 @@
 }
 
 :root {
-  --background: 225 30% 4%;
-  --foreground: 210 40% 98%;
+  --background: 210 33% 98%;
+  --foreground: 222 32% 18%;
   
-  --primary: 217 91% 60%; /* Neon Blue */
+  --primary: 211 82% 42%;
   --primary-foreground: 0 0% 100%;
   
-  --accent: 270 100% 60%; /* Neon Purple */
+  --accent: 197 62% 38%;
   --accent-foreground: 0 0% 100%;
   
-  --card: 225 25% 6%;
-  --card-foreground: 210 40% 98%;
-  --card-border: 220 20% 15%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 32% 18%;
+  --card-border: 214 28% 88%;
   
-  --border: 220 20% 15%;
-  --input: 220 20% 10%;
-  --ring: 217 91% 60%;
+  --border: 214 28% 88%;
+  --input: 210 20% 96%;
+  --ring: 211 82% 42%;
   
-  --muted: 220 20% 15%;
-  --muted-foreground: 215 20% 65%;
+  --muted: 210 25% 94%;
+  --muted-foreground: 215 16% 42%;
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground font-body antialiased selection:bg-primary/30 selection:text-primary-foreground overflow-x-hidden;
+    background-image:
+      radial-gradient(circle at top left, hsl(var(--primary) / 0.1), transparent 28%),
+      radial-gradient(circle at top right, hsl(var(--accent) / 0.08), transparent 24%),
+      linear-gradient(180deg, #ffffff 0%, hsl(var(--background)) 55%, #f7f9fc 100%);
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -65,32 +73,36 @@
 
 @layer utilities {
   .glass {
-    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)];
+    @apply bg-white/85 backdrop-blur-xl border border-border shadow-[0_24px_80px_rgba(15,23,42,0.08)];
   }
   
   .glass-card {
-    @apply bg-card/40 backdrop-blur-md border border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.36)];
+    @apply bg-card/95 backdrop-blur-md border border-card-border shadow-[0_20px_60px_rgba(15,23,42,0.08)];
   }
 
   .text-glow {
-    text-shadow: 0 0 20px hsl(var(--primary) / 0.5);
+    text-shadow: 0 10px 25px hsl(var(--primary) / 0.18);
   }
   
   .text-glow-accent {
-    text-shadow: 0 0 20px hsl(var(--accent) / 0.5);
+    text-shadow: 0 10px 25px hsl(var(--accent) / 0.14);
   }
   
   .box-glow {
-    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+    box-shadow: 0 24px 50px hsl(var(--primary) / 0.14);
   }
 
   .gradient-text {
-    @apply text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto];
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-primary to-accent bg-[length:200%_auto];
+  }
+
+  .section-panel {
+    @apply rounded-[2rem] border border-border bg-white/80 shadow-[0_24px_80px_rgba(15,23,42,0.06)];
   }
   
   .bg-grid-pattern {
-    background-image: linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
-                      linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-image: linear-gradient(to right, rgba(148,163,184,0.12) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(148,163,184,0.12) 1px, transparent 1px);
     background-size: 40px 40px;
   }
 }
@@ -102,8 +114,8 @@
 }
 
 @keyframes glow {
-  from { box-shadow: 0 0 10px hsl(var(--primary) / 0.2), 0 0 20px hsl(var(--primary) / 0.2); }
-  to { box-shadow: 0 0 20px hsl(var(--primary) / 0.6), 0 0 30px hsl(var(--accent) / 0.4); }
+  from { box-shadow: 0 12px 28px hsl(var(--primary) / 0.12), 0 8px 18px hsl(var(--accent) / 0.08); }
+  to { box-shadow: 0 18px 42px hsl(var(--primary) / 0.18), 0 12px 28px hsl(var(--accent) / 0.1); }
 }
 
 /* Custom Scrollbar */
@@ -112,14 +124,14 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(var(--background));
+  background: #eef2f7;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--muted));
+  background: #cbd5e1;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--primary) / 0.5);
+  background: hsl(var(--primary) / 0.45);
 }

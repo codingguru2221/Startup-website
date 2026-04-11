@@ -29,14 +29,14 @@ export function Navbar() {
     <header
       className={cn(
         "fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent",
-        isScrolled ? "bg-background/80 backdrop-blur-xl border-white/10 shadow-lg" : "bg-transparent"
+        isScrolled ? "bg-white/88 backdrop-blur-xl border-border shadow-[0_18px_40px_rgba(15,23,42,0.06)]" : "bg-transparent"
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group cursor-pointer">
-            <div className="relative flex items-center justify-center w-10 h-10 rounded-lg overflow-hidden border border-primary/30 group-hover:border-primary group-hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] transition-all duration-300 bg-black/20">
+            <div className="relative flex items-center justify-center w-10 h-10 rounded-lg overflow-hidden border border-primary/20 group-hover:border-primary/50 transition-all duration-300 bg-white shadow-[0_10px_22px_rgba(15,23,42,0.08)]">
               <img
                 src={`${import.meta.env.BASE_URL}codex.jpg`}
                 alt="TheCOdex logo"
@@ -66,7 +66,7 @@ export function Navbar() {
                       {isActive && (
                         <motion.div
                           layoutId="navbar-indicator"
-                          className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary shadow-[0_0_8px_rgba(59,130,246,0.8)]"
+                          className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
                           initial={false}
                           transition={{ type: "spring", stiffness: 300, damping: 30 }}
                         />
@@ -76,7 +76,7 @@ export function Navbar() {
                 );
               })}
             </ul>
-            <div className="w-px h-6 bg-white/10" />
+            <div className="w-px h-6 bg-border" />
             <Link href="/buy">
               <NeonButton size="sm">Buy a Service</NeonButton>
             </Link>
@@ -99,7 +99,7 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass border-t border-white/5 overflow-hidden"
+            className="md:hidden glass border-t border-border overflow-hidden"
           >
             <div className="px-4 py-6 flex flex-col gap-4">
               {NAV_LINKS.map((link) => (
@@ -109,13 +109,13 @@ export function Navbar() {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={cn(
                     "block px-4 py-3 rounded-lg text-base font-medium transition-colors cursor-pointer",
-                    location === link.href ? "bg-primary/10 text-primary" : "text-foreground hover:bg-white/5"
+                    location === link.href ? "bg-primary/10 text-primary" : "text-foreground hover:bg-muted"
                   )}
                 >
                   {link.name}
                 </Link>
               ))}
-              <div className="pt-4 border-t border-white/10">
+              <div className="pt-4 border-t border-border">
                 <Link href="/buy" onClick={() => setIsMobileMenuOpen(false)}>
                   <NeonButton fullWidth size="md">Buy a Service</NeonButton>
                 </Link>
