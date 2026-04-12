@@ -67,7 +67,7 @@ export default function Home() {
                 Explore Services
               </NeonButton>
             </Link>
-            <Link href="/buy">
+            <Link href="/custom-request">
               <NeonButton variant="outline" size="lg" icon={<ArrowRight className="w-5 h-5" />} className="w-full sm:w-auto min-w-[200px]">
                 Ask Us What You Want
               </NeonButton>
@@ -210,7 +210,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <h2 className="text-4xl md:text-6xl font-display font-black mb-6">Ready to scale?</h2>
           <p className="text-xl text-muted-foreground mb-10">Let&apos;s turn your idea into a cleaner, stronger, and more professional digital presence.</p>
-          <Link href="/buy">
+          <Link href="/start-project">
             <NeonButton size="lg" className="px-12 py-5 text-lg">
               Start Your Project
             </NeonButton>

@@ -84,7 +84,7 @@ export function Footer() {
             <p className="text-sm text-muted-foreground">
               Take the leap and transform your business infrastructure with our enterprise-grade solutions.
             </p>
-            <Link href="/buy">
+            <Link href="/custom-request">
               <NeonButton variant="outline" className="w-max group">
                 Ask Us What You Want <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </NeonButton>

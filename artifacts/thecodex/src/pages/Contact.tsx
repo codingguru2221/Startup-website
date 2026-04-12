@@ -4,8 +4,7 @@ import { Layout } from "@/components/layout/Layout";
 import { NeonButton } from "@/components/ui/NeonButton";
 import { Github, Instagram, Linkedin, Mail, MapPin, Phone, Twitter } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-
-const LAMBDA_URL = "https://r2wuqhpjovygficsf43loa32sa0mxdze.lambda-url.us-east-1.on.aws/";
+import { submitForm } from "@/lib/form-submission";
 
 const contactDetails = [
   {
@@ -62,17 +61,7 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      const response = await fetch(LAMBDA_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name, email, message, type: "contact" }),
-      });
-
-      if (!response.ok) {
-        throw new Error(`Request failed with status ${response.status}`);
-      }
+      await submitForm({ name, email, message, type: "contact" });
 
       alert("Submitted successfully");
       toast({

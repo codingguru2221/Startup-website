@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { motion } from "framer-motion";
+import { FaWhatsapp } from "react-icons/fa";
 
 interface LayoutProps {
   children: ReactNode;
@@ -29,6 +30,16 @@ export function Layout({ children }: LayoutProps) {
           {children}
         </motion.div>
       </main>
+
+      <a
+        href="https://wa.me/918305223353"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Chat on WhatsApp"
+        className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-[0_18px_40px_rgba(37,211,102,0.35)] hover:scale-105 hover:shadow-[0_22px_46px_rgba(37,211,102,0.45)] transition-all duration-300"
+      >
+        <FaWhatsapp className="w-7 h-7" />
+      </a>
       
       <Footer />
     </div>

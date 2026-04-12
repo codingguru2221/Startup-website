@@ -95,7 +95,7 @@ export function Navbar() {
             </ul>
             <div className="w-px h-6 bg-border self-center" />
             <div className="flex items-center self-center gap-3 h-10">
-              <Link href="/buy" className="flex items-center h-10">
+              <Link href="/buy-service" className="flex items-center h-10">
                 <NeonButton size="sm" className="h-10">Buy a Service</NeonButton>
               </Link>
               <div className="flex items-center justify-center h-10 translate-y-[3px]">
@@ -141,7 +141,7 @@ export function Navbar() {
                 <div className="mb-4 flex justify-center">
                   <ThemeSwitch checked={isDark} onChange={setIsDark} />
                 </div>
-                <Link href="/buy" onClick={() => setIsMobileMenuOpen(false)}>
+                <Link href="/buy-service" onClick={() => setIsMobileMenuOpen(false)}>
                   <NeonButton fullWidth size="md">Buy a Service</NeonButton>
                 </Link>
               </div>

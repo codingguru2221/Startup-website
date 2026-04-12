@@ -1,61 +1,10 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import {
-  Code, Brain, TrendingUp, ShieldCheck, ChevronRight, Cpu,
-} from "lucide-react";
+import { ShieldCheck, ChevronRight } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { NeonButton } from "@/components/ui/NeonButton";
-
-const SERVICE_CATEGORIES = [
-  {
-    icon: Code,
-    title: "Development Solutions",
-    intro: "Design-led software delivery for businesses that need modern products, smoother user experiences, and dependable long-term support.",
-    items: [
-      "Website development",
-      "App development",
-      "Web app maintenance",
-      "Redesign of apps and websites with a modern look and feel",
-      "After-development support and service continuity",
-    ],
-  },
-  {
-    icon: Cpu,
-    title: "Infrastructure & Computation",
-    intro: "From local computer environments to enterprise-grade network systems, we build stable technical foundations that can grow with your operations.",
-    items: [
-      "Server control systems",
-      "Network development and lab setup",
-      "Computer connection and office system configuration",
-      "NAS setups for secure storage and access",
-      "LAN, WAN, and MAN development with smart integration",
-    ],
-  },
-  {
-    icon: Brain,
-    title: "AI Integration & Automation",
-    intro: "We help teams use AI in practical ways that improve sales, management, workflows, and decision-making instead of adding complexity.",
-    items: [
-      "Business AI models to improve sales and management",
-      "AI integrations for existing software and processes",
-      "Automation systems for repeated business tasks",
-      "Smart operational workflows for growing teams",
-    ],
-  },
-  {
-    icon: TrendingUp,
-    title: "Growth, Marketing & Advisory",
-    intro: "A business-focused support layer that combines marketing execution, strategic guidance, and practical growth planning.",
-    items: [
-      "Ad management",
-      "Social media management and marketing",
-      "Marketing advice",
-      "Investment guidance for companies exploring strong stocks and brokerage options",
-      "Business support aligned with technical delivery",
-    ],
-  },
-];
+import { SERVICE_CATEGORIES } from "@/data/services";
 
 export default function Services() {
   return (
@@ -100,12 +49,12 @@ export default function Services() {
                   ))}
                 </div>
                 <div className="mt-8 pt-4 border-t border-border flex items-center justify-between gap-4">
-                  <Link href="/contact">
+                  <Link href={`/services/${category.slug}`}>
                     <span className="text-muted-foreground text-sm font-medium hover:text-foreground transition-colors cursor-pointer inline-flex items-center">
                       View Details <ChevronRight className="w-4 h-4 ml-1" />
                     </span>
                   </Link>
-                  <Link href="/buy">
+                  <Link href="/custom-request">
                     <span className="text-primary text-sm font-semibold hover:text-primary/75 transition-colors cursor-pointer inline-flex items-center">
                       Ask Us What You Want <ChevronRight className="w-4 h-4 ml-1" />
                     </span>
@@ -128,7 +77,7 @@ export default function Services() {
               <p className="text-muted-foreground text-lg mb-6">
                 This is one of our extra advantages. After development, we continue supporting your product with maintenance, improvements, technical guidance, and operational help as your business grows.
               </p>
-              <Link href="/contact">
+              <Link href="/maintenance-support">
                 <NeonButton variant="secondary">Discuss Maintenance</NeonButton>
               </Link>
             </div>

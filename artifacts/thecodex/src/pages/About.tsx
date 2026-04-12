@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { GlassCard } from "@/components/ui/GlassCard";
-import { Target, Flag, Rocket } from "lucide-react";
+import { Target, Rocket, Sparkles, ShieldCheck, Cpu, Building2 } from "lucide-react";
 
 const TEAM = [
   {
@@ -22,6 +22,29 @@ const TEAM = [
     spec: "Frontend, Backend, and Delivery",
     image: "images/devloper.jpeg",
   },
+];
+
+const MISSION_POINTS = [
+  "Building websites, management systems, and digital infrastructure for schools",
+  "Developing high-converting websites and applications for businesses",
+  "Setting up computer labs and IT infrastructure from planning to execution",
+  "Creating AI-powered solutions and automation tools that save time and cost",
+  "Strengthening the online presence and branding of local businesses",
+];
+
+const VALUES = [
+  "Quality over quantity",
+  "Client growth first",
+  "Innovation mindset",
+  "Execution over ideas",
+  "Trust and transparency",
+];
+
+const FUTURE_DIRECTIONS = [
+  "Launching AI-powered SaaS products",
+  "Building automated lead generation systems",
+  "Developing cybersecurity-focused tools through initiatives like Trinetra",
+  "Becoming a trusted technology partner for schools and businesses nationwide",
 ];
 
 export default function About() {
@@ -65,36 +88,137 @@ export default function About() {
         </div>
       </section>
 
-      <section className="py-16 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <GlassCard delay={0.1} className="text-center">
-              <div className="w-16 h-16 mx-auto rounded-full bg-primary/10 flex items-center justify-center mb-6 border border-primary/20">
-                <Target className="w-8 h-8 text-primary" />
-              </div>
-              <h3 className="text-2xl font-bold mb-3">The Vision</h3>
-              <p className="text-muted-foreground">To deliver digital products and systems that feel polished, useful, and ready for real business growth.</p>
-            </GlassCard>
+      <section className="py-24 relative">
+        <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="section-panel p-8 md:p-12 overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/8 via-transparent to-accent/10 pointer-events-none" />
 
-            <GlassCard delay={0.2} className="text-center relative">
-              <div className="absolute inset-0 bg-gradient-to-b from-accent/10 to-transparent rounded-2xl pointer-events-none" />
-              <div className="absolute -inset-[1px] rounded-2xl border border-accent/20 pointer-events-none" />
-
-              <div className="relative z-10">
-                <div className="w-16 h-16 mx-auto rounded-full bg-accent/12 flex items-center justify-center mb-6 border border-accent/25 box-glow">
-                  <Rocket className="w-8 h-8 text-accent" />
+            <div className="relative grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-10 items-start">
+              <div>
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/15 bg-primary/8 text-primary text-sm font-semibold mb-6">
+                  <Building2 className="w-4 h-4" />
+                  About Us
                 </div>
-                <h3 className="text-2xl font-bold mb-3 text-accent text-glow-accent">100 Day Challenge</h3>
-                <p className="text-muted-foreground">A focused growth roadmap centered on strong execution, better service quality, and disciplined progress.</p>
+
+                <h2 className="text-3xl md:text-5xl font-display font-black leading-tight mb-5">
+                  MISSION &amp; VISION
+                  <span className="block text-accent text-glow-accent">TheCodex Software Solutions</span>
+                </h2>
+
+                <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6">
+                  We are a software solutions company building practical, scalable, and easy-to-use digital systems for
+                  schools, small businesses, and startups. Our focus is not just to build software, but to deliver
+                  technology that creates real growth.
+                </p>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <div className="glass-card rounded-2xl p-6 border border-primary/15">
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-4">
+                      <Sparkles className="w-6 h-6 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-bold mb-3">Vision</h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Our vision is to create a digital ecosystem where every school, small business, and startup can
+                      adopt modern technology easily, without unnecessary complexity or cost.
+                    </p>
+                  </div>
+
+                  <div className="glass-card rounded-2xl p-6 border border-accent/20">
+                    <div className="w-12 h-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center mb-4">
+                      <Target className="w-6 h-6 text-accent" />
+                    </div>
+                    <h3 className="text-xl font-bold mb-3">Mission</h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Our mission is to deliver practical, result-driven technology solutions that directly strengthen
+                      our clients' growth, efficiency, and digital presence.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-5">
+                <div className="glass-card rounded-2xl p-6 border border-border/80">
+                  <div className="flex items-center gap-3 mb-4">
+                    <ShieldCheck className="w-5 h-5 text-primary" />
+                    <h3 className="text-lg font-bold">Simple Identity</h3>
+                  </div>
+                  <p className="text-2xl font-display font-bold leading-snug">
+                    "We build technology that actually grows businesses."
+                  </p>
+                </div>
+
+                <div className="glass-card rounded-2xl p-6 border border-border/80">
+                  <div className="flex items-center gap-3 mb-4">
+                    <Rocket className="w-5 h-5 text-accent" />
+                    <h3 className="text-lg font-bold">Long-Term Direction</h3>
+                  </div>
+                  <p className="text-muted-foreground leading-relaxed">
+                    We aim to digitally empower the education sector, help small businesses grow online, and lead
+                    digital transformation across India's tier-2 and tier-3 cities.
+                  </p>
+                </div>
+
+                <div className="glass-card rounded-2xl p-6 border border-border/80">
+                  <div className="flex items-center gap-3 mb-4">
+                    <Cpu className="w-5 h-5 text-primary" />
+                    <h3 className="text-lg font-bold">Core Belief</h3>
+                  </div>
+                  <p className="text-muted-foreground leading-relaxed">
+                    To make even the smallest school or business strong in the digital world through smart systems and
+                    dependable execution.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-10">
+            <GlassCard delay={0.05} className="h-full">
+              <h3 className="text-2xl font-bold mb-5">What We Do</h3>
+              <div className="space-y-4">
+                {MISSION_POINTS.map((point, index) => (
+                  <div key={index} className="flex items-start gap-3">
+                    <div className="mt-1 w-2.5 h-2.5 rounded-full bg-primary shrink-0" />
+                    <p className="text-muted-foreground leading-relaxed">{point}</p>
+                  </div>
+                ))}
               </div>
             </GlassCard>
 
-            <GlassCard delay={0.3} className="text-center">
-              <div className="w-16 h-16 mx-auto rounded-full bg-primary/10 flex items-center justify-center mb-6 border border-primary/20">
-                <Flag className="w-8 h-8 text-primary" />
+            <GlassCard delay={0.1} className="h-full">
+              <h3 className="text-2xl font-bold mb-5">Core Values</h3>
+              <div className="space-y-4">
+                {VALUES.map((value, index) => (
+                  <div key={index} className="rounded-2xl border border-border/70 bg-background/60 px-4 py-3">
+                    <p className="font-semibold mb-1">{value}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {value === "Quality over quantity" && "Every project should be impactful, polished, and meaningful."}
+                      {value === "Client growth first" && "Our work is successful only when our clients grow with it."}
+                      {value === "Innovation mindset" && "Every solution should reflect smart thinking and a future-ready approach."}
+                      {value === "Execution over ideas" && "Strong execution matters just as much as strong ideas."}
+                      {value === "Trust and transparency" && "Long-term relationships are built through honesty, clarity, and reliable delivery."}
+                    </p>
+                  </div>
+                ))}
               </div>
-              <h3 className="text-2xl font-bold mb-3">The Standard</h3>
-              <p className="text-muted-foreground">We aim for clarity, consistency, and scalable solutions that clients can trust over time.</p>
+            </GlassCard>
+
+            <GlassCard delay={0.15} className="h-full">
+              <h3 className="text-2xl font-bold mb-5">Future Direction</h3>
+              <div className="space-y-4">
+                {FUTURE_DIRECTIONS.map((direction, index) => (
+                  <div key={index} className="flex items-start gap-3">
+                    <div className="mt-1.5 w-2 h-2 rounded-full bg-accent shrink-0" />
+                    <p className="text-muted-foreground leading-relaxed">{direction}</p>
+                  </div>
+                ))}
+              </div>
             </GlassCard>
           </div>
         </div>
