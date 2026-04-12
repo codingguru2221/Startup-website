@@ -21,10 +21,23 @@ export interface FormSubmissionPayload {
 export async function submitForm(payload: FormSubmissionPayload) {
   const isGoogleScript = isGoogleAppsScriptUrl(FORM_SUBMISSION_URL);
 
+  if (isGoogleScript) {
+    await fetch(FORM_SUBMISSION_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    return;
+  }
+
   const response = await fetch(FORM_SUBMISSION_URL, {
     method: "POST",
     headers: {
-      "Content-Type": isGoogleScript ? "text/plain;charset=utf-8" : "application/json",
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(payload),
   });

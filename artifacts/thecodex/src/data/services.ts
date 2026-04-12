@@ -6,6 +6,14 @@ export interface ServiceOffering {
   bullets: string[];
 }
 
+export interface ServicePlan {
+  name: string;
+  price: string;
+  tagline: string;
+  bestFor: string;
+  features: string[];
+}
+
 export interface ServiceCategory {
   slug: string;
   icon: LucideIcon;
@@ -18,6 +26,7 @@ export interface ServiceCategory {
   deliverables: string[];
   process: string[];
   offerings: ServiceOffering[];
+  plans: ServicePlan[];
 }
 
 export const SERVICE_CATEGORIES: ServiceCategory[] = [
@@ -102,6 +111,44 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
         ],
       },
     ],
+    plans: [
+      {
+        name: "Basic",
+        price: "Rs 14,999",
+        tagline: "Clean launch for a focused digital presence.",
+        bestFor: "Small businesses, portfolios, and simple service websites",
+        features: [
+          "Single website or landing page setup",
+          "Responsive mobile-friendly design",
+          "Core sections like hero, services, about, and contact",
+          "Basic form integration and launch support",
+        ],
+      },
+      {
+        name: "Standard",
+        price: "Rs 19,999",
+        tagline: "A stronger business website or app experience.",
+        bestFor: "Growing businesses that need better conversion and structure",
+        features: [
+          "Multi-page website or small web app flow",
+          "Custom UI sections aligned with brand goals",
+          "Lead capture, service details, and content structure",
+          "Performance checks and post-launch improvements",
+        ],
+      },
+      {
+        name: "Advanced",
+        price: "Rs 24,999",
+        tagline: "Full custom product with long-term growth support.",
+        bestFor: "Startups and teams building scalable digital products",
+        features: [
+          "Custom web application or advanced business website",
+          "Dashboards, admin panels, or business workflows",
+          "Scalable architecture and integration planning",
+          "Priority support, maintenance roadmap, and growth guidance",
+        ],
+      },
+    ],
   },
   {
     slug: "infrastructure-computation",
@@ -180,6 +227,44 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
           "Wider network integration for multi-point communication",
           "Configuration support for complex environments",
           "Smart planning for performance and reliability",
+        ],
+      },
+    ],
+    plans: [
+      {
+        name: "Basic",
+        price: "Rs 30,000",
+        tagline: "Essential setup for small environments.",
+        bestFor: "Small offices, starter labs, and simple network needs",
+        features: [
+          "Basic network planning and device setup",
+          "Computer connection and configuration support",
+          "Essential LAN setup guidance",
+          "Basic documentation for daily use",
+        ],
+      },
+      {
+        name: "Standard",
+        price: "Rs 45,000",
+        tagline: "Reliable infrastructure for active operations.",
+        bestFor: "Schools, offices, and teams needing stable systems",
+        features: [
+          "Network and lab setup planning",
+          "Server or NAS configuration support",
+          "Structured connectivity across devices",
+          "Testing, optimization, and handover guidance",
+        ],
+      },
+      {
+        name: "Advanced",
+        price: "Rs 70,000",
+        tagline: "Advanced infrastructure for scalable operations.",
+        bestFor: "Multi-device, multi-team, or higher-control environments",
+        features: [
+          "LAN, WAN, or MAN integration planning",
+          "Secure access and storage strategy",
+          "Advanced server/control system configuration",
+          "Operational support and future expansion roadmap",
         ],
       },
     ],
@@ -263,6 +348,44 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
         ],
       },
     ],
+    plans: [
+      {
+        name: "Basic",
+        price: "Rs 20,000",
+        tagline: "Start automation with one clear workflow.",
+        bestFor: "Teams exploring AI or automating one repeated task",
+        features: [
+          "Workflow review and opportunity mapping",
+          "One simple automation or AI-assisted flow",
+          "Basic setup and usage guidance",
+          "Light testing and implementation support",
+        ],
+      },
+      {
+        name: "Standard",
+        price: "Rs 35,000",
+        tagline: "Practical AI integration for business operations.",
+        bestFor: "Businesses improving sales, management, or internal tasks",
+        features: [
+          "Multiple workflow automation planning",
+          "AI integration into existing tools or processes",
+          "Operational logic tailored to your team",
+          "Training and adoption support",
+        ],
+      },
+      {
+        name: "Advanced",
+        price: "Rs 50,000",
+        tagline: "Advanced AI systems for scale and efficiency.",
+        bestFor: "Growing teams needing smarter systems and decision support",
+        features: [
+          "Custom AI-powered workflow or business system",
+          "Advanced integrations and process orchestration",
+          "Reporting, monitoring, and optimization planning",
+          "Priority support and continuous improvement roadmap",
+        ],
+      },
+    ],
   },
   {
     slug: "growth-marketing-advisory",
@@ -341,6 +464,44 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
           "Guidance aligned with company growth thinking",
           "Structured advice for decision confidence",
           "Connected perspective across business and technology",
+        ],
+      },
+    ],
+    plans: [
+      {
+        name: "Basic",
+        price: "Rs 30,000",
+        tagline: "Direction and foundation for online visibility.",
+        bestFor: "Small businesses starting digital marketing",
+        features: [
+          "Basic marketing direction and positioning advice",
+          "Social presence review",
+          "Content and campaign suggestions",
+          "Simple next-step growth plan",
+        ],
+      },
+      {
+        name: "Standard",
+        price: "Rs 45,000",
+        tagline: "Structured execution for consistent growth.",
+        bestFor: "Brands that need active support and clearer campaigns",
+        features: [
+          "Social media and campaign planning",
+          "Ad direction and messaging support",
+          "Growth-focused content strategy",
+          "Review and improvement recommendations",
+        ],
+      },
+      {
+        name: "Advanced",
+        price: "Rs 70,000",
+        tagline: "Strategic growth support with deeper advisory.",
+        bestFor: "Companies needing marketing, business, and tech alignment",
+        features: [
+          "Full growth and advisory support layer",
+          "Campaign execution direction and optimization",
+          "Business guidance connected to digital systems",
+          "Ongoing review, strategy, and improvement roadmap",
         ],
       },
     ],

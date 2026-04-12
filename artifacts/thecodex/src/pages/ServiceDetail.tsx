@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowLeft, ArrowRight, CheckCircle2, ChevronRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle2, ChevronRight, Crown } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { NeonButton } from "@/components/ui/NeonButton";
@@ -181,6 +181,79 @@ export default function ServiceDetail({ slug }: ServiceDetailProps) {
                 </div>
               </GlassCard>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 relative border-y border-border/70 bg-background/45">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent/20 bg-accent/8 text-accent text-sm font-semibold mb-5">
+              <Crown className="w-4 h-4" />
+              Service Plans
+            </div>
+            <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">
+              Choose the right <span className="text-primary text-glow">plan</span>
+            </h2>
+            <p className="text-muted-foreground leading-relaxed">
+              Start simple, scale with confidence, or go premium when you need deeper execution and long-term support.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {service.plans.map((plan, index) => {
+              const isFeatured = plan.name === "Standard";
+
+              return (
+                <GlassCard
+                  key={plan.name}
+                  delay={index * 0.05}
+                  hoverEffect={false}
+                  className={`plan-card h-full overflow-visible border ${isFeatured ? "plan-card-featured border-primary/40" : "border-border/80"}`}
+                >
+                  {isFeatured && (
+                    <>
+                      <div className="plan-card-featured-glow" />
+                      <span className="plan-card-ribbon" />
+                    </>
+                  )}
+
+                  <div className="flex items-center justify-between gap-4 mb-5">
+                    <div>
+                      <p className="text-sm text-muted-foreground mb-1">Plan</p>
+                      <h3 className={`text-3xl font-display font-black ${isFeatured ? "text-primary text-glow" : "text-foreground"}`}>
+                        {plan.name}
+                      </h3>
+                      <p className="text-2xl font-display font-bold mt-2">{plan.price}</p>
+                    </div>
+                  </div>
+
+                  <p className="text-muted-foreground leading-relaxed mb-5">{plan.tagline}</p>
+
+                  <div className="rounded-2xl border border-border/70 bg-background/60 p-4 mb-6">
+                    <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground mb-2">Best For</p>
+                    <p className="font-semibold leading-relaxed">{plan.bestFor}</p>
+                  </div>
+
+                  <div className="space-y-3 mb-8">
+                    {plan.features.map((feature) => (
+                      <div key={feature} className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 shrink-0" />
+                        <p className="text-sm text-muted-foreground leading-relaxed">{feature}</p>
+                      </div>
+                    ))}
+                  </div>
+
+                  <Link
+                    href={`/buy-service?service=${encodeURIComponent(service.title)}&plan=${encodeURIComponent(plan.name)}&budget=${encodeURIComponent(plan.price)}`}
+                  >
+                    <NeonButton variant={isFeatured ? "primary" : "outline"} fullWidth>
+                      Choose {plan.name}
+                    </NeonButton>
+                  </Link>
+                </GlassCard>
+              );
+            })}
           </div>
         </div>
       </section>

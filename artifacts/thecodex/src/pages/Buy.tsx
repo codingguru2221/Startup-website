@@ -212,7 +212,27 @@ export default function Buy({ mode = "buy-service" }: BuyProps) {
   const [, setLocation] = useLocation();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [formData, setFormData] = useState<FormValues>(INITIAL_FORM);
+  const [formData, setFormData] = useState<FormValues>(() => {
+    if (typeof window === "undefined") {
+      return INITIAL_FORM;
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const selectedService = params.get("service") ?? "";
+    const selectedPlan = params.get("plan") ?? "";
+    const selectedBudget = params.get("budget") ?? "";
+
+    return {
+      ...INITIAL_FORM,
+      service: selectedService,
+      packageType: selectedPlan,
+      budget: selectedBudget,
+      description:
+        selectedService && selectedPlan
+          ? `Selected plan: ${selectedPlan} (${selectedBudget}) for ${selectedService}.`
+          : "",
+    };
+  });
 
   const config = useMemo(() => FORM_CONFIGS[mode], [mode]);
   const FormIcon = config.icon;
@@ -413,6 +433,9 @@ export default function Buy({ mode = "buy-service" }: BuyProps) {
                             className="w-full bg-input border border-border rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary outline-none transition-all cursor-pointer"
                           >
                             <option value="">Select a service</option>
+                            {formData.service && !SERVICE_OPTIONS.includes(formData.service) && (
+                              <option value={formData.service}>{formData.service}</option>
+                            )}
                             {SERVICE_OPTIONS.map((item) => (
                               <option key={item} value={item}>{item}</option>
                             ))}
@@ -435,6 +458,9 @@ export default function Buy({ mode = "buy-service" }: BuyProps) {
                             className="w-full bg-input border border-border rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary outline-none transition-all cursor-pointer"
                           >
                             <option value="">Select budget range</option>
+                            {formData.budget && !BUDGET_OPTIONS.includes(formData.budget) && (
+                              <option value={formData.budget}>{formData.budget}</option>
+                            )}
                             {BUDGET_OPTIONS.map((item) => (
                               <option key={item} value={item}>{item}</option>
                             ))}
