@@ -1,4 +1,8 @@
+import { Download } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Layout } from "@/components/layout/Layout";
+import { Button } from "@/components/ui/button";
+import { formatFileSize, getUploadedProjects, type UploadedProject } from "@/lib/project-storage";
 
 const PROJECTS = [
   {
@@ -32,6 +36,22 @@ const PROJECTS = [
 ];
 
 export default function Projects() {
+  const [uploadedProjects, setUploadedProjects] = useState<UploadedProject[]>([]);
+  const allProjectsCount = PROJECTS.length + uploadedProjects.length;
+
+  useEffect(() => {
+    const syncProjects = () => setUploadedProjects(getUploadedProjects());
+
+    syncProjects();
+    window.addEventListener("storage", syncProjects);
+    window.addEventListener("thecodex-projects-updated", syncProjects);
+
+    return () => {
+      window.removeEventListener("storage", syncProjects);
+      window.removeEventListener("thecodex-projects-updated", syncProjects);
+    };
+  }, []);
+
   return (
     <Layout>
       <section className="pt-8 pb-20 relative overflow-hidden">
@@ -51,8 +71,8 @@ export default function Projects() {
 
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 lg:min-w-[420px]">
                 <div className="rounded-xl border border-border bg-background/70 p-4">
-                  <p className="text-2xl font-black text-primary">{PROJECTS.length}</p>
-                  <p className="text-xs text-muted-foreground mt-1">Live project</p>
+                  <p className="text-2xl font-black text-primary">{allProjectsCount}</p>
+                  <p className="text-xs text-muted-foreground mt-1">Project</p>
                 </div>
                 <div className="rounded-xl border border-border bg-background/70 p-4">
                   <p className="text-2xl font-black text-primary">AWS</p>
@@ -73,6 +93,61 @@ export default function Projects() {
           </div>
 
           <div className="space-y-12">
+            {uploadedProjects.map((project) => (
+              <article key={project.id} className="rounded-2xl border border-border bg-card/80 p-4 md:p-6 shadow-[0_22px_70px_rgba(15,23,42,0.1)]">
+                <div className="mb-5 flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
+                  <div>
+                    <p className="text-xs font-bold text-primary tracking-[0.18em] uppercase mb-2">Uploaded React App</p>
+                    <h2 className="text-2xl md:text-3xl font-bold">{project.title}</h2>
+                    <p className="text-sm text-muted-foreground mt-2 max-w-2xl">{project.summary}</p>
+                    <p className="text-xs text-muted-foreground mt-3">
+                      {project.fileName} - {formatFileSize(project.fileSize)}
+                    </p>
+                    <div className="flex flex-wrap gap-2 mt-4">
+                      {project.tags.map((tag) => (
+                        <span key={tag} className="rounded-lg border border-primary/15 bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <Button asChild variant="outline">
+                    <a href={project.downloadUrl} download={project.fileName}>
+                      <Download className="w-4 h-4" />
+                      Download ZIP
+                    </a>
+                  </Button>
+                </div>
+
+                {project.liveUrl ? (
+                  <div className="overflow-hidden rounded-lg bg-[#0b111d] border border-border shadow-[0_24px_70px_rgba(0,0,0,0.32)]">
+                    <div className="flex items-center gap-2 px-4 py-3 bg-[#0f1724] border-b border-white/10">
+                      <span className="block w-3 h-3 rounded-full bg-[#ff605c]" />
+                      <span className="block w-3 h-3 rounded-full bg-[#ffbd44]" />
+                      <span className="block w-3 h-3 rounded-full bg-[#00ca4e]" />
+                    </div>
+
+                    <div className="relative w-full h-[500px] md:h-[640px] overflow-hidden bg-[#050914]">
+                      <iframe
+                        src={project.liveUrl}
+                        title={`${project.title} live preview`}
+                        loading="lazy"
+                        className="absolute inset-0 w-full h-full border-0 bg-background"
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  <div className="rounded-lg border border-dashed border-border bg-background/70 p-6">
+                    <p className="font-semibold">ZIP uploaded successfully.</p>
+                    <p className="text-sm text-muted-foreground mt-2">
+                      Live preview URL add karne ke baad yahan app preview dikhega.
+                    </p>
+                  </div>
+                )}
+              </article>
+            ))}
+
             {PROJECTS.map((project) => (
               <article key={project.title} className="rounded-2xl border border-border bg-card/80 p-4 md:p-6 shadow-[0_22px_70px_rgba(15,23,42,0.1)]">
                 <div className="mb-5">

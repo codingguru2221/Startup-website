@@ -9,6 +9,7 @@ import Home from "@/pages/Home";
 import Services from "@/pages/Services";
 import ServiceDetail from "@/pages/ServiceDetail";
 import Projects from "@/pages/Projects";
+import Admin from "@/pages/Admin";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
 import Buy from "@/pages/Buy";
@@ -37,6 +38,7 @@ function Router() {
           {(params) => <ServiceDetail slug={params.slug} />}
         </Route>
         <Route path="/projects" component={Projects} />
+        <Route path="/admin" component={Admin} />
         <Route path="/buy" component={() => <Buy mode="buy-service" />} />
         <Route path="/buy-service" component={() => <Buy mode="buy-service" />} />
         <Route path="/custom-request" component={() => <Buy mode="custom-request" />} />
