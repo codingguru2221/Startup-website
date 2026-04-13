@@ -233,7 +233,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     plans: [
       {
         name: "Basic",
-        price: "Rs 30,000",
+        price: "Rs 29,999",
         tagline: "Essential setup for small environments.",
         bestFor: "Small offices, starter labs, and simple network needs",
         features: [
@@ -245,7 +245,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
       },
       {
         name: "Standard",
-        price: "Rs 45,000",
+        price: "Rs 44,999",
         tagline: "Reliable infrastructure for active operations.",
         bestFor: "Schools, offices, and teams needing stable systems",
         features: [
@@ -257,7 +257,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
       },
       {
         name: "Advanced",
-        price: "Rs 70,000",
+        price: "Rs 69,999",
         tagline: "Advanced infrastructure for scalable operations.",
         bestFor: "Multi-device, multi-team, or higher-control environments",
         features: [
@@ -351,7 +351,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     plans: [
       {
         name: "Basic",
-        price: "Rs 20,000",
+        price: "Rs 19,999",
         tagline: "Start automation with one clear workflow.",
         bestFor: "Teams exploring AI or automating one repeated task",
         features: [
@@ -363,7 +363,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
       },
       {
         name: "Standard",
-        price: "Rs 35,000",
+        price: "Rs 34,999",
         tagline: "Practical AI integration for business operations.",
         bestFor: "Businesses improving sales, management, or internal tasks",
         features: [
@@ -375,7 +375,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
       },
       {
         name: "Advanced",
-        price: "Rs 50,000",
+        price: "Rs 49,999",
         tagline: "Advanced AI systems for scale and efficiency.",
         bestFor: "Growing teams needing smarter systems and decision support",
         features: [
@@ -470,7 +470,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     plans: [
       {
         name: "Basic",
-        price: "Rs 30,000",
+        price: "Rs 29,999",
         tagline: "Direction and foundation for online visibility.",
         bestFor: "Small businesses starting digital marketing",
         features: [
@@ -482,7 +482,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
       },
       {
         name: "Standard",
-        price: "Rs 45,000",
+        price: "Rs 44,999",
         tagline: "Structured execution for consistent growth.",
         bestFor: "Brands that need active support and clearer campaigns",
         features: [
@@ -494,7 +494,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
       },
       {
         name: "Advanced",
-        price: "Rs 70,000",
+        price: "Rs 69,999",
         tagline: "Strategic growth support with deeper advisory.",
         bestFor: "Companies needing marketing, business, and tech alignment",
         features: [

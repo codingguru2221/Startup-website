@@ -9,6 +9,7 @@ import ThemeSwitch from "@/components/ui/ThemeSwitch";
 const NAV_LINKS = [
   { name: "Home", href: "/" },
   { name: "Services", href: "/services" },
+  { name: "Projects", href: "/projects" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
 ];

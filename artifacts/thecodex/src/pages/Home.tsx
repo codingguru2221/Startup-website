@@ -4,6 +4,7 @@ import { ArrowRight, Code, Cpu, Shield, Zap, CheckCircle2, ChevronRight } from "
 import { Layout } from "@/components/layout/Layout";
 import { NeonButton } from "@/components/ui/NeonButton";
 import { GlassCard } from "@/components/ui/GlassCard";
+import { SERVICE_CATEGORIES } from "@/data/services";
 
 const FEATURES = [
   { icon: Code, title: "Precision Engineering", desc: "Clean, scalable, and maintainable codebases planned for long-term business use." },
@@ -201,6 +202,51 @@ export default function Home() {
                 </div>
               </div>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">
+              Transparent <span className="text-primary text-glow">plan pricing</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Compare starting plans across our major service areas and choose the right path for your business.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+            {SERVICE_CATEGORIES.map((service, index) => {
+              const Icon = service.icon;
+
+              return (
+                <GlassCard key={service.slug} delay={index * 0.05} hoverEffect={false} className="plan-card h-full overflow-visible border border-border/80">
+                  <div className="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/15 flex items-center justify-center mb-5">
+                    <Icon className="w-6 h-6 text-primary" />
+                  </div>
+
+                  <h3 className="text-xl font-bold mb-3">{service.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-6">{service.intro}</p>
+
+                  <div className="space-y-3 mb-7">
+                    {service.plans.map((plan) => (
+                      <div key={plan.name} className="flex items-center justify-between gap-4 rounded-2xl border border-border/70 bg-background/60 px-4 py-3">
+                        <span className="text-sm font-semibold">{plan.name}</span>
+                        <span className="text-sm font-bold text-primary">{plan.price}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <Link href={`/services/${service.slug}`}>
+                    <NeonButton variant="outline" fullWidth icon={<ArrowRight className="w-4 h-4" />}>
+                      View Plans
+                    </NeonButton>
+                  </Link>
+                </GlassCard>
+              );
+            })}
           </div>
         </div>
       </section>

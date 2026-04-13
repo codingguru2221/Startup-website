@@ -8,6 +8,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Home from "@/pages/Home";
 import Services from "@/pages/Services";
 import ServiceDetail from "@/pages/ServiceDetail";
+import Projects from "@/pages/Projects";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
 import Buy from "@/pages/Buy";
@@ -35,6 +36,7 @@ function Router() {
         <Route path="/services/:slug">
           {(params) => <ServiceDetail slug={params.slug} />}
         </Route>
+        <Route path="/projects" component={Projects} />
         <Route path="/buy" component={() => <Buy mode="buy-service" />} />
         <Route path="/buy-service" component={() => <Buy mode="buy-service" />} />
         <Route path="/custom-request" component={() => <Buy mode="custom-request" />} />
