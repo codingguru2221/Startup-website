@@ -15,7 +15,6 @@ import {
   type UploadedProject,
 } from "@/lib/project-storage";
 
-const ADMIN_SESSION_KEY = "thecodex_admin_session";
 const ADMIN_ID = "TheCOdex";
 const ADMIN_PASSWORD = "TheCOdex@1122";
 const MAX_LOCAL_ZIP_SIZE = 4 * 1024 * 1024;
@@ -43,7 +42,7 @@ export default function Admin() {
   const [isUploading, setIsUploading] = useState(false);
 
   useEffect(() => {
-    setIsLoggedIn(window.localStorage.getItem(ADMIN_SESSION_KEY) === "true");
+    setIsLoggedIn(false);
     setProjects(getUploadedProjects());
   }, []);
 
@@ -55,7 +54,6 @@ export default function Admin() {
     event.preventDefault();
 
     if (loginId === ADMIN_ID && password === ADMIN_PASSWORD) {
-      window.localStorage.setItem(ADMIN_SESSION_KEY, "true");
       setIsLoggedIn(true);
       toast({
         title: "Admin login successful",
@@ -72,8 +70,8 @@ export default function Admin() {
   }
 
   function handleLogout() {
-    window.localStorage.removeItem(ADMIN_SESSION_KEY);
     setIsLoggedIn(false);
+    setLoginId("");
     setPassword("");
   }
 

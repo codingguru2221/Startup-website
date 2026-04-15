@@ -13,9 +13,12 @@ import Admin from "@/pages/Admin";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
 import Buy from "@/pages/Buy";
+import Privacy from "@/pages/Privacy";
+import Terms from "@/pages/Terms";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
+const ADMIN_ROUTE = "/thecodex-control";
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -38,7 +41,7 @@ function Router() {
           {(params) => <ServiceDetail slug={params.slug} />}
         </Route>
         <Route path="/projects" component={Projects} />
-        <Route path="/admin" component={Admin} />
+        <Route path={ADMIN_ROUTE} component={Admin} />
         <Route path="/buy" component={() => <Buy mode="buy-service" />} />
         <Route path="/buy-service" component={() => <Buy mode="buy-service" />} />
         <Route path="/custom-request" component={() => <Buy mode="custom-request" />} />
@@ -46,6 +49,8 @@ function Router() {
         <Route path="/maintenance-support" component={() => <Buy mode="maintenance-support" />} />
         <Route path="/about" component={About} />
         <Route path="/contact" component={Contact} />
+        <Route path="/privacy-policy" component={Privacy} />
+        <Route path="/terms-and-conditions" component={Terms} />
         <Route component={NotFound} />
       </Switch>
     </>

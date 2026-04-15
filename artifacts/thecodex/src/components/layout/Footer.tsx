@@ -97,8 +97,8 @@ export function Footer() {
             Copyright {new Date().getFullYear()} TheCOdex Software Solutions. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-muted-foreground">
-            <a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-foreground transition-colors">Terms of Service</a>
+            <Link href="/privacy-policy" className="hover:text-foreground transition-colors">Privacy Policy</Link>
+            <Link href="/terms-and-conditions" className="hover:text-foreground transition-colors">Terms &amp; Conditions</Link>
           </div>
         </div>
       </div>
