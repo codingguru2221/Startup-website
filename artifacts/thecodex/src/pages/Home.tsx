@@ -13,6 +13,21 @@ const FEATURES = [
   { icon: Zap, title: "Fast Delivery", desc: "Focused execution with modern tooling, polished interfaces, and dependable support." },
 ];
 
+const CORE_SERVICE_CARDS = [
+  {
+    title: "Web & App Development",
+    href: "/services/development-solutions",
+  },
+  {
+    title: "AI Business Models",
+    href: "/services/ai-automation",
+  },
+  {
+    title: "Network & Server Control",
+    href: "/services/infrastructure-computation",
+  },
+];
+
 export default function Home() {
   return (
     <Layout>
@@ -114,22 +129,24 @@ export default function Home() {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              {["Web & App Development", "AI Business Models", "Network & Server Control"].map((title, i) => (
-                <div key={i} className="group rounded-3xl border border-border bg-card p-8 flex flex-col justify-between shadow-[0_20px_55px_rgba(15,23,42,0.06)] hover:-translate-y-1 transition-all duration-300">
+              {CORE_SERVICE_CARDS.map((card) => (
+                <Link
+                  key={card.title}
+                  href={card.href}
+                  className="group rounded-3xl border border-border bg-card p-8 flex flex-col justify-between shadow-[0_20px_55px_rgba(15,23,42,0.06)] hover:-translate-y-1 hover:border-primary/30 transition-all duration-300 cursor-pointer"
+                >
                   <div className="mb-12">
                     <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
                       <ArrowRight className="w-5 h-5 text-primary" />
                     </div>
-                    <h3 className="text-2xl font-bold text-foreground mb-4">{title}</h3>
+                    <h3 className="text-2xl font-bold text-foreground mb-4">{card.title}</h3>
                     <p className="text-muted-foreground text-sm">Full-stack implementation from frontend experiences to backend systems and operational support.</p>
                   </div>
 
-                  <Link href="/services" className="self-start">
-                    <div className="w-12 h-12 rounded-full border border-border bg-muted/50 flex items-center justify-center group-hover:bg-primary group-hover:border-primary group-hover:text-white transition-all duration-300">
-                      <ArrowRight className="w-5 h-5" />
-                    </div>
-                  </Link>
-                </div>
+                  <div className="self-start w-12 h-12 rounded-full border border-border bg-muted/50 flex items-center justify-center group-hover:bg-primary group-hover:border-primary group-hover:text-white transition-all duration-300">
+                    <ArrowRight className="w-5 h-5" />
+                  </div>
+                </Link>
               ))}
             </div>
           </div>
