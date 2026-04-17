@@ -4,7 +4,6 @@ import { Footer } from "./Footer";
 import { motion } from "framer-motion";
 import { FaWhatsapp } from "react-icons/fa";
 import { Bot, X, Sparkles, Send } from "lucide-react";
-import { SERVICE_CATEGORIES } from "@/data/services";
 
 interface LayoutProps {
   children: ReactNode;
@@ -16,116 +15,23 @@ type ChatMessage = {
   text: string;
 };
 
-const WEBSITE_CONTEXT = {
-  company: "TheCOdex Software Solutions",
-  founder: "Veerendra Vishwakarma",
-  location: "Bhopal, Madhya Pradesh, India",
-  email: "thecodexofficial001@gmail.com",
-  phone: "+91 8305223353",
-  social: ["Instagram", "GitHub Community", "LinkedIn", "X / Twitter"],
-  pages: [
-    "Home",
-    "Services",
-    "Projects",
-    "About",
-    "Contact",
-    "Privacy Policy",
-    "Terms & Conditions",
-  ],
-  inquiryFlows: [
-    "Buy a Service",
-    "Ask Us What You Want",
-    "Start Your Project",
-    "Discuss Maintenance",
-  ],
-  featuredProjects: [
-    "College Website",
-    "Portfolio Website",
-    "Modern Portfolio Website",
-    "Raj Heights Global",
-  ],
-};
+const AI_API_URL = import.meta.env.VITE_AI_API_URL ?? "http://127.0.0.1:8008";
 
-function hasAny(text: string, keywords: string[]) {
-  return keywords.some((keyword) => text.includes(keyword));
-}
+async function getAssistantReply(message: string) {
+  const response = await fetch(`${AI_API_URL}/chat`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ message }),
+  });
 
-function formatServiceSummary() {
-  return SERVICE_CATEGORIES.map((service) => service.title).join(", ");
-}
-
-function getAssistantReply(message: string) {
-  const normalized = message.toLowerCase().trim();
-  const serviceTitles = SERVICE_CATEGORIES.map((service) => service.title.toLowerCase());
-  const matchedService = SERVICE_CATEGORIES.find((service) =>
-    normalized.includes(service.title.toLowerCase()) ||
-    normalized.includes(service.slug.toLowerCase()) ||
-    service.items.some((item) => normalized.includes(item.toLowerCase())) ||
-    service.offerings.some((offering) => normalized.includes(offering.title.toLowerCase()))
-  );
-
-  if (hasAny(normalized, ["hello", "hi", "hey", "hii", "hlo", "helo", "hay"])) {
-    return "Hey, welcome to TheCOdex. Tell me what you are planning to build, improve, or launch, and I will point you in the right direction.";
+  if (!response.ok) {
+    throw new Error("Assistant service unavailable");
   }
 
-  if (hasAny(normalized, ["who are you", "about", "company", "thecodex", "founder", "team"])) {
-    return `${WEBSITE_CONTEXT.company} is based in ${WEBSITE_CONTEXT.location} and focuses on websites, applications, AI workflows, infrastructure, and growth support. The founder is ${WEBSITE_CONTEXT.founder}, and the site also highlights the company's mission, values, and long-term direction on the About page.`;
-  }
-
-  if (hasAny(normalized, ["page", "website", "site", "navigation", "menu"]) && !normalized.includes("website project")) {
-    return `The website currently includes these main sections: ${WEBSITE_CONTEXT.pages.join(", ")}. If you want, ask me about any specific page and I will summarize it for you.`;
-  }
-
-  if (normalized.includes("service")) {
-    return `The main service areas are ${formatServiceSummary()}. Inside them, the website covers website development, app development, redesigns, maintenance, AI integration, automation, network setups, server and storage systems, and growth support. Tell me your goal and I can narrow down the best fit.`;
-  }
-
-  if (normalized.includes("start") || normalized.includes("project")) {
-    return "A good way to start is to share three things: what you want built, your rough budget, and your timeline. After that, the Start Project or Custom Request flow will make a lot more sense.";
-  }
-
-  if (normalized.includes("app") || normalized.includes("ai")) {
-    return "Yes, definitely. We work on apps, internal business tools, and AI-powered workflows too. If you already have an idea, send me a short version of it and I will guide you from there.";
-  }
-
-  if (normalized.includes("contact") || normalized.includes("call") || normalized.includes("fast")) {
-    return "The fastest route is WhatsApp on +91 8305223353. You can also email thecodexofficial001@gmail.com or use the Contact page if you want a more formal discussion.";
-  }
-
-  if (normalized.includes("price") || normalized.includes("cost") || normalized.includes("budget")) {
-    return "Pricing depends on scope, features, and delivery speed, but the site already shows structured starting plans. Development starts at Rs 14,999, AI Integration & Automation starts at Rs 19,999, and Infrastructure plus Growth support start at Rs 29,999. If you tell me the kind of work you need, I can point you toward the closest category.";
-  }
-
-  if (hasAny(normalized, ["buy a service", "buy service", "custom request", "start project", "maintenance", "support flow", "inquiry"])) {
-    return `The website has four main inquiry flows: ${WEBSITE_CONTEXT.inquiryFlows.join(", ")}. Use Buy a Service when you already know the service, Ask Us What You Want when the requirement is mixed or unclear, Start Your Project for structured product planning, and Discuss Maintenance for post-launch support.`;
-  }
-
-  if (hasAny(normalized, ["contact", "call", "email", "phone", "whatsapp", "reach", "location", "address", "social"])) {
-    return `You can reach the team by email at ${WEBSITE_CONTEXT.email}, by phone or WhatsApp on ${WEBSITE_CONTEXT.phone}, and the location shown on the site is ${WEBSITE_CONTEXT.location}. The Contact page also links Instagram, GitHub Community, LinkedIn, and X / Twitter.`;
-  }
-
-  if (hasAny(normalized, ["project", "portfolio", "work sample", "example", "live preview"])) {
-    return `The Projects page shows live previews of work such as ${WEBSITE_CONTEXT.featuredProjects.join(", ")}. Visitors can explore real deployed sites directly from the page instead of only seeing screenshots.`;
-  }
-
-  if (hasAny(normalized, ["privacy", "terms", "policy", "legal", "condition"])) {
-    return "Yes, the website includes both Privacy Policy and Terms & Conditions pages. They cover company details, contact information, legal terms, privacy practices, founder information, signature, and the latest update date shown on the site.";
-  }
-
-  if (matchedService) {
-    const planStart = matchedService.plans[0]?.price;
-    return `${matchedService.title} is one of the main service categories on the site. It covers things like ${matchedService.items.slice(0, 3).join(", ")}. The starting visible plan in that category begins at ${planStart}, and the service page also explains deliverables, ideal use cases, and package tiers.`;
-  }
-
-  if ((normalized.includes("website") || normalized.includes("web")) && !serviceTitles.some((title) => normalized.includes(title))) {
-    return "If it is a website project, I can help you figure out whether you need a simple business site, a custom web app, or something more advanced. Tell me what the website should do.";
-  }
-
-  if (normalized.length <= 12) {
-    return "I am here with you. Ask me about services, pricing, projects, contact details, or just tell me what you want to build.";
-  }
-
-  return "Got it. Tell me a little more clearly what you want to know, and I will answer from the website's services, pricing, projects, contact details, or company info.";
+  const data = (await response.json()) as { reply?: string };
+  return data.reply ?? "The assistant did not return a response.";
 }
 
 export function Layout({ children }: LayoutProps) {
@@ -153,15 +59,27 @@ export function Layout({ children }: LayoutProps) {
     setChatInput("");
     setIsThinking(true);
 
-    window.setTimeout(() => {
-      const assistantMessage: ChatMessage = {
-        id: `${timestamp}-assistant`,
-        role: "assistant",
-        text: getAssistantReply(message),
-      };
+    window.setTimeout(async () => {
+      try {
+        const reply = await getAssistantReply(message);
+        const assistantMessage: ChatMessage = {
+          id: `${timestamp}-assistant`,
+          role: "assistant",
+          text: reply,
+        };
 
-      setMessages((current) => [...current, assistantMessage]);
-      setIsThinking(false);
+        setMessages((current) => [...current, assistantMessage]);
+      } catch {
+        const assistantMessage: ChatMessage = {
+          id: `${timestamp}-assistant-fallback`,
+          role: "assistant",
+          text: "The Python assistant is not running right now. Start the local AI service and I will answer from the trained website model.",
+        };
+
+        setMessages((current) => [...current, assistantMessage]);
+      } finally {
+        setIsThinking(false);
+      }
     }, 650);
   }
 
