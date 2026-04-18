@@ -41,11 +41,6 @@ if not exist "node_modules" (
   )
 )
 
-echo Starting AI assistant on http://127.0.0.1:8008/
-start "Banao Hub AI Assistant" cmd /k "cd /d ""%~dp0artifacts\thecodex\ai_assistant"" && python train_model.py && python server.py"
-
-timeout /t 3 /nobreak >nul
-
 echo Starting backend on http://127.0.0.1:3001/
 start "Banao Hub Backend" cmd /k "cd /d ""%~dp0"" && set PORT=3001 && pnpm --filter @workspace/api-server run dev"
 
@@ -61,8 +56,7 @@ start "" "http://127.0.0.1:4173/"
 echo.
 echo Frontend: http://127.0.0.1:4173/
 echo Backend:  http://127.0.0.1:3001/api/healthz
-echo AI Chat:  http://127.0.0.1:8008/health
 echo.
-echo Three separate terminal windows were opened.
+echo Two separate terminal windows were opened.
 echo Close those windows or press Ctrl + C inside them to stop the servers.
 pause

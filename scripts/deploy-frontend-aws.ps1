@@ -30,6 +30,14 @@ finally {
 
 $distDir = Join-Path $frontendDir "dist\public"
 
+$indexHtmlPath = Join-Path $distDir "index.html"
+$fallback404Path = Join-Path $distDir "404.html"
+
+if (Test-Path $indexHtmlPath) {
+  Copy-Item $indexHtmlPath $fallback404Path -Force
+  Write-Host "Created SPA fallback file: 404.html"
+}
+
 Write-Host "Syncing build output to S3 bucket s3://$BucketName ..."
 aws s3 sync $distDir "s3://$BucketName" --delete
 

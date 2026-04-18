@@ -11,16 +11,22 @@ const TEAM = [
     image: "images/ceo.jpg",
   },
   {
-    name: "Creative Lead",
-    role: "Designer",
-    spec: "Brand, UI, and Visual Systems",
-    image: "images/designer.png",
-  },
-  {
     name: "Build Lead",
     role: "Developer",
     spec: "Frontend, Backend, and Delivery",
     image: "images/devloper.jpeg",
+  },
+  {
+    name: "Business Lead",
+    role: "Business Development",
+    spec: "Sales, Partnerships, and Growth",
+    image: "images/busness lead.jpg",
+  },
+  {
+    name: "Marketing Lead",
+    role: "Marketing Strategist",
+    spec: "Campaigns, Branding, and Outreach",
+    image: "images/Marketing lead.jpg",
   },
 ];
 
@@ -108,7 +114,7 @@ export default function About() {
 
                 <h2 className="text-3xl md:text-5xl font-display font-black leading-tight mb-5">
                   MISSION &amp; VISION
-                  <span className="block text-accent text-glow-accent">TheCodex Software Solutions</span>
+                  <span className="block text-accent text-glow-accent">TheCOdex Software Solutions</span>
                 </h2>
 
                 <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6">
@@ -228,7 +234,7 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-5xl font-display font-bold mb-16">The <span className="text-primary text-glow">Architects</span></h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {TEAM.map((member, i) => (
               <motion.div
                 key={i}

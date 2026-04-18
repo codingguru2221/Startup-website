@@ -32,6 +32,8 @@ Use the S3 bucket as origin.
 - `403 -> /index.html -> 200`
 - `404 -> /index.html -> 200`
 
+Also keep `index.html` available as `404.html` in the uploaded build output for an extra static-host fallback.
+
 5. Point Route 53 to CloudFront.
 Create an alias `A` record:
 - name: `app`
@@ -118,6 +120,7 @@ cd artifacts/thecodex
 $env:BASE_PATH="/"
 $env:VITE_API_BASE_URL="https://api.thecodex.in"
 pnpm run build
+Copy-Item .\dist\public\index.html .\dist\public\404.html -Force
 ```
 
 Backend:

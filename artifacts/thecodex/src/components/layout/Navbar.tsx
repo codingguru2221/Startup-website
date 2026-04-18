@@ -8,8 +8,9 @@ import ThemeSwitch from "@/components/ui/ThemeSwitch";
 
 const NAV_LINKS = [
   { name: "Home", href: "/" },
+  { name: "Web App Development", href: "/web-app-development" },
   { name: "Services", href: "/services" },
-  { name: "Projects", href: "/projects" },
+  { name: "Blog", href: "/blog" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
 ];
@@ -61,9 +62,14 @@ export function Navbar() {
                 className="w-full h-full object-cover"
               />
             </div>
-            <span className="font-display font-bold text-xl tracking-wider text-foreground">
-              The<span className="text-primary">COdex</span>
-            </span>
+            <div className="flex flex-col leading-none">
+              <span className="font-display font-bold text-xl tracking-wider text-foreground">
+                The<span className="text-primary">COdex</span>
+              </span>
+              <span className="mt-1 text-[10px] font-medium uppercase tracking-[0.28em] text-muted-foreground">
+                Software Solutions
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Nav */}

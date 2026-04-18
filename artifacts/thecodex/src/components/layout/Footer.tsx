@@ -3,9 +3,9 @@ import { Twitter, Github, Linkedin, Instagram, ArrowRight } from "lucide-react";
 import { NeonButton } from "@/components/ui/NeonButton";
 
 const socialLinks = [
-  { icon: Twitter, href: "https://x.com/TheCodexOnBOrd", label: "X" },
+  { icon: Twitter, href: "https://x.com/TheCOdexOnBOrd", label: "X" },
   { icon: Github, href: "https://github.com/The-Codex-Official", label: "GitHub" },
-  { icon: Linkedin, href: "https://www.linkedin.com/in/veerendra-vishwakarma-041584393/", label: "LinkedIn" },
+  { icon: Linkedin, href: "https://www.linkedin.com/company/thecodex-software-solutions/?viewAsMember=true", label: "LinkedIn" },
   { icon: Instagram, href: "https://www.instagram.com/the_codex_official_?igsh=MXR6Ymxwc3J3NG43ZA==", label: "Instagram" },
 ];
 
@@ -28,12 +28,17 @@ export function Footer() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <span className="font-display font-bold text-xl tracking-wider text-foreground">
-                The<span className="text-primary">COdex</span>
-              </span>
+              <div className="flex flex-col leading-none">
+                <span className="font-display font-bold text-xl tracking-wider text-foreground">
+                  The<span className="text-primary">COdex</span>
+                </span>
+                <span className="mt-1 text-[10px] font-medium uppercase tracking-[0.28em] text-muted-foreground">
+                  Software Solutions
+                </span>
+              </div>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-sm">
-              Building the future, one solution at a time. We are a premium tech startup dedicated to engineering high-value software ecosystems, AI implementations, and robust infrastructure.
+              TheCOdex Software Solutions specializes in custom web application development, SaaS products, and business automation. We build scalable, high-performance software for startups and growing businesses.
             </p>
             <div className="flex items-center gap-4 mt-2">
               {socialLinks.map((item) => (
@@ -55,10 +60,16 @@ export function Footer() {
           <div className="lg:col-span-2 lg:col-start-6">
             <h4 className="font-display font-semibold text-foreground mb-6">Navigation</h4>
             <ul className="flex flex-col gap-4">
-              {['Home', 'Services', 'About', 'Contact'].map((item) => (
-                <li key={item}>
-                  <Link href={item === 'Home' ? '/' : `/${item.toLowerCase()}`} className="text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer inline-block">
-                    {item}
+              {[
+                { name: 'Home', href: '/' },
+                { name: 'Services', href: '/services' },
+                { name: 'Blog', href: '/blog' },
+                { name: 'About', href: '/about' },
+                { name: 'Contact', href: '/contact' },
+              ].map((item) => (
+                <li key={item.name}>
+                  <Link href={item.href} className="text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer inline-block">
+                    {item.name}
                   </Link>
                 </li>
               ))}
@@ -68,10 +79,15 @@ export function Footer() {
           <div className="lg:col-span-2">
             <h4 className="font-display font-semibold text-foreground mb-6">Services</h4>
             <ul className="flex flex-col gap-4">
-              {['Web Development', 'AI Business Models', 'App Development', 'Network Setup'].map((item) => (
-                <li key={item}>
-                  <Link href="/services" className="text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer inline-block">
-                    {item}
+              {[
+                { name: 'Web App Development', href: '/web-app-development' },
+                { name: 'Web App Management', href: '/web-app-management' },
+                { name: 'SaaS Development', href: '/services/saas-development' },
+                { name: 'Business Automation', href: '/services/business-automation' },
+              ].map((item) => (
+                <li key={item.name}>
+                  <Link href={item.href} className="text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer inline-block">
+                    {item.name}
                   </Link>
                 </li>
               ))}
@@ -80,13 +96,13 @@ export function Footer() {
 
           {/* Newsletter / CTA */}
           <div className="lg:col-span-4 flex flex-col gap-6">
-            <h4 className="font-display font-semibold text-foreground">Ready to start?</h4>
+            <h4 className="font-display font-semibold text-foreground">Ready to start your project?</h4>
             <p className="text-sm text-muted-foreground">
-              Take the leap and transform your business infrastructure with our enterprise-grade solutions.
+              Get a free consultation and discover how we can help you build a powerful web application that drives your business forward.
             </p>
-            <Link href="/custom-request">
+            <Link href="/contact">
               <NeonButton variant="outline" className="w-max group">
-                Ask Us What You Want <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                Get Free Consultation <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </NeonButton>
             </Link>
           </div>

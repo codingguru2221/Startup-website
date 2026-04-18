@@ -1,36 +1,105 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowRight, Code, Cpu, Shield, Zap, CheckCircle2, ChevronRight } from "lucide-react";
+import {
+  ArrowRight,
+  Code,
+  Server,
+  BarChart3,
+  Settings,
+  CheckCircle2,
+  ChevronRight,
+  Users,
+  Zap,
+  Shield,
+  TrendingUp,
+} from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { NeonButton } from "@/components/ui/NeonButton";
 import { GlassCard } from "@/components/ui/GlassCard";
-import { SERVICE_CATEGORIES } from "@/data/services";
+import { SEO, defaultSchema } from "@/components/SEO";
 
 const FEATURES = [
-  { icon: Code, title: "Precision Engineering", desc: "Clean, scalable, and maintainable codebases planned for long-term business use." },
-  { icon: Cpu, title: "AI Integration", desc: "Practical automation and AI features that improve operations without adding confusion." },
-  { icon: Shield, title: "Enterprise Security", desc: "Reliable systems, stable architecture, and careful implementation across the stack." },
-  { icon: Zap, title: "Fast Delivery", desc: "Focused execution with modern tooling, polished interfaces, and dependable support." },
+  {
+    icon: Code,
+    title: "Expert Full-Stack Team",
+    desc: "Experienced developers skilled in React, Node.js, Python, and modern cloud technologies.",
+  },
+  {
+    icon: Zap,
+    title: "Agile Development",
+    desc: "Iterative development process with regular demos, feedback loops, and transparent communication.",
+  },
+  {
+    icon: Shield,
+    title: "Post-Launch Support",
+    desc: "Comprehensive maintenance and support to keep your application secure and performing optimally.",
+  },
+  {
+    icon: TrendingUp,
+    title: "Scalable Architecture",
+    desc: "Future-proof solutions designed to grow with your business and handle increasing demand.",
+  },
 ];
 
-const CORE_SERVICE_CARDS = [
+const CORE_SERVICES = [
   {
-    title: "Web & App Development",
-    href: "/services/development-solutions",
+    icon: Code,
+    title: "Custom Web App Development",
+    description: "Tailored web applications built from scratch to solve your unique business challenges.",
+    href: "/web-app-development",
   },
   {
-    title: "AI Business Models",
-    href: "/services/ai-automation",
+    icon: Server,
+    title: "Web App Management",
+    description: "24/7 monitoring, security updates, performance optimization, and continuous improvements.",
+    href: "/web-app-management",
   },
   {
-    title: "Network & Server Control",
-    href: "/services/infrastructure-computation",
+    icon: BarChart3,
+    title: "SaaS Product Development",
+    description: "End-to-end SaaS development from concept to launch with subscription management.",
+    href: "/services/saas-development",
   },
+  {
+    icon: Settings,
+    title: "Business Automation",
+    description: "Eliminate repetitive tasks and boost productivity with intelligent automation systems.",
+    href: "/services/business-automation",
+  },
+];
+
+const INDUSTRIES = [
+  "Startups & Entrepreneurs",
+  "E-commerce & Retail",
+  "Healthcare & Wellness",
+  "Education & E-Learning",
+  "FinTech & Banking",
+  "Real Estate",
+  "Logistics & Supply Chain",
+  "Media & Entertainment",
+];
+
+const PROCESS_STEPS = [
+  { number: "01", title: "Discovery", desc: "Understand your goals, users, and requirements" },
+  { number: "02", title: "Design", desc: "Create wireframes and UI/UX prototypes" },
+  { number: "03", title: "Develop", desc: "Build with modern technologies and best practices" },
+  { number: "04", title: "Test", desc: "Rigorous QA testing for quality and performance" },
+  { number: "05", title: "Launch", desc: "Deploy to production with monitoring setup" },
+  { number: "06", title: "Support", desc: "Ongoing maintenance and continuous improvements" },
 ];
 
 export default function Home() {
   return (
     <Layout>
+      <SEO
+        title="TheCOdex Software Solutions | Custom Web App Development Company"
+        description="Expert web application development, SaaS products, and business automation. We build scalable, high-performance web apps for startups and growing businesses."
+        keywords="web app development, custom web application, SaaS development, business automation, web application company, custom software development"
+        canonicalUrl="https://thecodex.com"
+        schemaMarkup={defaultSchema}
+      />
+
+      {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center pt-20 pb-32 overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-20">
           <img
@@ -49,7 +118,7 @@ export default function Home() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card/90 border border-primary/15 shadow-[0_14px_34px_rgba(15,23,42,0.08)] mb-8"
           >
             <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
-            <span className="text-sm font-medium text-primary tracking-wide">TRUSTED DIGITAL DELIVERY PARTNER</span>
+            <span className="text-sm font-medium text-primary tracking-wide">WEB APP DEVELOPMENT EXPERTS</span>
           </motion.div>
 
           <motion.h1
@@ -58,18 +127,18 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-black text-foreground max-w-5xl leading-[1.08] tracking-tight mb-6"
           >
-            Modern websites, apps, and AI systems
+            Custom Web Application Development
             <br />
-            <span className="gradient-text text-glow">built with clarity and purpose</span>
+            <span className="gradient-text text-glow">for Growing Businesses</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-10"
+            className="text-lg md:text-xl text-muted-foreground max-w-3xl mb-10"
           >
-            We help businesses launch polished digital products, dependable infrastructure, and practical AI solutions with a structured and professional execution style.
+            We design and develop scalable, high-performance web applications, SaaS products, and business automation systems that drive growth and streamline operations for startups and enterprises.
           </motion.p>
 
           <motion.div
@@ -78,82 +147,88 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
           >
-            <Link href="/services">
+            <Link href="/contact">
               <NeonButton size="lg" className="w-full sm:w-auto min-w-[200px]">
-                Explore Services
+                Get Free Consultation
               </NeonButton>
             </Link>
-            <Link href="/custom-request">
+            <Link href="/web-app-development">
               <NeonButton variant="outline" size="lg" icon={<ArrowRight className="w-5 h-5" />} className="w-full sm:w-auto min-w-[200px]">
-                Ask Us What You Want
+                Explore Services
               </NeonButton>
             </Link>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-24 relative">
+      {/* Stats Section */}
+      <section className="py-16 relative bg-muted/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">A professional team for <span className="text-primary text-glow">serious digital work</span></h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">Our delivery approach combines design quality, technical depth, and business thinking so every project feels stable, useful, and client-ready.</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {FEATURES.map((feature, i) => (
-              <GlassCard key={i} delay={i * 0.1} className="flex flex-col items-start text-left">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6 border border-primary/15">
-                  <feature.icon className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-bold text-foreground mb-3">{feature.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{feature.desc}</p>
-              </GlassCard>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {[
+              { number: "50+", label: "Projects Delivered" },
+              { number: "98%", label: "Client Satisfaction" },
+              { number: "3+", label: "Years Experience" },
+              { number: "24/7", label: "Support Available" },
+            ].map((stat, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="text-center"
+              >
+                <div className="text-4xl md:text-5xl font-black text-primary mb-2">{stat.number}</div>
+                <div className="text-sm md:text-base text-muted-foreground">{stat.label}</div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-24 relative overflow-hidden">
+      {/* Core Services Section */}
+      <section className="py-24 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="section-panel p-8 md:p-12">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-              <div>
-                <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">Core <span className="text-accent">service areas</span></h2>
-                <p className="text-muted-foreground max-w-xl">Clear service categories designed to support product development, automation, and long-term operations.</p>
-              </div>
-              <Link href="/services">
-                <span className="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-colors cursor-pointer group">
-                  View All Services <ChevronRight className="w-5 h-5 ml-1 group-hover:translate-x-1 transition-transform" />
-                </span>
-              </Link>
-            </div>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">
+              Our Core <span className="text-primary">Services</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Comprehensive software solutions designed to help startups and businesses build, launch, and scale digital products.
+            </p>
+          </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              {CORE_SERVICE_CARDS.map((card) => (
-                <Link
-                  key={card.title}
-                  href={card.href}
-                  className="group rounded-3xl border border-border bg-card p-8 flex flex-col justify-between shadow-[0_20px_55px_rgba(15,23,42,0.06)] hover:-translate-y-1 hover:border-primary/30 transition-all duration-300 cursor-pointer"
-                >
-                  <div className="mb-12">
-                    <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
-                      <ArrowRight className="w-5 h-5 text-primary" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {CORE_SERVICES.map((service, i) => (
+              <Link
+                key={i}
+                href={service.href}
+                className="group"
+              >
+                <GlassCard delay={i * 0.1} className="h-full cursor-pointer hover:border-primary/30 transition-all">
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 border border-primary/15">
+                      <service.icon className="w-6 h-6 text-primary" />
                     </div>
-                    <h3 className="text-2xl font-bold text-foreground mb-4">{card.title}</h3>
-                    <p className="text-muted-foreground text-sm">Full-stack implementation from frontend experiences to backend systems and operational support.</p>
+                    <div>
+                      <h3 className="text-2xl font-bold text-foreground mb-2">{service.title}</h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed">{service.description}</p>
+                    </div>
                   </div>
-
-                  <div className="self-start w-12 h-12 rounded-full border border-border bg-muted/50 flex items-center justify-center group-hover:bg-primary group-hover:border-primary group-hover:text-white transition-all duration-300">
-                    <ArrowRight className="w-5 h-5" />
+                  <div className="flex items-center text-primary font-semibold text-sm mt-6">
+                    <span>Learn More</span>
+                    <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                   </div>
-                </Link>
-              ))}
-            </div>
+                </GlassCard>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="py-24 relative">
+      {/* Why Choose Us Section */}
+      <section className="py-24 relative bg-muted/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -162,26 +237,24 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">The <span className="text-primary text-glow">COdex</span> advantage</h2>
+              <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
+                Why Choose <span className="text-primary">TheCOdex</span>
+              </h2>
               <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
-                We focus on delivery that feels thoughtful, stable, and commercially useful. That means clearer planning, cleaner interfaces, and solutions that support growth without unnecessary complexity.
+                We combine technical expertise with business understanding to deliver web applications that not only work flawlessly but also drive measurable results for your business.
               </p>
 
-              <ul className="space-y-4">
-                {[
-                  "Clear project communication",
-                  "Modern full-stack delivery",
-                  "Post-development maintenance",
-                  "Scalable architecture decisions",
-                ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3">
-                    <div className="w-6 h-6 rounded-full bg-primary/15 flex items-center justify-center">
-                      <CheckCircle2 className="w-4 h-4 text-primary" />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {FEATURES.map((feature, i) => (
+                  <div key={i} className="flex flex-col">
+                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3">
+                      <feature.icon className="w-5 h-5 text-primary" />
                     </div>
-                    <span className="text-foreground font-medium">{item}</span>
-                  </li>
+                    <h3 className="text-lg font-bold text-foreground mb-2">{feature.title}</h3>
+                    <p className="text-muted-foreground text-sm">{feature.desc}</p>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </motion.div>
 
             <motion.div
@@ -223,59 +296,81 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Process Section */}
       <section className="py-24 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
+          <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">
-              Transparent <span className="text-primary text-glow">plan pricing</span>
+              Our Development <span className="text-primary">Process</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Compare starting plans across our major service areas and choose the right path for your business.
+              A proven, agile methodology that ensures transparency, quality, and on-time delivery.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-            {SERVICE_CATEGORIES.map((service, index) => {
-              const Icon = service.icon;
-
-              return (
-                <GlassCard key={service.slug} delay={index * 0.05} hoverEffect={false} className="plan-card h-full overflow-visible border border-border/80">
-                  <div className="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/15 flex items-center justify-center mb-5">
-                    <Icon className="w-6 h-6 text-primary" />
-                  </div>
-
-                  <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-6">{service.intro}</p>
-
-                  <div className="space-y-3 mb-7">
-                    {service.plans.map((plan) => (
-                      <div key={plan.name} className="flex items-center justify-between gap-4 rounded-2xl border border-border/70 bg-background/60 px-4 py-3">
-                        <span className="text-sm font-semibold">{plan.name}</span>
-                        <span className="text-sm font-bold text-primary">{plan.price}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <Link href={`/services/${service.slug}`}>
-                    <NeonButton variant="outline" fullWidth icon={<ArrowRight className="w-4 h-4" />}>
-                      View Plans
-                    </NeonButton>
-                  </Link>
-                </GlassCard>
-              );
-            })}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {PROCESS_STEPS.map((step, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="relative"
+              >
+                <div className="text-6xl font-black text-primary/10 mb-4">{step.number}</div>
+                <h3 className="text-2xl font-bold text-foreground mb-3">{step.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{step.desc}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
+      {/* Industries Section */}
+      <section className="py-24 relative bg-muted/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">
+              Industries We <span className="text-primary">Serve</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              We build custom web applications for diverse industries, each with unique challenges and requirements.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {INDUSTRIES.map((industry, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
+              >
+                <GlassCard hoverEffect={false} className="text-center py-6">
+                  <CheckCircle2 className="w-6 h-6 text-primary mx-auto mb-3" />
+                  <p className="text-sm font-semibold text-foreground">{industry}</p>
+                </GlassCard>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary/6" />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <h2 className="text-4xl md:text-6xl font-display font-black mb-6">Ready to scale?</h2>
-          <p className="text-xl text-muted-foreground mb-10">Let&apos;s turn your idea into a cleaner, stronger, and more professional digital presence.</p>
-          <Link href="/start-project">
+          <h2 className="text-4xl md:text-6xl font-display font-black mb-6">
+            Ready to Build Your Web App?
+          </h2>
+          <p className="text-xl text-muted-foreground mb-10">
+            Let's discuss your project and create a powerful web application that drives your business forward. Get a free consultation today.
+          </p>
+          <Link href="/contact">
             <NeonButton size="lg" className="px-12 py-5 text-lg">
-              Start Your Project
+              Start Your Project Today
             </NeonButton>
           </Link>
         </div>

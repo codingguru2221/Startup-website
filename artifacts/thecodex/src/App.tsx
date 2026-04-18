@@ -15,6 +15,9 @@ import Contact from "@/pages/Contact";
 import Buy from "@/pages/Buy";
 import Privacy from "@/pages/Privacy";
 import Terms from "@/pages/Terms";
+import WebAppDevelopment from "@/pages/WebAppDevelopment";
+import WebAppManagement from "@/pages/WebAppManagement";
+import Blog from "@/pages/Blog";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
@@ -36,6 +39,9 @@ function Router() {
       <ScrollToTop />
       <Switch>
         <Route path="/" component={Home} />
+        <Route path="/web-app-development" component={WebAppDevelopment} />
+        <Route path="/web-app-management" component={WebAppManagement} />
+        <Route path="/blog" component={Blog} />
         <Route path="/services" component={Services} />
         <Route path="/services/:slug">
           {(params) => <ServiceDetail slug={params.slug} />}

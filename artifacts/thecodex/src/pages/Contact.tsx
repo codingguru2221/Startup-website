@@ -41,12 +41,12 @@ const socialLinks = [
   {
     icon: Linkedin,
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/veerendra-vishwakarma-041584393/",
+    href: "https://www.linkedin.com/company/thecodex-software-solutions/?viewAsMember=true",
   },
   {
     icon: Twitter,
     label: "X / Twitter",
-    href: "https://x.com/TheCodexOnBOrd",
+    href: "https://x.com/TheCOdexOnBOrd",
   },
 ];
 
