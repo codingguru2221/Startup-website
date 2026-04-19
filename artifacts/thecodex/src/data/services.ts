@@ -706,3 +706,18 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
 export function getServiceBySlug(slug: string) {
   return SERVICE_CATEGORIES.find((service) => service.slug === slug);
 }
+
+export function getServiceHref(slug: string) {
+  switch (slug) {
+    case "web-app-development":
+      return "/web-app-development";
+    case "web-app-management":
+      return "/web-app-management";
+    case "saas-development":
+      return "/saas-development";
+    case "business-automation":
+      return "/business-automation";
+    default:
+      return `/services/${slug}`;
+  }
+}

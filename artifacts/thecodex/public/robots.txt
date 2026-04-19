@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /thecodex-control
+
+Sitemap: https://thecodexss.in/sitemap.xml

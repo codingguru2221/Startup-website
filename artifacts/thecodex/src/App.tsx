@@ -41,6 +41,12 @@ function Router() {
         <Route path="/" component={Home} />
         <Route path="/web-app-development" component={WebAppDevelopment} />
         <Route path="/web-app-management" component={WebAppManagement} />
+        <Route path="/saas-development">
+          {() => <ServiceDetail slug="saas-development" />}
+        </Route>
+        <Route path="/business-automation">
+          {() => <ServiceDetail slug="business-automation" />}
+        </Route>
         <Route path="/blog" component={Blog} />
         <Route path="/services" component={Services} />
         <Route path="/services/:slug">

@@ -2,7 +2,9 @@ import { Download } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
+import { SEO } from "@/components/SEO";
 import { formatFileSize, getUploadedProjects, type UploadedProject } from "@/lib/project-storage";
+import { SITE_URL } from "@/lib/seo";
 
 const PROJECTS = [
   {
@@ -54,6 +56,13 @@ export default function Projects() {
 
   return (
     <Layout>
+      <SEO
+        title="Projects and Work Samples | TheCodex Software Solutions"
+        description="Browse selected projects and live work from TheCodex Software Solutions across websites, software systems, and digital product delivery."
+        keywords="software development portfolio, web app projects, SaaS work samples"
+        canonicalUrl={`${SITE_URL}/projects`}
+      />
+
       <section className="pt-8 pb-20 relative overflow-hidden">
         <div className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-primary/10 to-transparent pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

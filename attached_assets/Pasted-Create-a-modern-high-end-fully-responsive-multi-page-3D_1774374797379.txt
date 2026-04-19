@@ -1,4 +1,4 @@
-Create a modern, high-end, fully responsive, multi-page 3D website for a startup named "TheCOdex Software Solutions".
+Create a modern, high-end, fully responsive, multi-page 3D website for a startup named "TheCodex Software Solutions".
 
 The website should feel premium, futuristic, and skill-focused, with heavy use of smooth animations, 3D elements, glassmorphism, gradients, and micro-interactions. Use advanced UI/UX principles inspired by top SaaS and tech companies.
 

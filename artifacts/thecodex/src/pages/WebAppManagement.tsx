@@ -18,6 +18,7 @@ import { NeonButton } from "@/components/ui/NeonButton";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { SEO } from "@/components/SEO";
 import { useState } from "react";
+import { SITE_URL } from "@/lib/seo";
 
 const SERVICES = [
   {
@@ -129,10 +130,10 @@ export default function WebAppManagement() {
   return (
     <Layout>
       <SEO
-        title="Web App Management & Maintenance Services | TheCOdex"
+        title="Web App Management & Maintenance Services | TheCodex"
         description="Keep your web application running smoothly with proactive maintenance, security updates, performance optimization, and 24/7 monitoring. Plans starting at Rs 9,999/month."
         keywords="web app maintenance, application management, web app support, application monitoring, security updates, performance optimization"
-        canonicalUrl="https://thecodex.com/web-app-management"
+        canonicalUrl={`${SITE_URL}/web-app-management`}
       />
 
       {/* Hero Section */}

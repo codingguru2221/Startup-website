@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { GlassCard } from "@/components/ui/GlassCard";
+import { SEO } from "@/components/SEO";
 import { Target, Rocket, Sparkles, ShieldCheck, Cpu, Building2 } from "lucide-react";
+import { SITE_URL } from "@/lib/seo";
 
 const TEAM = [
   {
@@ -56,6 +58,13 @@ const FUTURE_DIRECTIONS = [
 export default function About() {
   return (
     <Layout>
+      <SEO
+        title="About TheCodex Software Solutions | Software Team for Web Apps and SaaS"
+        description="Meet TheCodex Software Solutions and learn about our mission, team, and approach to custom web applications, SaaS development, and business automation."
+        keywords="about TheCodex, web app development team, SaaS development company"
+        canonicalUrl={`${SITE_URL}/about`}
+      />
+
       <section className="pt-32 pb-16 relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-12 pointer-events-none">
           <img
@@ -89,7 +98,7 @@ export default function About() {
             transition={{ delay: 0.1 }}
             className="text-xl text-muted-foreground leading-relaxed"
           >
-            TheCOdex Software Solutions is a growing team focused on design quality, dependable software delivery, and practical support for businesses that want to build with confidence.
+            TheCodex Software Solutions is a growing team focused on design quality, dependable software delivery, and practical support for businesses that want to build with confidence.
           </motion.p>
         </div>
       </section>
@@ -114,7 +123,7 @@ export default function About() {
 
                 <h2 className="text-3xl md:text-5xl font-display font-black leading-tight mb-5">
                   MISSION &amp; VISION
-                  <span className="block text-accent text-glow-accent">TheCOdex Software Solutions</span>
+                  <span className="block text-accent text-glow-accent">TheCodex Software Solutions</span>
                 </h2>
 
                 <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6">
@@ -249,7 +258,7 @@ export default function About() {
                   <div className="w-28 h-28 mx-auto rounded-full overflow-hidden bg-background border-2 border-primary/20 mb-6 shadow-[0_14px_30px_rgba(15,23,42,0.06)] transition-shadow">
                     <img
                       src={`${import.meta.env.BASE_URL}${member.image}`}
-                      alt={`${member.role} at TheCOdex`}
+                      alt={`${member.role} at TheCodex`}
                       className="w-full h-full object-cover"
                     />
                   </div>

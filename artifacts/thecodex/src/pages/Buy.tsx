@@ -360,7 +360,7 @@ export default function Buy({ mode = "buy-service" }: BuyProps) {
                   </div>
                   <h2 className="text-3xl font-display font-bold mb-4">Request Submitted</h2>
                   <p className="text-muted-foreground max-w-md mb-8">
-                    Your inquiry has been recorded successfully. A TheCOdex representative will review it and respond with the next step.
+                    Your inquiry has been recorded successfully. A TheCodex representative will review it and respond with the next step.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4">
                     <NeonButton variant="outline" onClick={() => setLocation("/")}>

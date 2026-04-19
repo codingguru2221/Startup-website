@@ -4,7 +4,9 @@ import { ArrowLeft, ArrowRight, CheckCircle2, ChevronRight, Crown } from "lucide
 import { Layout } from "@/components/layout/Layout";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { NeonButton } from "@/components/ui/NeonButton";
-import { getServiceBySlug, SERVICE_CATEGORIES } from "@/data/services";
+import { SEO } from "@/components/SEO";
+import { getServiceBySlug, getServiceHref, SERVICE_CATEGORIES } from "@/data/services";
+import { SITE_URL } from "@/lib/seo";
 
 interface ServiceDetailProps {
   slug: string;
@@ -38,6 +40,26 @@ export default function ServiceDetail({ slug }: ServiceDetailProps) {
 
   return (
     <Layout>
+      <SEO
+        title={`${service.title} | ${service.identityLine} | TheCodex`}
+        description={service.overview}
+        keywords={`${service.title.toLowerCase()}, ${service.slug.replaceAll("-", " ")}, custom software development, TheCodex`}
+        canonicalUrl={`${SITE_URL}${getServiceHref(service.slug)}`}
+        schemaMarkup={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          name: service.title,
+          description: service.overview,
+          provider: {
+            "@type": "Organization",
+            name: "TheCodex Software Solutions",
+            url: SITE_URL,
+          },
+          areaServed: "IN",
+          serviceType: service.title,
+        }}
+      />
+
       <section className="pt-32 pb-16 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-16 left-10 w-64 h-64 rounded-full bg-primary/10 blur-[120px]" />
@@ -285,7 +307,7 @@ export default function ServiceDetail({ slug }: ServiceDetailProps) {
                   </div>
                   <h3 className="text-xl font-bold mb-3">{item.title}</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed mb-6">{item.intro}</p>
-                  <Link href={`/services/${item.slug}`}>
+                  <Link href={getServiceHref(item.slug)}>
                     <span className="text-primary text-sm font-semibold hover:text-primary/75 transition-colors cursor-pointer inline-flex items-center">
                       View Details <ChevronRight className="w-4 h-4 ml-1" />
                     </span>

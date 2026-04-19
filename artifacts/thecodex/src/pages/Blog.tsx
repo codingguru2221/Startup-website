@@ -4,6 +4,7 @@ import { ArrowRight, Calendar, Clock } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { SEO } from "@/components/SEO";
+import { SITE_URL } from "@/lib/seo";
 
 const BLOG_POSTS = [
   {
@@ -92,10 +93,10 @@ export default function Blog() {
   return (
     <Layout>
       <SEO
-        title="Blog - Web App Development Insights & Tips | TheCOdex"
+        title="Blog - Web App Development Insights & Tips | TheCodex"
         description="Expert insights on web application development, SaaS products, business automation, and technology trends. Learn from our experienced development team."
         keywords="web app development blog, SaaS development tips, business automation, software development insights, tech blog"
-        canonicalUrl="https://thecodex.com/blog"
+        canonicalUrl={`${SITE_URL}/blog`}
       />
 
       {/* Hero Section */}
@@ -107,7 +108,7 @@ export default function Blog() {
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-6xl font-display font-black mb-6"
           >
-            TheCOdex <span className="gradient-text">Blog</span>
+            TheCodex <span className="gradient-text">Blog</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}

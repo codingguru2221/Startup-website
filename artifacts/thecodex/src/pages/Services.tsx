@@ -4,11 +4,20 @@ import { ShieldCheck, ChevronRight } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { NeonButton } from "@/components/ui/NeonButton";
-import { SERVICE_CATEGORIES } from "@/data/services";
+import { SEO } from "@/components/SEO";
+import { getServiceHref, SERVICE_CATEGORIES } from "@/data/services";
+import { SITE_URL } from "@/lib/seo";
 
 export default function Services() {
   return (
     <Layout>
+      <SEO
+        title="Software Development Services | Web Apps, SaaS & Automation | TheCodex"
+        description="Explore TheCodex services for custom web app development, web app management, SaaS product development, business automation, and growth systems."
+        keywords="software development services, web app development services, SaaS development services, business automation services"
+        canonicalUrl={`${SITE_URL}/services`}
+      />
+
       <section className="pt-32 pb-16 relative">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-64 bg-primary/15 blur-[150px] pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
@@ -49,7 +58,7 @@ export default function Services() {
                   ))}
                 </div>
                 <div className="mt-8 pt-4 border-t border-border flex items-center justify-between gap-4">
-                  <Link href={`/services/${category.slug}`}>
+                  <Link href={getServiceHref(category.slug)}>
                     <span className="text-muted-foreground text-sm font-medium hover:text-foreground transition-colors cursor-pointer inline-flex items-center">
                       View Details <ChevronRight className="w-4 h-4 ml-1" />
                     </span>

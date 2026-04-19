@@ -5,9 +5,25 @@
   "type": "module",
   "scripts": {
     "dev": "vite --config vite.config.ts --host 0.0.0.0",
-    "build": "vite build --config vite.config.ts",
+    "build": "vite build",
+    "postbuild": "react-snap",
     "serve": "vite preview --config vite.config.ts --host 0.0.0.0",
     "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "reactSnap": {
+    "source": "dist/public",
+    "inlineCss": true,
+    "puppeteerExecutablePath": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "puppeteerArgs": [
+      "--no-sandbox"
+    ],
+    "crawl": true,
+    "include": [
+      "/",
+      "/web-app-development",
+      "/saas-development",
+      "/business-automation"
+    ]
   },
   "devDependencies": {
     "@hookform/resolvers": "^3.10.0",
@@ -64,6 +80,7 @@
     "react-hook-form": "^7.71.2",
     "react-icons": "^5.4.0",
     "react-resizable-panels": "^2.1.7",
+    "react-snap": "^1.23.0",
     "recharts": "^2.15.2",
     "sonner": "^2.0.7",
     "tailwind-merge": "catalog:",

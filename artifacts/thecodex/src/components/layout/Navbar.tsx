@@ -58,13 +58,13 @@ export function Navbar() {
             <div className="relative flex items-center justify-center w-10 h-10 rounded-lg overflow-hidden border border-primary/20 group-hover:border-primary/50 transition-all duration-300 bg-card shadow-[0_10px_22px_rgba(15,23,42,0.08)]">
               <img
                 src={`${import.meta.env.BASE_URL}codex.jpg`}
-                alt="TheCOdex logo"
+                alt="TheCodex logo"
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="flex flex-col leading-none">
               <span className="font-display font-bold text-xl tracking-wider text-foreground">
-                The<span className="text-primary">COdex</span>
+                The<span className="text-primary">Codex</span>
               </span>
               <span className="mt-1 text-[10px] font-medium uppercase tracking-[0.28em] text-muted-foreground">
                 Software Solutions

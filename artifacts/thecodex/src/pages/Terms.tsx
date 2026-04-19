@@ -6,7 +6,7 @@ const sections = [
   {
     title: "1. Introduction",
     body: [
-      "These Terms & Conditions govern the working relationship between TheCOdex Software Solutions (hereinafter referred to as \"Company\") and all individuals associated with it, including but not limited to developers, coders, marketing agents, HR personnel, callers, and other contributors.",
+      "These Terms & Conditions govern the working relationship between TheCodex Software Solutions (hereinafter referred to as \"Company\") and all individuals associated with it, including but not limited to developers, coders, marketing agents, HR personnel, callers, and other contributors.",
       "By working with the Company, you agree to comply with these terms.",
     ],
   },
@@ -53,7 +53,7 @@ const sections = [
   {
     title: "7. Intellectual Property",
     bullets: [
-      "Any work (code, design, content, strategy) created during association with the Company will be the sole property of TheCOdex Software Solutions.",
+      "Any work (code, design, content, strategy) created during association with the Company will be the sole property of TheCodex Software Solutions.",
       "Individuals cannot reuse, resell, or distribute company work without written permission.",
     ],
   },
@@ -105,7 +105,7 @@ const sections = [
   {
     title: "14. Acceptance",
     body: [
-      "By working with TheCOdex Software Solutions, you acknowledge that you have read, understood, and agreed to these Terms & Conditions.",
+      "By working with TheCodex Software Solutions, you acknowledge that you have read, understood, and agreed to these Terms & Conditions.",
     ],
   },
 ];
@@ -125,7 +125,7 @@ export default function Terms() {
               <FileText className="w-4 h-4" />
               Terms &amp; Conditions
             </div>
-            <h1 className="text-4xl md:text-6xl font-display font-black mb-4">TheCOdex Software Solutions</h1>
+            <h1 className="text-4xl md:text-6xl font-display font-black mb-4">TheCodex Software Solutions</h1>
             <p className="text-base md:text-lg text-muted-foreground">
               Last Updated: April 15, 2026
             </p>
@@ -180,7 +180,7 @@ export default function Terms() {
                 <div className="space-y-6">
                   <div>
                     <p className="text-sm text-muted-foreground mb-1">Company Name</p>
-                    <p className="text-lg font-semibold">TheCOdex Software Solutions</p>
+                    <p className="text-lg font-semibold">TheCodex Software Solutions</p>
                     <p className="text-sm text-muted-foreground mt-2">Veerendra Vishwakarma, Founder</p>
                   </div>
 

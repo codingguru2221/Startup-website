@@ -6,7 +6,7 @@ const sections = [
   {
     title: "1. Introduction",
     body: [
-      "This Privacy Policy describes how TheCOdex Software Solutions (\"Company\") collects, uses, and protects the information of its clients, users, and associated individuals.",
+      "This Privacy Policy describes how TheCodex Software Solutions (\"Company\") collects, uses, and protects the information of its clients, users, and associated individuals.",
       "By using our services, website, or working with us, you agree to the terms outlined in this policy.",
     ],
   },
@@ -108,7 +108,7 @@ const sections = [
     title: "12. Contact Information",
     body: ["For any questions or concerns regarding this Privacy Policy, you can contact:"],
     contact: [
-      "TheCOdex Software Solutions",
+      "TheCodex Software Solutions",
       "Veerendra Vishwakarma",
       "Email: thecodexofficial001@gmail.com",
       "Phone: 8305223353",
@@ -137,7 +137,7 @@ export default function Privacy() {
               <Shield className="w-4 h-4" />
               Privacy Policy
             </div>
-            <h1 className="text-4xl md:text-6xl font-display font-black mb-4">TheCOdex Software Solutions</h1>
+            <h1 className="text-4xl md:text-6xl font-display font-black mb-4">TheCodex Software Solutions</h1>
             <p className="text-base md:text-lg text-muted-foreground">Last Updated: April 15, 2026</p>
           </motion.div>
         </div>
@@ -210,7 +210,7 @@ export default function Privacy() {
                 <div className="space-y-6">
                   <div>
                     <p className="text-sm text-muted-foreground mb-1">Company Name</p>
-                    <p className="text-lg font-semibold">TheCOdex Software Solutions</p>
+                    <p className="text-lg font-semibold">TheCodex Software Solutions</p>
                     <p className="text-sm text-muted-foreground mt-2">Veerendra Vishwakarma, Founder</p>
                   </div>
 

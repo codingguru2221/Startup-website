@@ -2,9 +2,11 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { NeonButton } from "@/components/ui/NeonButton";
+import { SEO } from "@/components/SEO";
 import { Github, Instagram, Linkedin, Mail, MapPin, Phone, Twitter } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { submitForm } from "@/lib/form-submission";
+import { SITE_URL } from "@/lib/seo";
 
 const contactDetails = [
   {
@@ -46,7 +48,7 @@ const socialLinks = [
   {
     icon: Twitter,
     label: "X / Twitter",
-    href: "https://x.com/TheCOdexOnBOrd",
+    href: "https://x.com/TheCodexOnBOrd",
   },
 ];
 
@@ -85,6 +87,13 @@ export default function Contact() {
 
   return (
     <Layout>
+      <SEO
+        title="Contact TheCodex | Web App Development and SaaS Consultation"
+        description="Contact TheCodex Software Solutions to discuss custom web application development, SaaS product delivery, maintenance, and business automation projects."
+        keywords="contact web app development company, SaaS consultation, automation software consultation"
+        canonicalUrl={`${SITE_URL}/contact`}
+      />
+
       <section className="pt-32 pb-24 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
