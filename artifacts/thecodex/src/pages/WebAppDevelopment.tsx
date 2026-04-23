@@ -15,7 +15,7 @@ import {
 import { Layout } from "@/components/layout/Layout";
 import { NeonButton } from "@/components/ui/NeonButton";
 import { GlassCard } from "@/components/ui/GlassCard";
-import { SEO } from "@/components/SEO";
+import { SEO, BRAND_SEARCH_KEYWORDS, createBreadcrumbSchema, createWebPageSchema } from "@/components/SEO";
 import { SITE_URL } from "@/lib/seo";
 import { useState } from "react";
 
@@ -157,23 +157,36 @@ export default function WebAppDevelopment() {
   return (
     <Layout>
       <SEO
-        title="Custom Web Application Development Services for SaaS and Automation | TheCodex"
-        description="TheCodex builds custom web applications for SaaS products, internal business systems, and automation-heavy workflows with scalable architecture and long-term support."
+        title="Custom Web Application Development Services for SaaS and Automation | TheCOdex"
+        description="TheCOdex builds custom web applications for SaaS products, internal business systems, and automation-heavy workflows with scalable architecture and long-term support."
         keywords="custom web application development services, SaaS application development, business automation software development, internal tool development"
         canonicalUrl={`${SITE_URL}/web-app-development`}
-        schemaMarkup={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          name: "Custom Web Application Development",
-          description:
-            "Custom web application development for SaaS products, business automation systems, internal tools, and scalable digital platforms.",
-          provider: {
-            "@type": "Organization",
-            name: "TheCodex Software Solutions",
-            url: SITE_URL,
+        schemaMarkup={[
+          createWebPageSchema({
+            path: "/web-app-development",
+            name: "Custom Web Application Development Services for SaaS and Automation | TheCOdex",
+            description:
+              "TheCOdex builds custom web applications for SaaS products, internal business systems, and automation-heavy workflows with scalable architecture and long-term support.",
+          }),
+          createBreadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Web App Development", path: "/web-app-development" },
+          ]),
+          {
+            "@type": "Service",
+            name: "Custom Web Application Development",
+            description:
+              "Custom web application development for SaaS products, business automation systems, internal tools, and scalable digital platforms.",
+            keywords: `custom web application development, SaaS application development, internal tool development, ${BRAND_SEARCH_KEYWORDS}`,
+            provider: {
+              "@type": "Organization",
+              name: "TheCOdex Software Solutions",
+              url: SITE_URL,
+            },
+            areaServed: "IN",
+            serviceType: "Custom Web Application Development",
           },
-          areaServed: "IN",
-        }}
+        ]}
       />
 
       <section className="pt-32 pb-20 relative">

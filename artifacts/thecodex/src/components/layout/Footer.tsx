@@ -3,7 +3,7 @@ import { Twitter, Github, Linkedin, Instagram, ArrowRight } from "lucide-react";
 import { NeonButton } from "@/components/ui/NeonButton";
 
 const socialLinks = [
-  { icon: Twitter, href: "https://x.com/TheCodexOnBOrd", label: "X" },
+  { icon: Twitter, href: "https://x.com/TheCOdexOnBOrd", label: "X" },
   { icon: Github, href: "https://github.com/The-Codex-Official", label: "GitHub" },
   { icon: Linkedin, href: "https://www.linkedin.com/company/thecodex-software-solutions/?viewAsMember=true", label: "LinkedIn" },
   { icon: Instagram, href: "https://www.instagram.com/the_codex_official_?igsh=MXR6Ymxwc3J3NG43ZA==", label: "Instagram" },
@@ -24,13 +24,13 @@ export function Footer() {
               <div className="relative flex items-center justify-center w-10 h-10 rounded-lg overflow-hidden border border-primary/20 bg-card shadow-[0_10px_22px_rgba(15,23,42,0.08)]">
                 <img
                   src={`${import.meta.env.BASE_URL}codex.jpg`}
-                  alt="TheCodex logo"
+                  alt="TheCOdex logo"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="flex flex-col leading-none">
                 <span className="font-display font-bold text-xl tracking-wider text-foreground">
-                  The<span className="text-primary">Codex</span>
+                  The<span className="text-primary">COdex</span>
                 </span>
                 <span className="mt-1 text-[10px] font-medium uppercase tracking-[0.28em] text-muted-foreground">
                   Software Solutions
@@ -38,7 +38,7 @@ export function Footer() {
               </div>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-sm">
-              TheCodex Software Solutions specializes in custom web application development, SaaS products, and business automation. We build scalable, high-performance software for startups and growing businesses.
+              TheCOdex Software Solutions specializes in custom web application development, SaaS products, and business automation. We build scalable, high-performance software for startups and growing businesses.
             </p>
             <div className="flex items-center gap-4 mt-2">
               {socialLinks.map((item) => (
@@ -63,7 +63,7 @@ export function Footer() {
               {[
                 { name: 'Home', href: '/' },
                 { name: 'Services', href: '/services' },
-                { name: 'Blog', href: '/blog' },
+                { name: 'Blogs', href: '/blog' },
                 { name: 'About', href: '/about' },
                 { name: 'Contact', href: '/contact' },
               ].map((item) => (
@@ -110,7 +110,7 @@ export function Footer() {
 
         <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            Copyright {new Date().getFullYear()} TheCodex Software Solutions. All rights reserved.
+            Copyright {new Date().getFullYear()} TheCOdex Software Solutions. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-muted-foreground">
             <Link href="/privacy-policy" className="hover:text-foreground transition-colors">Privacy Policy</Link>

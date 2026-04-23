@@ -4,6 +4,7 @@ import { ArrowLeft, CheckCircle2, ClipboardList, Headphones, Layers3, Rocket, Sh
 import { useLocation } from "wouter";
 import { Layout } from "@/components/layout/Layout";
 import { NeonButton } from "@/components/ui/NeonButton";
+import { SEO, createBreadcrumbSchema, createWebPageSchema } from "@/components/SEO";
 import { useToast } from "@/hooks/use-toast";
 import { submitForm } from "@/lib/form-submission";
 
@@ -140,6 +141,41 @@ const FORM_CONFIGS = {
   },
 } as const;
 
+const FORM_SEO = {
+  "buy-service": {
+    path: "/buy-service",
+    title: "Buy Software Development Services | TheCOdex",
+    description:
+      "Request a website, web app, AI automation, infrastructure, or marketing service from TheCOdex Software Solutions with clear project details.",
+    keywords:
+      "buy software development services, hire web app developer, website development inquiry, app development quote",
+  },
+  "custom-request": {
+    path: "/custom-request",
+    title: "Custom Software Request | TheCOdex",
+    description:
+      "Share a custom software, web application, automation, or digital growth requirement and get guidance from TheCOdex Software Solutions.",
+    keywords:
+      "custom software request, custom web app quote, business automation inquiry, software consultation",
+  },
+  "start-project": {
+    path: "/start-project",
+    title: "Start a Web App or SaaS Project | TheCOdex",
+    description:
+      "Start your website, web application, SaaS, AI automation, or internal business system project with TheCOdex Software Solutions.",
+    keywords:
+      "start web app project, SaaS project inquiry, web application consultation, software project planning",
+  },
+  "maintenance-support": {
+    path: "/maintenance-support",
+    title: "Web App Maintenance Support Inquiry | TheCOdex",
+    description:
+      "Request maintenance, bug fixes, upgrades, monitoring, or long-term support for your website, web application, or software system.",
+    keywords:
+      "web app maintenance support, website maintenance inquiry, software support request, bug fix service",
+  },
+} as const;
+
 function buildMessage(mode: InquiryMode, values: FormValues) {
   const common = [
     `Name: ${values.name}`,
@@ -235,6 +271,7 @@ export default function Buy({ mode = "buy-service" }: BuyProps) {
   });
 
   const config = useMemo(() => FORM_CONFIGS[mode], [mode]);
+  const seo = useMemo(() => FORM_SEO[mode], [mode]);
   const FormIcon = config.icon;
 
   const updateField = (key: keyof FormValues, value: string) => {
@@ -285,6 +322,23 @@ export default function Buy({ mode = "buy-service" }: BuyProps) {
 
   return (
     <Layout>
+      <SEO
+        title={seo.title}
+        description={seo.description}
+        keywords={seo.keywords}
+        canonicalUrl={seo.path}
+        schemaMarkup={[
+          createWebPageSchema({
+            path: seo.path,
+            name: seo.title,
+            description: seo.description,
+          }),
+          createBreadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: config.title, path: seo.path },
+          ]),
+        ]}
+      />
       <section className="pt-28 pb-24 relative min-h-screen">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute top-20 left-12 w-80 h-80 rounded-full bg-primary/10 blur-[120px]" />
@@ -360,7 +414,7 @@ export default function Buy({ mode = "buy-service" }: BuyProps) {
                   </div>
                   <h2 className="text-3xl font-display font-bold mb-4">Request Submitted</h2>
                   <p className="text-muted-foreground max-w-md mb-8">
-                    Your inquiry has been recorded successfully. A TheCodex representative will review it and respond with the next step.
+                    Your inquiry has been recorded successfully. A TheCOdex representative will review it and respond with the next step.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4">
                     <NeonButton variant="outline" onClick={() => setLocation("/")}>

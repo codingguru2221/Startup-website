@@ -1,0 +1,14 @@
+{
+  "name": "TheCOdex Software Solutions",
+  "short_name": "TheCOdex",
+  "icons": [
+    {
+      "src": "/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#006dcc",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}

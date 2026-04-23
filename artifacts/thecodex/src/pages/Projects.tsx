@@ -2,7 +2,7 @@ import { Download } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
-import { SEO } from "@/components/SEO";
+import { SEO, createBreadcrumbSchema, createWebPageSchema } from "@/components/SEO";
 import { formatFileSize, getUploadedProjects, type UploadedProject } from "@/lib/project-storage";
 import { SITE_URL } from "@/lib/seo";
 
@@ -57,10 +57,32 @@ export default function Projects() {
   return (
     <Layout>
       <SEO
-        title="Projects and Work Samples | TheCodex Software Solutions"
-        description="Browse selected projects and live work from TheCodex Software Solutions across websites, software systems, and digital product delivery."
+        title="Projects and Work Samples | TheCOdex Software Solutions"
+        description="Browse selected projects and live work from TheCOdex Software Solutions across websites, software systems, and digital product delivery."
         keywords="software development portfolio, web app projects, SaaS work samples"
         canonicalUrl={`${SITE_URL}/projects`}
+        schemaMarkup={[
+          createWebPageSchema({
+            path: "/projects",
+            name: "Projects and Work Samples | TheCOdex Software Solutions",
+            description:
+              "Browse selected projects and live work from TheCOdex Software Solutions across websites, software systems, and digital product delivery.",
+          }),
+          createBreadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Projects", path: "/projects" },
+          ]),
+          {
+            "@type": "ItemList",
+            name: "TheCOdex project portfolio",
+            itemListElement: PROJECTS.map((project, index) => ({
+              "@type": "ListItem",
+              position: index + 1,
+              name: project.title,
+              url: project.liveUrl,
+            })),
+          },
+        ]}
       />
 
       <section className="pt-8 pb-20 relative overflow-hidden">

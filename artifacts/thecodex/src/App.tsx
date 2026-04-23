@@ -18,6 +18,7 @@ import Terms from "@/pages/Terms";
 import WebAppDevelopment from "@/pages/WebAppDevelopment";
 import WebAppManagement from "@/pages/WebAppManagement";
 import Blog from "@/pages/Blog";
+import BlogDetail from "@/pages/BlogDetail";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
@@ -46,6 +47,9 @@ function Router() {
         </Route>
         <Route path="/business-automation">
           {() => <ServiceDetail slug="business-automation" />}
+        </Route>
+        <Route path="/blog/:slug">
+          {(params) => <BlogDetail slug={params.slug} />}
         </Route>
         <Route path="/blog" component={Blog} />
         <Route path="/services" component={Services} />

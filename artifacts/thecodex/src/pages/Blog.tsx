@@ -1,102 +1,57 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowRight, Calendar, Clock } from "lucide-react";
+import { ArrowRight, Briefcase, Calendar, Clock, MessageSquareText } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { GlassCard } from "@/components/ui/GlassCard";
-import { SEO } from "@/components/SEO";
+import { SEO, createBreadcrumbSchema, createWebPageSchema, websiteSchema } from "@/components/SEO";
+import { BLOG_POSTS } from "@/data/blog-posts";
 import { SITE_URL } from "@/lib/seo";
-
-const BLOG_POSTS = [
-  {
-    title: "How Much Does Custom Web App Development Cost in 2026?",
-    excerpt: "A comprehensive breakdown of web application development costs, from simple MVPs to enterprise platforms. Learn what factors influence pricing.",
-    category: "Development",
-    date: "Apr 15, 2026",
-    readTime: "8 min read",
-    slug: "web-app-development-cost-2026",
-  },
-  {
-    title: "Top 10 Features Every SaaS Product Needs",
-    excerpt: "Essential features that make SaaS products successful, from user onboarding to analytics. Build a product that users love and keep them engaged.",
-    category: "SaaS",
-    date: "Apr 10, 2026",
-    readTime: "6 min read",
-    slug: "essential-saas-features",
-  },
-  {
-    title: "Web App vs Website: What Does Your Business Need?",
-    excerpt: "Understanding the difference between web applications and websites, and how to choose the right solution for your business goals.",
-    category: "Strategy",
-    date: "Apr 5, 2026",
-    readTime: "5 min read",
-    slug: "web-app-vs-website",
-  },
-  {
-    title: "How to Choose the Right Tech Stack for Your Web Application",
-    excerpt: "A practical guide to selecting the best technologies for your web app project, considering scalability, performance, and team expertise.",
-    category: "Development",
-    date: "Mar 28, 2026",
-    readTime: "7 min read",
-    slug: "choose-tech-stack-web-app",
-  },
-  {
-    title: "5 Signs Your Business Needs a Custom Web Application",
-    excerpt: "Is your business outgrowing off-the-shelf solutions? Learn the warning signs that indicate it's time to invest in custom software.",
-    category: "Business",
-    date: "Mar 20, 2026",
-    readTime: "4 min read",
-    slug: "signs-need-custom-web-app",
-  },
-  {
-    title: "Web App Development Process: Step-by-Step Guide",
-    excerpt: "From initial concept to launch, understand every stage of the web application development process and what to expect.",
-    category: "Development",
-    date: "Mar 15, 2026",
-    readTime: "10 min read",
-    slug: "web-app-development-process",
-  },
-  {
-    title: "SaaS Development Best Practices for Startups",
-    excerpt: "Key strategies for building successful SaaS products as a startup, from MVP planning to scaling your architecture.",
-    category: "SaaS",
-    date: "Mar 8, 2026",
-    readTime: "6 min read",
-    slug: "saas-development-best-practices",
-  },
-  {
-    title: "How Business Automation Saves Time and Money",
-    excerpt: "Real-world examples of how automation transforms business operations, reduces costs, and improves team productivity.",
-    category: "Automation",
-    date: "Mar 1, 2026",
-    readTime: "5 min read",
-    slug: "business-automation-benefits",
-  },
-  {
-    title: "React vs Next.js: Which is Better for Your Web App?",
-    excerpt: "Comparing React and Next.js for web application development. Learn when to use each framework and make the right choice.",
-    category: "Development",
-    date: "Feb 22, 2026",
-    readTime: "7 min read",
-    slug: "react-vs-nextjs",
-  },
-  {
-    title: "Web App Maintenance: Why It Matters and What It Costs",
-    excerpt: "The importance of ongoing web application maintenance, what it includes, and how to budget for long-term support.",
-    category: "Maintenance",
-    date: "Feb 15, 2026",
-    readTime: "6 min read",
-    slug: "web-app-maintenance-guide",
-  },
-];
 
 export default function Blog() {
   return (
     <Layout>
       <SEO
-        title="Blog - Web App Development Insights & Tips | TheCodex"
+        title="Blogs - Web App Development Insights & Tips | TheCOdex"
         description="Expert insights on web application development, SaaS products, business automation, and technology trends. Learn from our experienced development team."
         keywords="web app development blog, SaaS development tips, business automation, software development insights, tech blog"
         canonicalUrl={`${SITE_URL}/blog`}
+        ogType="blog"
+        schemaMarkup={[
+          createWebPageSchema({
+            path: "/blog",
+            name: "Blogs - Web App Development Insights & Tips | TheCOdex",
+            description:
+              "Expert insights on web application development, SaaS products, business automation, and technology trends. Learn from our experienced development team.",
+          }),
+          createBreadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Blogs", path: "/blog" },
+          ]),
+          websiteSchema,
+          {
+            "@type": "Blog",
+            name: "TheCOdex Blogs",
+            url: `${SITE_URL}/blog`,
+            blogPost: BLOG_POSTS.map((post) => ({
+              "@type": "BlogPosting",
+              url: `${SITE_URL}/blog/${post.slug}`,
+              mainEntityOfPage: `${SITE_URL}/blog/${post.slug}`,
+              headline: post.title,
+              description: post.excerpt,
+              datePublished: post.isoDate,
+              dateModified: post.isoDate,
+              articleSection: post.category,
+              keywords: post.takeaways.join(", "),
+              author: {
+                "@type": "Organization",
+                name: "TheCOdex Software Solutions",
+              },
+              publisher: {
+                "@id": `${SITE_URL}/#organization`,
+              },
+            })),
+          },
+        ]}
       />
 
       {/* Hero Section */}
@@ -108,7 +63,7 @@ export default function Blog() {
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-6xl font-display font-black mb-6"
           >
-            TheCodex <span className="gradient-text">Blog</span>
+            TheCOdex <span className="gradient-text">Blogs</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -127,69 +82,117 @@ export default function Blog() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {BLOG_POSTS.map((post, i) => (
               <motion.div
-                key={i}
+                key={post.slug}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
               >
-                <GlassCard className="h-full flex flex-col cursor-pointer hover:border-primary/30 transition-all">
-                  <div className="flex items-center gap-2 mb-4">
-                    <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">
-                      {post.category}
-                    </span>
-                  </div>
-
-                  <h3 className="text-xl font-bold text-foreground mb-3 line-clamp-2">
-                    {post.title}
-                  </h3>
-
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-6 line-clamp-3 flex-grow">
-                    {post.excerpt}
-                  </p>
-
-                  <div className="flex items-center gap-4 text-xs text-muted-foreground mb-4">
-                    <div className="flex items-center gap-1">
-                      <Calendar className="w-3 h-3" />
-                      <span>{post.date}</span>
+                <Link href={`/blog/${post.slug}`} className="block h-full">
+                  <GlassCard className="h-full flex flex-col cursor-pointer hover:border-primary/30 transition-all">
+                    <div className="flex items-center gap-2 mb-4">
+                      <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">
+                        {post.category}
+                      </span>
                     </div>
-                    <div className="flex items-center gap-1">
-                      <Clock className="w-3 h-3" />
-                      <span>{post.readTime}</span>
-                    </div>
-                  </div>
 
-                  <div className="flex items-center text-primary font-semibold text-sm group">
-                    <span>Read More</span>
-                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </GlassCard>
+                    <h3 className="text-xl font-bold text-foreground mb-3 line-clamp-2">
+                      {post.title}
+                    </h3>
+
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-6 line-clamp-3 flex-grow">
+                      {post.excerpt}
+                    </p>
+
+                    <div className="flex items-center gap-4 text-xs text-muted-foreground mb-4">
+                      <div className="flex items-center gap-1">
+                        <Calendar className="w-3 h-3" />
+                        <span>{post.date}</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Clock className="w-3 h-3" />
+                        <span>{post.readTime}</span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center text-primary font-semibold text-sm group">
+                      <span>Read More</span>
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </GlassCard>
+                </Link>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Newsletter Section */}
+      {/* Consultation CTA */}
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary/6" />
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <h2 className="text-4xl md:text-5xl font-display font-black mb-6">
-            Stay Updated with Expert Insights
-          </h2>
-          <p className="text-xl text-muted-foreground mb-10">
-            Subscribe to our newsletter for the latest web development tips, SaaS strategies, and automation insights.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 px-6 py-4 rounded-lg bg-card border border-border focus:border-primary focus:outline-none text-foreground"
-            />
-            <button className="px-8 py-4 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition-colors">
-              Subscribe
-            </button>
-          </div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <GlassCard hoverEffect={false} className="border-primary/20">
+            <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_0.9fr] gap-10 items-center">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary mb-4">
+                  Turn Insight Into Action
+                </p>
+                <h2 className="text-3xl md:text-5xl font-display font-black mb-5">
+                  Need help applying these ideas to your business?
+                </h2>
+                <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
+                  If any of these blog topics match what you are planning, TheCOdex can help
+                  you shape the right web app, SaaS product, or automation workflow without
+                  overbuilding the first version.
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                <div className="rounded-2xl border border-border bg-muted/30 p-5">
+                  <div className="flex items-start gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary flex-shrink-0">
+                      <MessageSquareText className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="text-base font-semibold text-foreground mb-1">Get clarity first</h3>
+                      <p className="text-sm leading-relaxed text-muted-foreground">
+                        We help convert rough ideas into a practical feature plan, timeline, and build path.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="rounded-2xl border border-border bg-muted/30 p-5">
+                  <div className="flex items-start gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary flex-shrink-0">
+                      <Briefcase className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="text-base font-semibold text-foreground mb-1">Build for real business use</h3>
+                      <p className="text-sm leading-relaxed text-muted-foreground">
+                        From client portals to SaaS dashboards, we focus on systems people can actually operate and grow with.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-4 pt-2">
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center rounded-xl bg-primary px-6 py-3 font-semibold text-white transition-colors hover:bg-primary/90"
+                  >
+                    Discuss Your Project
+                  </Link>
+                  <Link
+                    href="/services"
+                    className="inline-flex items-center justify-center rounded-xl border border-border bg-card px-6 py-3 font-semibold text-foreground transition-colors hover:border-primary/40 hover:text-primary"
+                  >
+                    Explore Services
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </GlassCard>
         </div>
       </section>
     </Layout>

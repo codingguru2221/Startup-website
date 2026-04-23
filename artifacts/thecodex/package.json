@@ -12,7 +12,7 @@
   },
   "reactSnap": {
     "source": "dist/public",
-    "inlineCss": true,
+    "inlineCss": false,
     "puppeteerExecutablePath": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
     "puppeteerArgs": [
       "--no-sandbox"
@@ -20,6 +20,17 @@
     "crawl": true,
     "include": [
       "/",
+      "/blog",
+      "/blog/web-app-development-cost-2026",
+      "/blog/essential-saas-features",
+      "/blog/web-app-vs-website",
+      "/blog/choose-tech-stack-web-app",
+      "/blog/signs-need-custom-web-app",
+      "/blog/web-app-development-process",
+      "/blog/saas-development-best-practices",
+      "/blog/business-automation-benefits",
+      "/blog/react-vs-nextjs",
+      "/blog/web-app-maintenance-guide",
       "/web-app-development",
       "/saas-development",
       "/business-automation"

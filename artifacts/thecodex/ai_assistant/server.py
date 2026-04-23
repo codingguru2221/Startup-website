@@ -62,7 +62,7 @@ pipeline = load_pipeline()
 vectorizer = pipeline["vectorizer"]
 classifier = pipeline["classifier"]
 
-app = FastAPI(title="TheCodex AI Assistant")
+app = FastAPI(title="TheCOdex AI Assistant")
 
 app.add_middleware(
     CORSMiddleware,

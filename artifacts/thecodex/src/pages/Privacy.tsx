@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
 import { Shield } from "lucide-react";
+import { SEO, createBreadcrumbSchema, createWebPageSchema } from "@/components/SEO";
 import { Layout } from "@/components/layout/Layout";
 
 const sections = [
   {
     title: "1. Introduction",
     body: [
-      "This Privacy Policy describes how TheCodex Software Solutions (\"Company\") collects, uses, and protects the information of its clients, users, and associated individuals.",
+      "This Privacy Policy describes how TheCOdex Software Solutions (\"Company\") collects, uses, and protects the information of its clients, users, and associated individuals.",
       "By using our services, website, or working with us, you agree to the terms outlined in this policy.",
     ],
   },
@@ -108,7 +109,7 @@ const sections = [
     title: "12. Contact Information",
     body: ["For any questions or concerns regarding this Privacy Policy, you can contact:"],
     contact: [
-      "TheCodex Software Solutions",
+      "TheCOdex Software Solutions",
       "Veerendra Vishwakarma",
       "Email: thecodexofficial001@gmail.com",
       "Phone: 8305223353",
@@ -123,8 +124,30 @@ const sections = [
 ];
 
 export default function Privacy() {
+  const title = "Privacy Policy | TheCOdex Software Solutions";
+  const description =
+    "Read TheCOdex Software Solutions privacy policy, including how we collect, use, protect, retain, and handle client and website visitor information.";
+
   return (
     <Layout>
+      <SEO
+        title={title}
+        description={description}
+        keywords="TheCOdex privacy policy, software company privacy policy, data protection policy"
+        canonicalUrl="/privacy-policy"
+        modifiedTime="2026-04-15"
+        schemaMarkup={[
+          createWebPageSchema({
+            path: "/privacy-policy",
+            name: title,
+            description,
+          }),
+          createBreadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Privacy Policy", path: "/privacy-policy" },
+          ]),
+        ]}
+      />
       <section className="pt-32 pb-14 relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none" />
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -137,7 +160,7 @@ export default function Privacy() {
               <Shield className="w-4 h-4" />
               Privacy Policy
             </div>
-            <h1 className="text-4xl md:text-6xl font-display font-black mb-4">TheCodex Software Solutions</h1>
+            <h1 className="text-4xl md:text-6xl font-display font-black mb-4">TheCOdex Software Solutions</h1>
             <p className="text-base md:text-lg text-muted-foreground">Last Updated: April 15, 2026</p>
           </motion.div>
         </div>
@@ -210,7 +233,7 @@ export default function Privacy() {
                 <div className="space-y-6">
                   <div>
                     <p className="text-sm text-muted-foreground mb-1">Company Name</p>
-                    <p className="text-lg font-semibold">TheCodex Software Solutions</p>
+                    <p className="text-lg font-semibold">TheCOdex Software Solutions</p>
                     <p className="text-sm text-muted-foreground mt-2">Veerendra Vishwakarma, Founder</p>
                   </div>
 

@@ -2,8 +2,8 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { NeonButton } from "@/components/ui/NeonButton";
-import { SEO } from "@/components/SEO";
-import { Github, Instagram, Linkedin, Mail, MapPin, Phone, Twitter } from "lucide-react";
+import { SEO, createBreadcrumbSchema, createWebPageSchema } from "@/components/SEO";
+import { ExternalLink, Github, Instagram, Linkedin, Mail, MapPin, Phone, Twitter, Youtube } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { submitForm } from "@/lib/form-submission";
 import { SITE_URL } from "@/lib/seo";
@@ -25,9 +25,13 @@ const contactDetails = [
     icon: MapPin,
     title: "Location",
     value: "Bhopal, Madhya Pradesh, India",
-    href: "https://www.google.com/maps/search/?api=1&query=Bhopal%2C+Madhya+Pradesh%2C+India",
+    href: "https://maps.app.goo.gl/BuiqcDyTSQyZg1Hu9",
   },
 ];
+
+const googleMapsListingUrl = "https://maps.app.goo.gl/BuiqcDyTSQyZg1Hu9";
+const googleMapsEmbedUrl =
+  "https://www.google.com/maps?q=TheCOdex%20software%20solutions%2C%20Bhopal&ll=23.0515653,77.5517024&z=16&output=embed";
 
 const socialLinks = [
   {
@@ -41,6 +45,11 @@ const socialLinks = [
     href: "https://github.com/The-Codex-Official",
   },
   {
+    icon: Youtube,
+    label: "YouTube",
+    href: "https://www.youtube.com/@The_COdex-Official",
+  },
+  {
     icon: Linkedin,
     label: "LinkedIn",
     href: "https://www.linkedin.com/company/thecodex-software-solutions/?viewAsMember=true",
@@ -48,7 +57,7 @@ const socialLinks = [
   {
     icon: Twitter,
     label: "X / Twitter",
-    href: "https://x.com/TheCodexOnBOrd",
+    href: "https://x.com/TheCOdexOnBOrd",
   },
 ];
 
@@ -88,10 +97,40 @@ export default function Contact() {
   return (
     <Layout>
       <SEO
-        title="Contact TheCodex | Web App Development and SaaS Consultation"
-        description="Contact TheCodex Software Solutions to discuss custom web application development, SaaS product delivery, maintenance, and business automation projects."
+        title="Contact TheCOdex | Web App Development and SaaS Consultation"
+        description="Contact TheCOdex Software Solutions to discuss custom web application development, SaaS product delivery, maintenance, and business automation projects."
         keywords="contact web app development company, SaaS consultation, automation software consultation"
         canonicalUrl={`${SITE_URL}/contact`}
+        schemaMarkup={[
+          createWebPageSchema({
+            path: "/contact",
+            name: "Contact TheCOdex | Web App Development and SaaS Consultation",
+            description:
+              "Contact TheCOdex Software Solutions to discuss custom web application development, SaaS product delivery, maintenance, and business automation projects.",
+          }),
+          createBreadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Contact", path: "/contact" },
+          ]),
+          {
+            "@type": "ContactPage",
+            name: "Contact TheCOdex Software Solutions",
+            url: `${SITE_URL}/contact`,
+            mainEntity: {
+              "@type": "Organization",
+              name: "TheCOdex Software Solutions",
+              email: "thecodexofficial001@gmail.com",
+              telephone: "+91 8305223353",
+              hasMap: googleMapsListingUrl,
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Bhopal",
+                addressRegion: "Madhya Pradesh",
+                addressCountry: "IN",
+              },
+            },
+          },
+        ]}
       />
 
       <section className="pt-32 pb-24 relative">
@@ -163,7 +202,7 @@ export default function Contact() {
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
-              className="lg:col-span-2"
+              className="lg:col-span-2 space-y-6"
             >
               <div className="glass rounded-3xl p-8 shadow-2xl relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] pointer-events-none" />
@@ -224,6 +263,34 @@ export default function Contact() {
                     {isSubmitting ? "Sending..." : "Send Message"}
                   </NeonButton>
                 </form>
+              </div>
+
+              <div className="glass-card rounded-2xl p-4 overflow-hidden">
+                <div className="relative h-80 overflow-hidden rounded-xl border border-border bg-muted/30 md:h-96">
+                  <iframe
+                    title="TheCOdex Software Solutions location on Google Maps"
+                    src={googleMapsEmbedUrl}
+                    className="h-full w-full border-0"
+                    loading="lazy"
+                    allowFullScreen
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                </div>
+                <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="min-w-0">
+                    <h4 className="text-foreground font-semibold">Google Maps Preview</h4>
+                    <p className="text-sm text-muted-foreground">TheCOdex Software Solutions, Bhopal</p>
+                  </div>
+                  <a
+                    href={googleMapsListingUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center justify-center gap-2 rounded-xl border border-primary/30 bg-primary/10 px-4 py-2 text-sm font-semibold text-primary transition-all hover:border-primary/50 hover:bg-primary/15"
+                  >
+                    Open Larger Map
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                </div>
               </div>
             </motion.div>
           </div>

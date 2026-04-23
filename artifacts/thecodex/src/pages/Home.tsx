@@ -14,7 +14,7 @@ import {
 import { Layout } from "@/components/layout/Layout";
 import { NeonButton } from "@/components/ui/NeonButton";
 import { GlassCard } from "@/components/ui/GlassCard";
-import { SEO, defaultSchema } from "@/components/SEO";
+import { SEO, BRAND_SEARCH_KEYWORDS, createWebPageSchema, defaultSchema, websiteSchema } from "@/components/SEO";
 import { SITE_URL } from "@/lib/seo";
 
 const CORE_SERVICES = [
@@ -144,11 +144,23 @@ export default function Home() {
   return (
     <Layout>
       <SEO
-        title="Web App Development Company for SaaS & Business Automation | TheCodex"
-        description="TheCodex Software Solutions helps startups and businesses build custom web applications, SaaS products, and automation systems that improve operations and support growth."
+        title="Web App Development Company for SaaS & Business Automation | TheCOdex"
+        description="TheCOdex Software Solutions helps startups and businesses build custom web applications, SaaS products, and automation systems that improve operations and support growth."
         keywords="web app development company, custom web application development, SaaS development company, business automation company, custom software for startups"
         canonicalUrl={SITE_URL}
-        schemaMarkup={defaultSchema}
+        schemaMarkup={[
+          defaultSchema,
+          {
+            ...websiteSchema,
+            keywords: BRAND_SEARCH_KEYWORDS,
+          },
+          createWebPageSchema({
+            path: "/",
+            name: "Web App Development Company for SaaS & Business Automation | TheCOdex",
+            description:
+              "TheCOdex Software Solutions helps startups and businesses build custom web applications, SaaS products, and automation systems that improve operations and support growth.",
+          }),
+        ]}
       />
 
       <section className="relative min-h-[90vh] flex items-center pt-20 pb-28 overflow-hidden">
@@ -191,7 +203,7 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-lg md:text-xl text-muted-foreground max-w-4xl mb-6 mx-auto"
             >
-              TheCodex Software Solutions designs and develops custom web applications for startups, service businesses,
+              TheCOdex Software Solutions designs and develops custom web applications for startups, service businesses,
               and growing teams that need software aligned with their actual workflows. We build SaaS products,
               internal platforms, client portals, and automation systems that reduce manual effort, improve visibility,
               and create room for scale.
@@ -307,7 +319,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div>
               <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
-                Why Companies Choose <span className="text-primary">TheCodex</span>
+                Why Companies Choose <span className="text-primary">TheCOdex</span>
               </h2>
               <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
                 Businesses usually come to us when off-the-shelf tools stop fitting the way their teams operate, or

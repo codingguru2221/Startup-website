@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { GlassCard } from "@/components/ui/GlassCard";
-import { SEO } from "@/components/SEO";
+import { SEO, createBreadcrumbSchema, createWebPageSchema } from "@/components/SEO";
 import { Target, Rocket, Sparkles, ShieldCheck, Cpu, Building2 } from "lucide-react";
 import { SITE_URL } from "@/lib/seo";
 
@@ -59,10 +59,22 @@ export default function About() {
   return (
     <Layout>
       <SEO
-        title="About TheCodex Software Solutions | Software Team for Web Apps and SaaS"
-        description="Meet TheCodex Software Solutions and learn about our mission, team, and approach to custom web applications, SaaS development, and business automation."
-        keywords="about TheCodex, web app development team, SaaS development company"
+        title="About TheCOdex Software Solutions | Software Team for Web Apps and SaaS"
+        description="Meet TheCOdex Software Solutions and learn about our mission, team, and approach to custom web applications, SaaS development, and business automation."
+        keywords="about TheCOdex, web app development team, SaaS development company"
         canonicalUrl={`${SITE_URL}/about`}
+        schemaMarkup={[
+          createWebPageSchema({
+            path: "/about",
+            name: "About TheCOdex Software Solutions | Software Team for Web Apps and SaaS",
+            description:
+              "Meet TheCOdex Software Solutions and learn about our mission, team, and approach to custom web applications, SaaS development, and business automation.",
+          }),
+          createBreadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "About", path: "/about" },
+          ]),
+        ]}
       />
 
       <section className="pt-32 pb-16 relative overflow-hidden">
@@ -98,7 +110,7 @@ export default function About() {
             transition={{ delay: 0.1 }}
             className="text-xl text-muted-foreground leading-relaxed"
           >
-            TheCodex Software Solutions is a growing team focused on design quality, dependable software delivery, and practical support for businesses that want to build with confidence.
+            TheCOdex Software Solutions is a growing team focused on design quality, dependable software delivery, and practical support for businesses that want to build with confidence.
           </motion.p>
         </div>
       </section>
@@ -123,7 +135,7 @@ export default function About() {
 
                 <h2 className="text-3xl md:text-5xl font-display font-black leading-tight mb-5">
                   MISSION &amp; VISION
-                  <span className="block text-accent text-glow-accent">TheCodex Software Solutions</span>
+                  <span className="block text-accent text-glow-accent">TheCOdex Software Solutions</span>
                 </h2>
 
                 <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6">
@@ -258,7 +270,7 @@ export default function About() {
                   <div className="w-28 h-28 mx-auto rounded-full overflow-hidden bg-background border-2 border-primary/20 mb-6 shadow-[0_14px_30px_rgba(15,23,42,0.06)] transition-shadow">
                     <img
                       src={`${import.meta.env.BASE_URL}${member.image}`}
-                      alt={`${member.role} at TheCodex`}
+                      alt={`${member.role} at TheCOdex`}
                       className="w-full h-full object-cover"
                     />
                   </div>

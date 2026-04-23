@@ -4,7 +4,7 @@ import { ArrowLeft, ArrowRight, CheckCircle2, ChevronRight, Crown } from "lucide
 import { Layout } from "@/components/layout/Layout";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { NeonButton } from "@/components/ui/NeonButton";
-import { SEO } from "@/components/SEO";
+import { SEO, BRAND_SEARCH_KEYWORDS, createBreadcrumbSchema, createWebPageSchema } from "@/components/SEO";
 import { getServiceBySlug, getServiceHref, SERVICE_CATEGORIES } from "@/data/services";
 import { SITE_URL } from "@/lib/seo";
 
@@ -41,23 +41,45 @@ export default function ServiceDetail({ slug }: ServiceDetailProps) {
   return (
     <Layout>
       <SEO
-        title={`${service.title} | ${service.identityLine} | TheCodex`}
+        title={`${service.title} | ${service.identityLine} | TheCOdex`}
         description={service.overview}
-        keywords={`${service.title.toLowerCase()}, ${service.slug.replaceAll("-", " ")}, custom software development, TheCodex`}
+        keywords={`${service.title.toLowerCase()}, ${service.slug.replaceAll("-", " ")}, custom software development, TheCOdex`}
         canonicalUrl={`${SITE_URL}${getServiceHref(service.slug)}`}
-        schemaMarkup={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          name: service.title,
-          description: service.overview,
-          provider: {
-            "@type": "Organization",
-            name: "TheCodex Software Solutions",
-            url: SITE_URL,
+        schemaMarkup={[
+          createWebPageSchema({
+            path: getServiceHref(service.slug),
+            name: `${service.title} | TheCOdex`,
+            description: service.overview,
+          }),
+          createBreadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Services", path: "/services" },
+            { name: service.title, path: getServiceHref(service.slug) },
+          ]),
+          {
+            "@type": "Service",
+            name: service.title,
+            description: service.overview,
+            keywords: `${service.title}, ${service.slug.replaceAll("-", " ")}, ${BRAND_SEARCH_KEYWORDS}`,
+            provider: {
+              "@type": "Organization",
+              name: "TheCOdex Software Solutions",
+              url: SITE_URL,
+            },
+            areaServed: "IN",
+            serviceType: service.title,
+            offers: service.plans.map((plan) => ({
+              "@type": "Offer",
+              name: plan.name,
+              description: plan.tagline,
+              priceSpecification: {
+                "@type": "PriceSpecification",
+                priceCurrency: "INR",
+                description: plan.price,
+              },
+            })),
           },
-          areaServed: "IN",
-          serviceType: service.title,
-        }}
+        ]}
       />
 
       <section className="pt-32 pb-16 relative overflow-hidden">

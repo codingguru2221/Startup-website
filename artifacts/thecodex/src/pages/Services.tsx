@@ -1,21 +1,61 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ShieldCheck, ChevronRight } from "lucide-react";
+import { ShieldCheck, ChevronRight, LifeBuoy, RefreshCcw, Wrench } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { NeonButton } from "@/components/ui/NeonButton";
-import { SEO } from "@/components/SEO";
+import { SEO, createBreadcrumbSchema, createWebPageSchema } from "@/components/SEO";
 import { getServiceHref, SERVICE_CATEGORIES } from "@/data/services";
 import { SITE_URL } from "@/lib/seo";
 
 export default function Services() {
+  const supportItems = [
+    {
+      icon: RefreshCcw,
+      title: "Ongoing improvements",
+      description: "Refine flows, add features, and improve performance as your product and users evolve.",
+    },
+    {
+      icon: Wrench,
+      title: "Maintenance and fixes",
+      description: "Keep dependencies, infrastructure, and critical workflows stable after launch.",
+    },
+    {
+      icon: LifeBuoy,
+      title: "Operational support",
+      description: "Get technical guidance when your team needs help with usage, scaling, or rollout decisions.",
+    },
+  ];
+
   return (
     <Layout>
       <SEO
-        title="Software Development Services | Web Apps, SaaS & Automation | TheCodex"
-        description="Explore TheCodex services for custom web app development, web app management, SaaS product development, business automation, and growth systems."
+        title="Software Development Services | Web Apps, SaaS & Automation | TheCOdex"
+        description="Explore TheCOdex services for custom web app development, web app management, SaaS product development, business automation, and growth systems."
         keywords="software development services, web app development services, SaaS development services, business automation services"
         canonicalUrl={`${SITE_URL}/services`}
+        schemaMarkup={[
+          createWebPageSchema({
+            path: "/services",
+            name: "Software Development Services | Web Apps, SaaS & Automation | TheCOdex",
+            description:
+              "Explore TheCOdex services for custom web app development, web app management, SaaS product development, business automation, and growth systems.",
+          }),
+          createBreadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Services", path: "/services" },
+          ]),
+          {
+            "@type": "ItemList",
+            name: "TheCOdex Software Development Services",
+            itemListElement: SERVICE_CATEGORIES.map((service, index) => ({
+              "@type": "ListItem",
+              position: index + 1,
+              name: service.title,
+              url: `${SITE_URL}${getServiceHref(service.slug)}`,
+            })),
+          },
+        ]}
       />
 
       <section className="pt-32 pb-16 relative">
@@ -77,18 +117,54 @@ export default function Services() {
 
       <section className="py-24 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <GlassCard hoverEffect={false} className="border-primary/20 p-8 md:p-12 text-center md:text-left flex flex-col md:flex-row items-center gap-10">
-            <div className="w-32 h-32 rounded-full bg-accent/12 flex items-center justify-center flex-shrink-0 box-glow">
-              <ShieldCheck className="w-16 h-16 text-accent" />
-            </div>
-            <div className="flex-grow">
-              <h2 className="text-3xl font-display font-bold mb-4">Post-Development Support</h2>
-              <p className="text-muted-foreground text-lg mb-6">
-                This is one of our extra advantages. After development, we continue supporting your product with maintenance, improvements, technical guidance, and operational help as your business grows.
-              </p>
-              <Link href="/maintenance-support">
-                <NeonButton variant="secondary">Discuss Maintenance</NeonButton>
-              </Link>
+          <GlassCard hoverEffect={false} className="border-primary/20 p-8 md:p-10 lg:p-12">
+            <div className="grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-10 items-center">
+              <div className="text-center lg:text-left">
+                <div className="w-28 h-28 rounded-full bg-accent/12 flex items-center justify-center mx-auto lg:mx-0 mb-6 box-glow">
+                  <ShieldCheck className="w-14 h-14 text-accent" />
+                </div>
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-accent mb-4">
+                  Beyond Launch
+                </p>
+                <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
+                  Post-Development Support
+                </h2>
+                <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+                  Launch is not the end of the project. We continue supporting your product
+                  with maintenance, technical guidance, and practical improvements so it stays
+                  reliable as your business grows.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                  <Link href="/maintenance-support">
+                    <NeonButton variant="secondary">Discuss Maintenance</NeonButton>
+                  </Link>
+                  <Link href="/contact">
+                    <NeonButton variant="outline">Talk to Our Team</NeonButton>
+                  </Link>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 gap-4">
+                {supportItems.map((item) => (
+                  <div
+                    key={item.title}
+                    className="rounded-2xl border border-border bg-muted/25 p-5 md:p-6"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/15 flex items-center justify-center flex-shrink-0">
+                        <item.icon className="w-5 h-5 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-semibold text-foreground mb-2">{item.title}</h3>
+                        <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                          {item.description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </GlassCard>
         </div>

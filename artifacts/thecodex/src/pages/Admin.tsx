@@ -1,6 +1,7 @@
 import { FormEvent, useEffect, useState } from "react";
 import { Link } from "wouter";
 import { Download, LogOut, Trash2, UploadCloud } from "lucide-react";
+import { SEO } from "@/components/SEO";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -15,8 +16,8 @@ import {
   type UploadedProject,
 } from "@/lib/project-storage";
 
-const ADMIN_ID = "TheCodex";
-const ADMIN_PASSWORD = "TheCodex@1122";
+const ADMIN_ID = "TheCOdex";
+const ADMIN_PASSWORD = "TheCOdex@1122";
 const MAX_LOCAL_ZIP_SIZE = 4 * 1024 * 1024;
 
 function fileToDataUrl(file: File) {
@@ -167,11 +168,17 @@ export default function Admin() {
   if (!isLoggedIn) {
     return (
       <Layout>
+        <SEO
+          title="Admin Panel | TheCOdex"
+          description="Private admin panel for TheCOdex Software Solutions."
+          canonicalUrl="/thecodex-control"
+          robots="noindex, nofollow"
+        />
         <section className="min-h-[calc(100vh-5rem)] pt-10 pb-20">
           <div className="max-w-md mx-auto px-4 sm:px-6 lg:px-8">
             <div className="rounded-2xl border border-border bg-card/85 p-6 shadow-[0_22px_70px_rgba(15,23,42,0.08)]">
               <p className="text-xs font-bold text-primary tracking-[0.2em] uppercase mb-3">Admin Login</p>
-              <h1 className="text-3xl font-display font-black mb-3">TheCodex Panel</h1>
+              <h1 className="text-3xl font-display font-black mb-3">TheCOdex Panel</h1>
               <p className="text-sm text-muted-foreground mb-6">
                 Apps upload karne ke liye admin ID aur password enter karein.
               </p>
@@ -183,7 +190,7 @@ export default function Admin() {
                     id="loginId"
                     value={loginId}
                     onChange={(event) => setLoginId(event.target.value)}
-                    placeholder="TheCodex"
+                    placeholder="TheCOdex"
                     autoComplete="username"
                   />
                 </div>
@@ -209,6 +216,12 @@ export default function Admin() {
 
   return (
     <Layout>
+      <SEO
+        title="Admin Panel | TheCOdex"
+        description="Private admin panel for TheCOdex Software Solutions."
+        canonicalUrl="/thecodex-control"
+        robots="noindex, nofollow"
+      />
       <section className="pt-8 pb-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8 rounded-2xl border border-border bg-card/85 p-5 md:p-7 shadow-[0_22px_70px_rgba(15,23,42,0.08)]">

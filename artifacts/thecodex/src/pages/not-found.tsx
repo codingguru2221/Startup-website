@@ -1,9 +1,16 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { SEO } from "@/components/SEO";
 import { AlertCircle } from "lucide-react";
 
 export default function NotFound() {
   return (
     <div className="min-h-screen w-full flex items-center justify-center bg-gray-50">
+      <SEO
+        title="404 Page Not Found | TheCOdex"
+        description="The requested page could not be found on TheCOdex Software Solutions."
+        canonicalUrl="/404.html"
+        robots="noindex, nofollow"
+      />
       <Card className="w-full max-w-md mx-4">
         <CardContent className="pt-6">
           <div className="flex mb-4 gap-2">

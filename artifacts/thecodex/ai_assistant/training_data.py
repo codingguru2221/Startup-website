@@ -10,7 +10,7 @@ class IntentExample:
 
 
 WEBSITE_KNOWLEDGE = {
-    "company": "TheCodex Software Solutions",
+    "company": "TheCOdex Software Solutions",
     "founder": "Veerendra Vishwakarma",
     "location": "Bhopal, Madhya Pradesh, India",
     "email": "thecodexofficial001@gmail.com",
@@ -113,7 +113,7 @@ def build_response(intent: str, user_message: str) -> str:
 
     if intent == "greeting":
         return (
-            "Hey, welcome to TheCodex. Tell me what you want to build, improve, or launch, "
+            "Hey, welcome to TheCOdex. Tell me what you want to build, improve, or launch, "
             "and I will guide you from the website's services and project flows."
         )
 
@@ -188,6 +188,6 @@ def build_response(intent: str, user_message: str) -> str:
         )
 
     return (
-        "I can answer questions about TheCodex services, pricing, projects, inquiry forms, contact details, "
+        "I can answer questions about TheCOdex services, pricing, projects, inquiry forms, contact details, "
         "company profile, and legal pages. Ask me something specific about the website and I will answer clearly."
     )

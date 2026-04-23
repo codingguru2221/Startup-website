@@ -16,7 +16,7 @@ import {
 import { Layout } from "@/components/layout/Layout";
 import { NeonButton } from "@/components/ui/NeonButton";
 import { GlassCard } from "@/components/ui/GlassCard";
-import { SEO } from "@/components/SEO";
+import { SEO, BRAND_SEARCH_KEYWORDS, createBreadcrumbSchema, createWebPageSchema } from "@/components/SEO";
 import { useState } from "react";
 import { SITE_URL } from "@/lib/seo";
 
@@ -130,10 +130,36 @@ export default function WebAppManagement() {
   return (
     <Layout>
       <SEO
-        title="Web App Management & Maintenance Services | TheCodex"
+        title="Web App Management & Maintenance Services | TheCOdex"
         description="Keep your web application running smoothly with proactive maintenance, security updates, performance optimization, and 24/7 monitoring. Plans starting at Rs 9,999/month."
         keywords="web app maintenance, application management, web app support, application monitoring, security updates, performance optimization"
         canonicalUrl={`${SITE_URL}/web-app-management`}
+        schemaMarkup={[
+          createWebPageSchema({
+            path: "/web-app-management",
+            name: "Web App Management & Maintenance Services | TheCOdex",
+            description:
+              "Keep your web application running smoothly with proactive maintenance, security updates, performance optimization, and 24/7 monitoring.",
+          }),
+          createBreadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Web App Management", path: "/web-app-management" },
+          ]),
+          {
+            "@type": "Service",
+            name: "Web App Management & Maintenance",
+            description:
+              "Ongoing support, monitoring, security updates, performance optimization, backups, and feature improvements for web applications.",
+            keywords: `web app maintenance, application support, website maintenance, ${BRAND_SEARCH_KEYWORDS}`,
+            provider: {
+              "@type": "Organization",
+              name: "TheCOdex Software Solutions",
+              url: SITE_URL,
+            },
+            areaServed: "IN",
+            serviceType: "Web App Management & Maintenance",
+          },
+        ]}
       />
 
       {/* Hero Section */}

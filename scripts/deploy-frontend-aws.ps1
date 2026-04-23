@@ -41,6 +41,18 @@ if (Test-Path $indexHtmlPath) {
 Write-Host "Syncing build output to S3 bucket s3://$BucketName ..."
 aws s3 sync $distDir "s3://$BucketName" --delete
 
+$routeIndexFiles = Get-ChildItem $distDir -Recurse -Filter "index.html" | Where-Object {
+  $_.DirectoryName -ne $distDir
+}
+
+$distPath = (Resolve-Path $distDir).Path.TrimEnd("\", "/")
+foreach ($routeIndex in $routeIndexFiles) {
+  $relativeDir = $routeIndex.DirectoryName.Substring($distPath.Length).TrimStart("\", "/").Replace("\", "/")
+  $targetKey = $relativeDir.TrimEnd("/")
+  Write-Host "Uploading clean route object: /$targetKey"
+  aws s3 cp $routeIndex.FullName "s3://$BucketName/$targetKey" --content-type "text/html" --cache-control "public, max-age=0, must-revalidate"
+}
+
 Write-Host "Creating CloudFront invalidation..."
 aws cloudfront create-invalidation --distribution-id $DistributionId --paths "/*"
 

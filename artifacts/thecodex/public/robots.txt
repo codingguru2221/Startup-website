@@ -2,4 +2,5 @@ User-agent: *
 Allow: /
 Disallow: /thecodex-control
 
+Host: https://thecodexss.in
 Sitemap: https://thecodexss.in/sitemap.xml

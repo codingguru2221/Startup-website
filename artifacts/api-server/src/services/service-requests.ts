@@ -39,7 +39,7 @@ function getGooglePrivateKey() {
 
 function formatRequestForEmail(request: ServiceRequestRecord) {
   return [
-    "New TheCodex service request",
+    "New TheCOdex service request",
     "",
     `Name: ${request.name}`,
     `Email: ${request.email}`,
@@ -112,7 +112,7 @@ async function sendEmailNotification(request: ServiceRequestRecord) {
   });
 
   await transporter.sendMail({
-    from: `"TheCodex Notifications" <${senderEmail}>`,
+    from: `"TheCOdex Notifications" <${senderEmail}>`,
     to: recipientEmail,
     replyTo: request.email,
     subject: `New Service Request: ${request.service}`,
