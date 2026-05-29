@@ -19,6 +19,7 @@ import WebAppDevelopment from "@/pages/WebAppDevelopment";
 import WebAppManagement from "@/pages/WebAppManagement";
 import Blog from "@/pages/Blog";
 import BlogDetail from "@/pages/BlogDetail";
+import NextStep from "@/pages/NextStep";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
@@ -67,6 +68,7 @@ function Router() {
         <Route path="/contact" component={Contact} />
         <Route path="/privacy-policy" component={Privacy} />
         <Route path="/terms-and-conditions" component={Terms} />
+        <Route path="/next-step" component={NextStep} />
         <Route component={NotFound} />
       </Switch>
     </>

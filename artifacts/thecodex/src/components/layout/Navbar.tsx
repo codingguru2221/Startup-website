@@ -10,6 +10,7 @@ const NAV_LINKS = [
   { name: "Home", href: "/" },
   { name: "Web App Development", href: "/web-app-development" },
   { name: "Services", href: "/services" },
+  { name: "Next Step AI", href: "/next-step" },
   { name: "Blogs", href: "/blog" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
