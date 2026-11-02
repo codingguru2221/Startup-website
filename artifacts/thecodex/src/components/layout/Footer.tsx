@@ -80,7 +80,7 @@ export function Footer() {
             <h4 className="font-display font-semibold text-foreground mb-6">Services</h4>
             <ul className="flex flex-col gap-4">
               {[
-                { name: 'Web App Development', href: '/web-app-development' },
+
                 { name: 'Web App Management', href: '/web-app-management' },
                 { name: 'SaaS Development', href: '/saas-development' },
                 { name: 'Business Automation', href: '/business-automation' },

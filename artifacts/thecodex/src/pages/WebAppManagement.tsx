@@ -194,9 +194,9 @@ export default function WebAppManagement() {
                 Get Maintenance Quote
               </NeonButton>
             </Link>
-            <Link href="/web-app-development">
+            <Link href="/services">
               <NeonButton variant="outline" size="lg" className="min-w-[200px]">
-                Explore Development
+                Explore Our Services
               </NeonButton>
             </Link>
           </motion.div>

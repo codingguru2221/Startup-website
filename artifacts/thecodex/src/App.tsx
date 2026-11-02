@@ -15,11 +15,10 @@ import Contact from "@/pages/Contact";
 import Buy from "@/pages/Buy";
 import Privacy from "@/pages/Privacy";
 import Terms from "@/pages/Terms";
-import WebAppDevelopment from "@/pages/WebAppDevelopment";
 import WebAppManagement from "@/pages/WebAppManagement";
 import Blog from "@/pages/Blog";
 import BlogDetail from "@/pages/BlogDetail";
-import NextStep from "@/pages/NextStep";
+import Pricing from "@/pages/Pricing";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
@@ -41,8 +40,10 @@ function Router() {
       <ScrollToTop />
       <Switch>
         <Route path="/" component={Home} />
-        <Route path="/web-app-development" component={WebAppDevelopment} />
         <Route path="/web-app-management" component={WebAppManagement} />
+        <Route path="/web-app-development">
+          {() => { window.location.href = "/services/web-app-development"; return null; }}
+        </Route>
         <Route path="/saas-development">
           {() => <ServiceDetail slug="saas-development" />}
         </Route>
@@ -66,9 +67,10 @@ function Router() {
         <Route path="/maintenance-support" component={() => <Buy mode="maintenance-support" />} />
         <Route path="/about" component={About} />
         <Route path="/contact" component={Contact} />
+        <Route path="/pricing" component={Pricing} />
         <Route path="/privacy-policy" component={Privacy} />
         <Route path="/terms-and-conditions" component={Terms} />
-        <Route path="/next-step" component={NextStep} />
+
         <Route component={NotFound} />
       </Switch>
     </>

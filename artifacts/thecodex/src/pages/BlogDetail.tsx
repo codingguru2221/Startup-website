@@ -4,7 +4,7 @@ import { ArrowLeft, Calendar, CheckCircle2, Clock } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { NeonButton } from "@/components/ui/NeonButton";
-import { SEO, createBreadcrumbSchema, createWebPageSchema, websiteSchema } from "@/components/SEO";
+import { SEO, createBreadcrumbSchema, createWebPageSchema, createFAQSchema, websiteSchema } from "@/components/SEO";
 import { BLOG_POSTS, getBlogPost } from "@/data/blog-posts";
 import { SITE_URL } from "@/lib/seo";
 
@@ -63,6 +63,12 @@ export default function BlogDetail({ slug }: BlogDetailProps) {
             { name: "Blogs", path: "/blog" },
             { name: post.title, path: `/blog/${post.slug}` },
           ]),
+          createFAQSchema(
+            post.sections.slice(0, 3).map((section) => ({
+              question: section.heading,
+              answer: section.body[0],
+            }))
+          ),
           {
             "@type": "BlogPosting",
             headline: post.title,

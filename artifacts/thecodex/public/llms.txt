@@ -1,46 +1,100 @@
 # TheCOdex Software Solutions
 
-TheCOdex Software Solutions is a software development company based in Bhopal, Madhya Pradesh, India.
+## Company Overview
+TheCOdex Software Solutions is a software development company based in Bhopal, Madhya Pradesh, India. We specialize in custom web application development, SaaS product development, business automation systems, and digital growth services for startups and growing businesses.
 
-Also known as: Thecodex, The Codex, Codex, Codex Software Solutions, Thecodex Software Solutions.
+## Brand Aliases
+Also known as: Thecodex, The Codex, Codex, Codex Software Solutions, Thecodex Software Solutions, The Codex Software Solutions.
 
-Relevant search intent: software development firm, software development company, web app development company, custom software development company, SaaS development company, business automation company, website development company, web development company in Bhopal, software company in Bhopal.
+## Primary Website
+https://thecodexss.in/
 
-Primary website: https://thecodexss.in/
+## Location
+Bhopal, Madhya Pradesh, India
 
-Core services:
-- Custom web application development
-- SaaS product development
-- Business automation systems
-- Web app management and maintenance
-- Google Ads management
-- Social media management
-
-Important pages:
-- https://thecodexss.in/web-app-development
-- https://thecodexss.in/web-app-management
-- https://thecodexss.in/saas-development
-- https://thecodexss.in/business-automation
-- https://thecodexss.in/services
-- https://thecodexss.in/blog
-- https://thecodexss.in/projects
-- https://thecodexss.in/contact
-
-Helpful blog resources:
-- https://thecodexss.in/blog/web-app-development-cost-2026
-- https://thecodexss.in/blog/essential-saas-features
-- https://thecodexss.in/blog/web-app-vs-website
-- https://thecodexss.in/blog/choose-tech-stack-web-app
-- https://thecodexss.in/blog/signs-need-custom-web-app
-- https://thecodexss.in/blog/web-app-development-process
-- https://thecodexss.in/blog/saas-development-best-practices
-- https://thecodexss.in/blog/business-automation-benefits
-- https://thecodexss.in/blog/react-vs-nextjs
-- https://thecodexss.in/blog/web-app-maintenance-guide
-
-Contact:
+## Contact
 - Email: thecodexofficial001@gmail.com
 - Phone: +91 8305223353
-- Location: Bhopal, Madhya Pradesh, India
 - Google Maps: https://maps.app.goo.gl/BuiqcDyTSQyZg1Hu9
+
+## Social Profiles
+- X/Twitter: https://x.com/TheCOdexOnBOrd
+- GitHub: https://github.com/The-Codex-Official
+- LinkedIn: https://www.linkedin.com/company/thecodex-software-solutions/?viewAsMember=true
+- Instagram: https://www.instagram.com/the_codex_official_
 - YouTube: https://www.youtube.com/@The_COdex-Official
+
+## Core Services
+1. **Custom Web Application Development** - Scalable web apps for SaaS, internal tools, dashboards, and automation systems.
+2. **SaaS Product Development** - End-to-end SaaS platforms with subscriptions, multi-tenant architecture, and billing.
+3. **Business Automation Systems** - Workflow automation, tool integrations, inventory management, billing, and payment integration.
+4. **Web App Management & Maintenance** - Security updates, performance optimization, bug fixes, and ongoing support.
+5. **Google Ads Management** - Data-driven campaigns, keyword research, remarketing, and ROI optimization.
+6. **Social Media Management** - Content strategy, community management, paid campaigns, and analytics.
+7. **SEO Services** - On-page SEO, technical audits, link building, content optimization, and local SEO.
+8. **Website Development** - Responsive websites, custom design, admin panels, blogs, and SEO.
+
+## Pricing (Starting Prices)
+- Website Development: Basic ₹9,999 | Normal ₹19,999 | Premium ₹39,999
+- Web App Development: Basic ₹29,999 | Normal ₹59,999 | Premium ₹1,20,000
+- Mobile App Development: Basic ₹39,999 | Normal ₹79,999 | Premium ₹1,50,000
+- Business Automation: Basic ₹14,999 | Normal ₹34,999 | Premium ₹74,999
+- Website Maintenance: Basic ₹999/mo | Normal ₹2,999/mo | Premium ₹6,999/mo
+- Google Ads: Basic ₹3,999/mo | Normal ₹7,999/mo | Premium ₹14,999/mo
+- Social Media: Basic ₹5,999/mo | Normal ₹9,999/mo | Premium ₹19,999/mo
+- SEO Services: Basic ₹5,999/mo | Normal ₹9,999/mo | Premium ₹19,999/mo
+
+## Team
+- Veerendra Vishwakarma - Core Founder & CEO (Vision, Strategy, Growth)
+- Kajal Manjhi - Build Lead & Developer (Frontend, Backend, Delivery)
+- Vishal Vishwakarma - Business Lead (Sales, Partnerships, Growth)
+- Vicky Rajput - Marketing Lead (Campaigns, Branding, Outreach)
+
+## Key Stats
+- 50+ Projects Delivered
+- 98% Client Satisfaction
+- 3+ Years of Delivery Experience
+- 24/7 Support for Active Systems
+
+## Important Pages
+- Home: https://thecodexss.in/
+- Services: https://thecodexss.in/services
+- Pricing: https://thecodexss.in/pricing
+- About: https://thecodexss.in/about
+- Blog: https://thecodexss.in/blog
+- Contact: https://thecodexss.in/contact
+- Projects: https://thecodexss.in/projects
+
+## Service Detail Pages
+- Web App Management: https://thecodexss.in/web-app-management
+- SaaS Development: https://thecodexss.in/saas-development
+- Business Automation: https://thecodexss.in/business-automation
+
+## Helpful Blog Resources
+- Web App Development Cost in 2026: https://thecodexss.in/blog/web-app-development-cost-2026
+- Top 10 Features Every SaaS Product Needs: https://thecodexss.in/blog/essential-saas-features
+- Web App vs Website: What's the Difference?: https://thecodexss.in/blog/web-app-vs-website
+- How to Choose the Right Tech Stack: https://thecodexss.in/blog/choose-tech-stack-web-app
+- Signs You Need a Custom Web App: https://thecodexss.in/blog/signs-need-custom-web-app
+- Web App Development Process Explained: https://thecodexss.in/blog/web-app-development-process
+- SaaS Development Best Practices: https://thecodexss.in/blog/saas-development-best-practices
+- Business Automation Benefits: https://thecodexss.in/blog/business-automation-benefits
+- React vs Next.js for Web Apps: https://thecodexss.in/blog/react-vs-nextjs
+- Web App Maintenance Guide: https://thecodexss.in/blog/web-app-maintenance-guide
+
+## About TheCOdex
+TheCOdex Software Solutions is a growing team focused on design quality, dependable software delivery, and practical support for businesses that want to build with confidence. We build technology that actually grows businesses. Our mission is to deliver practical, result-driven technology solutions that directly strengthen our clients' growth, efficiency, and digital presence.
+
+## Ideal Clients
+- Startups building their first product or MVP
+- Businesses automating manual workflows
+- Companies launching SaaS products
+- Organizations needing custom internal tools
+- Schools and educational institutions needing digital infrastructure
+- Small businesses in tier-2 and tier-3 cities across India
+
+## Technology Stack
+React, Next.js, Node.js, TypeScript, PostgreSQL, MongoDB, TailwindCSS, Python, Java, Spring Boot, AWS, Docker, Drizzle ORM, Express.js
+
+## Search Intent Keywords
+Best software company in Bhopal, software development company India, custom web application development, SaaS development company, business automation company, web app development company, website development company Bhopal, software solutions for startups, AI-powered business automation, custom software development firm.

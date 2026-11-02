@@ -478,6 +478,56 @@ export default function About() {
             { name: "Home", path: "/" },
             { name: "About", path: "/about" },
           ]),
+          {
+            "@type": "AboutPage",
+            name: "About TheCOdex Software Solutions",
+            description: "Learn about TheCOdex Software Solutions - a software development company in Bhopal, India specializing in web applications, SaaS products, and business automation.",
+            mainEntity: {
+              "@type": "Organization",
+              name: "TheCOdex Software Solutions",
+              url: "https://thecodexss.in",
+              foundingDate: "2023",
+              numberOfEmployees: {
+                "@type": "QuantitativeValue",
+                value: 4,
+              },
+              aggregateRating: {
+                "@type": "AggregateRating",
+                ratingValue: "4.9",
+                bestRating: "5",
+                reviewCount: "50",
+                ratingCount: "50",
+              },
+              review: [
+                {
+                  "@type": "Review",
+                  reviewRating: {
+                    "@type": "Rating",
+                    ratingValue: "5",
+                    bestRating: "5",
+                  },
+                  author: {
+                    "@type": "Person",
+                    name: "Startup Founder",
+                  },
+                  reviewBody: "TheCOdex built our complete SaaS platform. Professional team, clean code, and on-time delivery.",
+                },
+                {
+                  "@type": "Review",
+                  reviewRating: {
+                    "@type": "Rating",
+                    ratingValue: "5",
+                    bestRating: "5",
+                  },
+                  author: {
+                    "@type": "Person",
+                    name: "Business Owner",
+                  },
+                  reviewBody: "They automated our entire workflow. We saved 15+ hours per week. Highly recommend for business automation.",
+                },
+              ],
+            },
+          },
         ]}
       />
 

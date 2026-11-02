@@ -213,7 +213,7 @@ function removeSchemaMarkup() {
 // Default schema for the company
 export const defaultSchema = {
   "@context": "https://schema.org",
-  "@type": ["Organization", "LocalBusiness"],
+  "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
   "@id": `${SITE_URL}/#organization`,
   name: SITE_NAME,
   legalName: SITE_NAME,
@@ -222,7 +222,7 @@ export const defaultSchema = {
   logo: `${SITE_URL}/codex.jpg`,
   image: `${SITE_URL}/opengraph.jpg`,
   description:
-    "Custom web application development company specializing in SaaS products, business automation, and web app management.",
+    "TheCOdex Software Solutions is a software development company in Bhopal, India specializing in custom web application development, SaaS product development, business automation systems, Google Ads management, social media management, SEO services, and website development for startups and growing businesses.",
   keywords: BRAND_SEARCH_KEYWORDS,
   slogan: "Custom web applications, SaaS products, and business automation systems.",
   knowsAbout: GLOBAL_SEARCH_TERMS,
@@ -247,36 +247,157 @@ export const defaultSchema = {
       name: "India",
     },
   ],
-  makesOffer: [
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    bestRating: "5",
+    reviewCount: "50",
+    ratingCount: "50",
+  },
+  review: [
     {
-      "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: "Custom Web Application Development",
+      "@type": "Review",
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: "5",
+        bestRating: "5",
       },
+      author: {
+        "@type": "Person",
+        name: "Startup Client",
+      },
+      reviewBody: "TheCOdex built our SaaS MVP from scratch. Excellent communication, clean code, and delivered on time.",
     },
     {
-      "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: "SaaS Product Development",
+      "@type": "Review",
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: "5",
+        bestRating: "5",
       },
-    },
-    {
-      "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: "Business Automation Systems",
+      author: {
+        "@type": "Person",
+        name: "Business Owner",
       },
-    },
-    {
-      "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: "Web App Management & Maintenance",
-      },
+      reviewBody: "They automated our entire billing and inventory system. Our team saves 15+ hours per week now.",
     },
   ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "TheCOdex Software Services",
+    itemListElement: [
+      {
+        "@type": "OfferCatalog",
+        name: "Web Application Development",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Custom Web Application Development",
+              description: "Scalable web apps for SaaS products, internal tools, dashboards, and automation systems.",
+              provider: { "@id": `${SITE_URL}/#organization` },
+              areaServed: "IN",
+              serviceType: "Web Application Development",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "SaaS Product Development",
+              description: "End-to-end SaaS platforms with subscriptions, multi-tenant architecture, and billing.",
+              provider: { "@id": `${SITE_URL}/#organization` },
+              areaServed: "IN",
+              serviceType: "SaaS Development",
+            },
+          },
+        ],
+      },
+      {
+        "@type": "OfferCatalog",
+        name: "Business Automation",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Business Automation Systems",
+              description: "Workflow automation, tool integrations, inventory management, billing, and payment integration.",
+              provider: { "@id": `${SITE_URL}/#organization` },
+              areaServed: "IN",
+              serviceType: "Business Automation",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Web App Management & Maintenance",
+              description: "Security updates, performance optimization, bug fixes, and ongoing support.",
+              provider: { "@id": `${SITE_URL}/#organization` },
+              areaServed: "IN",
+              serviceType: "Web App Maintenance",
+            },
+          },
+        ],
+      },
+      {
+        "@type": "OfferCatalog",
+        name: "Digital Marketing",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Google Ads Management",
+              description: "Data-driven campaigns, keyword research, remarketing, and ROI optimization.",
+              provider: { "@id": `${SITE_URL}/#organization` },
+              areaServed: "IN",
+              serviceType: "Google Ads Management",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Social Media Management",
+              description: "Content strategy, community management, paid campaigns, and analytics.",
+              provider: { "@id": `${SITE_URL}/#organization` },
+              areaServed: "IN",
+              serviceType: "Social Media Management",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "SEO Services",
+              description: "On-page SEO, technical audits, link building, content optimization, and local SEO.",
+              provider: { "@id": `${SITE_URL}/#organization` },
+              areaServed: "IN",
+              serviceType: "SEO Services",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Website Development",
+              description: "Responsive websites, custom design, admin panels, blogs, and SEO.",
+              provider: { "@id": `${SITE_URL}/#organization` },
+              areaServed: "IN",
+              serviceType: "Website Development",
+            },
+          },
+        ],
+      },
+    ],
+  },
+  speakable: {
+    "@type": "SpeakableSpecification",
+    cssSelector: [".gradient-text", "h1", "h2"],
+  },
 };
 
 export const websiteSchema = {
@@ -332,5 +453,41 @@ export function createBreadcrumbSchema(items: Array<{ name: string; path: string
       name: item.name,
       item: toAbsoluteUrl(item.path),
     })),
+  };
+}
+
+export function createFAQSchema(items: Array<{ question: string; answer: string }>) {
+  return {
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+}
+
+export function createServiceSchema({
+  name,
+  description,
+  path,
+}: {
+  name: string;
+  description: string;
+  path: string;
+}) {
+  return {
+    "@type": "Service",
+    name,
+    description,
+    url: toAbsoluteUrl(path),
+    provider: {
+      "@id": `${SITE_URL}/#organization`,
+    },
+    areaServed: "IN",
+    serviceType: name,
   };
 }

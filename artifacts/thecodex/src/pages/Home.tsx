@@ -14,7 +14,7 @@ import {
 import { Layout } from "@/components/layout/Layout";
 import { NeonButton } from "@/components/ui/NeonButton";
 import { GlassCard } from "@/components/ui/GlassCard";
-import { SEO, BRAND_SEARCH_KEYWORDS, createWebPageSchema, defaultSchema, websiteSchema } from "@/components/SEO";
+import { SEO, BRAND_SEARCH_KEYWORDS, createWebPageSchema, createFAQSchema, defaultSchema, websiteSchema } from "@/components/SEO";
 import { SITE_URL } from "@/lib/seo";
 
 const CORE_SERVICES = [
@@ -28,7 +28,7 @@ const CORE_SERVICES = [
       "Internal portals and dashboards",
       "Client-facing products",
     ],
-    href: "/web-app-development",
+    href: "/services/web-app-development",
   },
   {
     icon: Server,
@@ -160,6 +160,7 @@ export default function Home() {
             description:
               "TheCOdex Software Solutions helps startups and businesses build custom web applications, SaaS products, and automation systems that improve operations and support growth.",
           }),
+          createFAQSchema(FAQS.map((faq) => ({ question: faq.q, answer: faq.a }))),
         ]}
       />
 
@@ -231,17 +232,30 @@ export default function Home() {
                   Get Free Consultation
                 </NeonButton>
               </Link>
-              <Link href="/web-app-development">
+              <Link href="/services">
                 <NeonButton
                   variant="outline"
                   size="lg"
                   icon={<ArrowRight className="w-5 h-5" />}
                   className="min-w-[220px]"
                 >
-                  Explore Web App Development
+                  Explore Our Services
                 </NeonButton>
               </Link>
             </motion.div>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="text-sm text-muted-foreground/70 mt-8"
+            >
+              Founded by{" "}
+              <a href="/about" className="text-primary/80 hover:text-primary transition-colors underline underline-offset-2">
+                Veerendra Vishwakarma
+              </a>
+              , TheCOdex Software Solutions helps startups and businesses build custom software systems.
+            </motion.p>
           </div>
         </div>
       </section>
@@ -406,6 +420,55 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="py-24 relative bg-muted/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16 max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">
+              Why TheCOdex is Among the <span className="text-primary">Best Software Companies in India</span>
+            </h2>
+            <p className="text-muted-foreground text-lg">
+              TheCOdex Software Solutions is a trusted software development company in Bhopal, India delivering custom web applications, SaaS products, and business automation systems for startups and growing businesses.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { stat: "50+", label: "Projects Delivered", desc: "Custom web apps, SaaS products, and automation systems built for businesses across India" },
+              { stat: "98%", label: "Client Satisfaction", desc: "Consistent delivery quality with transparent communication and reliable support" },
+              { stat: "3+", label: "Years Experience", desc: "Building software solutions for startups, SMBs, and enterprise teams" },
+              { stat: "8", label: "Service Categories", desc: "From web development to SEO, Google Ads, and business automation" },
+              { stat: "24/7", label: "Support Available", desc: "Ongoing maintenance, monitoring, and improvement for active systems" },
+              { stat: "100%", label: "Source Code Ownership", desc: "Clients own all code with complete transparency and no vendor lock-in" },
+            ].map((item, i) => (
+              <GlassCard key={item.label} delay={i * 0.05} hoverEffect={false} className="border-primary/10">
+                <div className="text-4xl font-black text-primary mb-2">{item.stat}</div>
+                <h3 className="text-lg font-bold text-foreground mb-2">{item.label}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+              </GlassCard>
+            ))}
+          </div>
+
+          <div className="mt-12 glass-card rounded-2xl p-8 md:p-10 border border-primary/15">
+            <h3 className="text-2xl font-bold mb-4 text-center">What Makes TheCOdex Different</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                "Business-first approach: Every project starts with understanding workflows, not just features",
+                "Full-stack capability: Frontend, backend, database, deployment, and ongoing support under one roof",
+                "Transparent pricing: Clear cost breakdowns based on scope, not vague hourly estimates",
+                "Startup-friendly: We help founders launch MVPs, iterate fast, and scale smartly",
+                "India-focused: Serving businesses in Bhopal, tier-2/tier-3 cities, and across India",
+                "Modern tech stack: React, Next.js, Node.js, TypeScript, PostgreSQL, AWS, and more",
+              ].map((point) => (
+                <div key={point} className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 shrink-0" />
+                  <p className="text-muted-foreground leading-relaxed">{point}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="py-24 relative">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
@@ -445,9 +508,9 @@ export default function Home() {
                 Start Your Project
               </NeonButton>
             </Link>
-            <Link href="/web-app-development">
+            <Link href="/services">
               <NeonButton variant="outline" size="lg" className="px-12 py-5 text-lg">
-                See Web App Development Details
+                See Our Services
               </NeonButton>
             </Link>
           </div>
